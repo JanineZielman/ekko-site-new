@@ -6,6 +6,7 @@ export interface HomPageData {
     id: number;
     title: string;
     url: string;
+    featuredImage: { url: string }[];
     organizer: { title: string }[];
     date: string;
     dateEnd?: string;
@@ -29,8 +30,9 @@ export interface HomPageData {
 
 const query = gql`
   query HomePage {
-    events: entries(section: "events", limit: 8) {
+    events: entries(section: "events", orderBy: "date DESC", limit: 8) {
       id
+      slug
       title
       url
       ... on events_event_Entry {
@@ -40,7 +42,7 @@ const query = gql`
         organizer {
           title
         }
-        date @formatDateTime(format: "d M Y")
+        date @formatDateTime(format: "d/n")
         dateEnd
         location {
           title
