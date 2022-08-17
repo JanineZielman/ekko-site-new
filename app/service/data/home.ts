@@ -1,7 +1,6 @@
-import { gql } from '@urql/core';
-import { client } from '~/service/query.server';
+import { fetchFromGraphQL, gql } from '~/service/utils';
 
-export interface HomPageData {
+export interface PageData {
   events: {
     id: number;
     title: string;
@@ -80,17 +79,20 @@ const query = gql`
   }
 `;
 
-export const mapHomeData = (
-  entries: Awaited<ReturnType<typeof getHomeData>>
-) => {
-  return entries.data?.events.map(event => ({
-    ...event,
-    organizer: event.organizer?.map(o => o.title),
-    location: event.location?.map(l => l.title),
-    performances: event.performances?.map(p => p.artist),
-  }));
-};
+// export const mapHomeData = (
+//   entries: Awaited<ReturnType<typeof getHomeData>>
+// ) => {
+//   return entries.data?.events.map(event => ({
+//     ...event,
+//     organizer: event.organizer?.map(o => o.title),
+//     location: event.location?.map(l => l.title),
+//     performances: event.performances?.map(p => p.artist),
+//   }));
+// };
 
-export const getHomeData = () => {
-  return client.query<HomPageData>(query).toPromise();
+export const fetchData = async () => {
+  const res = await fetchFromGraphQL(query);
+  const { data } = await res.json();
+
+  return data as PageData;
 };

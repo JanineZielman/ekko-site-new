@@ -8,7 +8,6 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react';
-import type { OperationResult } from '@urql/core';
 
 import styles from '~/styles/global.css';
 import Footer from './components/footer';
@@ -31,7 +30,7 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function App() {
-  const { data: navigation } = useLoaderData<OperationResult<Navigation>>();
+  const navigation = useLoaderData<Navigation>();
 
   return (
     <html lang="en">

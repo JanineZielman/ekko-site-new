@@ -1,5 +1,4 @@
-import { gql } from '@urql/core';
-import { client } from '~/service/query.server';
+import { fetchFromGraphQL, gql } from '../utils';
 
 export interface Navigation {
   nodes: {
@@ -21,6 +20,12 @@ const query = gql`
   }
 `;
 
-export const getNavigation = () => {
-  return client.query<Navigation>(query).toPromise();
+export const getNavigation = async () => {
+  const res = await fetchFromGraphQL(query);
+  let { data } = (await res.json()) as { data: Navigation };
+
+  // filter out empty nodes
+  data.nodes = data?.nodes.filter(node => !!node.id);
+
+  return data;
 };
