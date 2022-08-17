@@ -1,17 +1,17 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import { fetchData } from '~/service/data/home';
-import type { PageData } from '~/service/data/home';
+import { fetchRecentEvents } from '~/service/data/home';
+import type { RecentEvents } from '~/service/data/home';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 
 export const loader: LoaderFunction = () => {
-  return fetchData();
+  return fetchRecentEvents();
 };
 
 export default function Index() {
-  const { events } = useLoaderData<PageData>();
+  const { events } = useLoaderData<RecentEvents>();
 
   return (
     <Container>
