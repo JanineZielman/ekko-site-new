@@ -70,11 +70,10 @@ a{
 }
 
 .big {
-  font-size: 6vw;
+  font-size: 5vw;
   line-height: 1;
-
   & a {
-    font-size: 6vw;
+    font-size: 5vw;
     line-height: 1.4;
     margin: 10px;
   }
@@ -92,39 +91,25 @@ a{
 }
 .w3 {
   grid-column-end: span 3;
-
   & .header-img{
     height: 28vw;
     width: 45vw;
-
-    /* backup from kalendar branch
-    height: 40vw;
-    width: 52vw;
-    */
   }
 }
 .w4 {
   grid-column-end: span 4;
-  
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14%, 6fr));
   grid-gap: 1vw;
   grid-auto-rows: repeat(auto-fill, minmax(9%, 6fr));
-  
   & .w3{
     & .big {
       font-size: 48px;
     }
   }
-  
   & .header-img{
     height: 30vw;
     width: 47vw;
-
-   /*
-    height: 40vw;
-    width: 52vw;
-    */
   }
 }
 .w5 {
@@ -294,6 +279,19 @@ body {
   min-height: 150px;
 }
 
+.img-wrapper{
+  position: relative;
+  width: 100%;
+  padding-top: 75%;
+  overflow: hidden;
+  & img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .grid {
   width: 75vw;
   border: 2px solid black;
@@ -323,8 +321,6 @@ body {
 
     & img {
       width: 100%;
-      /* height: 80%; */
-      aspect-ratio: 4 / 3;
       object-fit: cover;
     }
 

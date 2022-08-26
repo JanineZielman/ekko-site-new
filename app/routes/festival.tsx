@@ -26,7 +26,7 @@ export default function Festival() {
 			<div className="grid">
 				<div className='item w4 l4'>
 					<div className='w6 w-smaller'>
-						<img src={entry.performances[0].artist[0].featuredImage[0].url}/>
+						<div className='img-wrapper'><img src={entry.performances[0].artist[0].featuredImage[0].url}/></div>
 						<div className="flex space-between white-bg">
 							<div className="info">
 								<h4>{entry.performances[0].title}</h4>
@@ -36,7 +36,7 @@ export default function Festival() {
 						</div>
 					</div>
 				</div>
-				<div className='w2 l4'>
+				<div className='w2 l4 mobile-w6'>
 					<div className='item w2'>
 						{nodes[0] &&
 							nodes.map((item, i) =>{
@@ -60,7 +60,7 @@ export default function Festival() {
 					{entry.performances.slice(1,5).map((item, i) => {
 						return(
 							<div className='w3 l2'>
-								<img src={item.artist[0].featuredImage[0].url}/>
+								<div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url}/></div>
 								<div className="flex space-between white-bg">
 									<div className="info">
 										<h4>{item.title}</h4>
