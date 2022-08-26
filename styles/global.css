@@ -364,3 +364,19 @@ body {
     height: 100%;
   }
 }
+
+footer{
+  font-size: var(--h2);
+  color: var(--primary);
+  & a{
+    color: var(--primary);
+    margin-left: 24px;
+  }
+  & .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}

@@ -1,6 +1,13 @@
 import { fetchFromGraphQL, gql } from '../utils';
 
 export interface Navigation {
+  globalSets: {
+    [index: number]: { 
+      socialFacebook: string;
+      socialInstagram: string;
+      socialTwitter: string;
+    }
+  },
   nodes: {
     id: string;
     title: string;
@@ -15,6 +22,13 @@ const query = gql`
         id
         title
         url
+      }
+    }
+    globalSets {
+      ... on globalInfo_GlobalSet {
+        socialFacebook
+        socialInstagram
+        socialTwitter
       }
     }
   }

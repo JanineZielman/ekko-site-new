@@ -53,7 +53,7 @@ export default function App() {
         <main>
           <Outlet />
         </main>
-        <Footer />
+        <Footer navigation={navigation} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

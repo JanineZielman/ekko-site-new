@@ -120,6 +120,22 @@
 		height: 100%;
 		margin: 0;
 	}
+
+	footer{
+		& .container{
+			flex-direction: column;
+			width: 100%;
+			align-items: flex-start;
+		}
+		& .social-links{
+			display: flex;
+			flex-direction: column;
+			margin: 14px 0;
+			& a {
+				margin: 0;
+			}
+		}
+	}
 }
 
 
