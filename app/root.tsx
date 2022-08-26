@@ -11,6 +11,7 @@ import {
 
 import styles from '~/styles/global.css';
 import breakpoints from '~/styles/breakpoints.css';
+import kalender from '~/styles/kalender.css';
 import Footer from './components/footer';
 import Nav from './components/nav';
 import Menu from './components/menu';
@@ -20,7 +21,8 @@ import { getNavigation } from './service/data/global';
 export function links() {
   return [
     {rel: 'stylesheet', href: styles},
-    {rel: 'stylesheet', href: breakpoints}
+    {rel: 'stylesheet', href: breakpoints},
+    {rel: 'stylesheet', href: kalender}
   ];
 }
 
