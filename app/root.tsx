@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react';
+import { useLocation } from 'react-router-dom';
 
 import styles from '~/styles/global.css';
 import breakpoints from '~/styles/breakpoints.css';
@@ -38,6 +39,7 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   const navigation = useLoaderData<Navigation>();
+   let location = useLocation();
 
   return (
     <html lang="en">
@@ -45,7 +47,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={location.pathname.slice(1)}>
         <Nav navigation={navigation} />
         <Menu navigation={navigation}/>
         <main>

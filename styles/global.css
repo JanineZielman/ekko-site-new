@@ -57,6 +57,7 @@ h4 {
 p {
   font-size: var(--body);
   line-height: 1.4;
+  margin: 0;
 }
 
 h3 p{
@@ -71,6 +72,12 @@ a{
 .big {
   font-size: 6vw;
   line-height: 1;
+
+  & a {
+    font-size: 6vw;
+    line-height: 1.4;
+    margin: 10px;
+  }
 }
 
 /* Grid Sizes */
@@ -85,16 +92,39 @@ a{
 }
 .w3 {
   grid-column-end: span 3;
+
   & .header-img{
+    height: 28vw;
+    width: 45vw;
+
+    /* backup from kalendar branch
     height: 40vw;
     width: 52vw;
+    */
   }
 }
 .w4 {
   grid-column-end: span 4;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14%, 6fr));
+  grid-gap: 1vw;
+  grid-auto-rows: repeat(auto-fill, minmax(9%, 6fr));
+  
+  & .w3{
+    & .big {
+      font-size: 48px;
+    }
+  }
+  
   & .header-img{
+    height: 30vw;
+    width: 47vw;
+
+   /*
     height: 40vw;
     width: 52vw;
+    */
   }
 }
 .w5 {
@@ -125,6 +155,12 @@ a{
   grid-row-end: span 6;
 }
 
+.w-smaller{
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+}
+
 /* other */
 .flex {
   display: flex;
@@ -138,6 +174,30 @@ a{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.white-bg{
+  background-color: var(--white);
+  padding: 1vw;
+  margin-top: -1vw;
+}
+
+/* Festival */
+.festival{
+  background-color: var(--primary);
+  & .open-menu{
+    background-color: var(--white);
+  }
+  & .navbar {
+    & .nav-items {
+      & a span{
+      color: var(--white);
+      }
+    }
+  }
+  & .language a{
+    color: var(--white);
+  }
 }
 
 /* Menu */
@@ -263,7 +323,8 @@ body {
 
     & img {
       width: 100%;
-      height: 80%;
+      /* height: 80%; */
+      aspect-ratio: 4 / 3;
       object-fit: cover;
     }
 
