@@ -24,7 +24,7 @@ export default function Index() {
               )}
               <div className="flex space-between">
                 <div className="info">
-                  <h4>{item.title}</h4>
+                  <h3>{item.title}</h3>
                 </div>
                 <div className="times big">{item.date}</div>
               </div>
@@ -46,7 +46,7 @@ export default function Index() {
             </div>
           );
         })}
-        <Spacer />
+        <Spacer number={6} border=""/>
       </div>
     </Container>
   );

@@ -10,13 +10,18 @@ import {
 } from '@remix-run/react';
 
 import styles from '~/styles/global.css';
+import breakpoints from '~/styles/breakpoints.css';
 import Footer from './components/footer';
 import Nav from './components/nav';
+import Menu from './components/menu';
 import type { Navigation } from './service/data/global';
 import { getNavigation } from './service/data/global';
 
 export function links() {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    {rel: 'stylesheet', href: styles},
+    {rel: 'stylesheet', href: breakpoints}
+  ];
 }
 
 export const loader: LoaderFunction = () => {
@@ -40,6 +45,7 @@ export default function App() {
       </head>
       <body>
         <Nav navigation={navigation} />
+        <Menu navigation={navigation}/>
         <main>
           <Outlet />
         </main>

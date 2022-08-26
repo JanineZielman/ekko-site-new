@@ -1,0 +1,113 @@
+@media (max-width: 1100px){
+	.hide-for-mobile{
+		display: none;
+	}
+
+	.ReactModalPortal{
+		& .hide-for-mobile{
+			display: block;
+		}
+		& .navbar .nav-items{
+			flex-direction: column;
+		}
+	}
+}
+
+@media (max-width:600px){
+
+	/* Grid Sizes */
+	.w1 {
+		grid-column-end: span 1;
+		display: none;
+	}
+	.spacer-6.w1{
+		display: block;
+	}
+	.w2 {
+		grid-column-end: span 3;
+	}
+	.w3 {
+		grid-column-end: span 6;
+		& .header-img{
+			position: relative;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			& img{
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	.w4 {
+		grid-column-end: span 6;
+		& .header-img{
+			position: relative;
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+			& img{
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	.w5 {
+		grid-column-end: span 6;
+	}
+
+	.l1{
+		grid-row-end: span 1;
+		min-height: 16vw;
+	}
+
+	.l2{
+		grid-row-end: span 3;
+	}
+
+	.l3{
+		grid-row-end: span 6;
+	}
+
+	.l4{
+		grid-row-end: span 6;
+	}
+
+	.l5{
+		grid-row-end: span 6;
+	}
+
+	.l6{
+		grid-row-end: span 6;
+	}
+
+	.grid{
+		width: 100vw;
+	}
+
+	.homebutton{
+		margin: 0;
+	}
+
+	.big{
+		font-size: 40px;
+	}
+
+	.grid {
+		border: 0;
+		margin: 0;
+		padding: 2vw;
+		& .item{
+			padding: 2vw;
+		}
+	}
+}
+
+
+@media (min-width:1100px){
+	.hide-for-desktop{
+		display: none;
+	}
+}

@@ -1,12 +1,24 @@
-export default function Spacer() {
+type SpacerProps = {
+  number: number;
+  border: string;
+};
+
+export default function Spacer(props: SpacerProps) {
+	const { number, border } = props;
+
+	const spacer = [];
+	for (let i = 0; i < number; i++) {
+		spacer[i] = i;
+	}
     return (
 			<>
-				<div className='item w1'></div>
-				<div className='item w1'></div>
-				<div className='item w1'></div>
-				<div className='item w1'></div>
-				<div className='item w1'></div>
-				<div className='item w1'></div>
+			{spacer.map((i) => {
+				return(
+					<>
+						<div key={`item-${i}`} className={`item w1 l1 ${border} spacer-${number}`}></div>
+					</>
+				)
+			})}
 			</>
     );
 }

@@ -2,7 +2,7 @@ import type { Navigation } from '~/service/data/global';
 
 export default function Nav({ navigation }: { navigation: Navigation }) {
   return (
-    <div className="navbar">
+    <div className="navbar hide-for-mobile">
       <div className="homebutton">
         <a href="/">
           <img src="/homebutton.png" alt="Home" />
