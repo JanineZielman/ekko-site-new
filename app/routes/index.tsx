@@ -20,7 +20,7 @@ export default function Index() {
           return (
             <div key={`news-${i}`} className="item w3">
               {item.featuredImage && (
-                <img src={item.featuredImage[0].url} alt={item.title} />
+                <div className='img-wrapper'><img src={item.featuredImage[0].url} alt={item.title} /></div>
               )}
               <div className="flex space-between">
                 <div className="info">
@@ -35,7 +35,7 @@ export default function Index() {
           return (
             <div key={`news2-${i}`} className="item w2">
               {item.featuredImage && (
-                <img src={item.featuredImage[0].url} alt={item.title} />
+                <div className='img-wrapper'><img src={item.featuredImage[0].url} alt={item.title} /></div>
               )}
               <div className="flex space-between">
                 <div className="info">
