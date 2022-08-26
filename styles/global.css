@@ -155,6 +155,13 @@ a{
   }
 }
 
+.align-bottom{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .middle {
   display: flex;
   flex-direction: column;
@@ -285,6 +292,21 @@ body {
   padding-top: 75%;
   overflow: hidden;
   & img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.video-wrapper{
+  position: relative;
+  width: 100%;
+  padding-top: 60%;
+  overflow: hidden;
+  & iframe{
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 50%;
     left: 50%;

@@ -13,7 +13,7 @@ export default function Nav({ navigation }: { navigation: Navigation }) {
           navigation.nodes.map((item, i) => {
             return (
               item.title && (
-                <a href={item.url}>
+                <a key={`navlink-${i}`} href={item.url}>
                   <span>{item.title}</span>
                 </a>
               )

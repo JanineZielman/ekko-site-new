@@ -15,7 +15,7 @@ export default function Spacer(props: SpacerProps) {
 			{spacer.map((i) => {
 				return(
 					<>
-						<div key={`item-${i}`} className={`item w1 l1 ${border} spacer-${number}`}></div>
+						<div key={`spacer-${i}`} className={`item w1 l1 ${border} spacer-${number}`}></div>
 					</>
 				)
 			})}
