@@ -3,48 +3,45 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
+import { Form, useLoaderData, useSearchParams } from '@remix-run/react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import type { SearchResults } from '~/service/data/search';
 import { fetchSearchResults } from '~/service/data/search';
 
-interface Data extends SearchResults {
-  query?: string;
-}
-
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
   const q = url.searchParams.get('q') as string;
-  const results = await fetchSearchResults(q);
 
+  return fetchSearchResults(q);
+};
+
+export const meta: MetaFunction = ({ location }) => {
+  const params = new URLSearchParams(location.search);
   return {
-    ...results,
-    query: q,
+    title: params.get('q') ?? 'Search',
   };
 };
 
-export const meta: MetaFunction = ({ data }) => ({
-  title: (data as Data).query,
-});
-
 export default function Oestre() {
-  const { artists, events, query } = useLoaderData<Data>();
+  const { artists, events } = useLoaderData<SearchResults>();
+  const [searchParams] = useSearchParams();
 
   return (
     <Container>
       <div className="grid">
         <div className="item w3">
-          <form>
+          <Form>
             <input
               type="search"
               name="q"
               id=""
-              defaultValue={query}
+              defaultValue={searchParams.get('q') ?? ''}
               placeholder="Search"
+              autoFocus
             />
-          </form>
+          </Form>
         </div>
         <Spacer number={3} border={''} />
         {artists?.length > 0 && (
