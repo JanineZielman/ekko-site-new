@@ -1,13 +1,15 @@
 import { fetchFromGraphQL, gql } from '~/service/utils';
 
+export interface Event {
+  id: number;
+  title: string;
+  url: string;
+  featuredImage: { url: string }[];
+  date: string;
+}
+
 export interface AllEvents {
-  events: {
-    id: number;
-    title: string;
-    url: string;
-    featuredImage: { url: string }[];
-    date: string;
-  }[];
+  events: Event[];
 }
 
 const query = gql`
