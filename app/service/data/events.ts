@@ -8,6 +8,8 @@ export interface Event {
   type: 'event' | 'festival';
   featuredImage: { url: string }[];
   date: string;
+  openingTime: string;
+  closingTime: string;
 }
 
 export interface AllEvents {
@@ -23,6 +25,8 @@ const query = gql`
       url
       type: typeHandle
       ... on events_event_Entry {
+        openingTime
+        closingTime
         featuredImage: eventFeaturedPhoto {
           url
         }

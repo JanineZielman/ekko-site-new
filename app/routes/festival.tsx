@@ -19,8 +19,6 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Festival() {
   const { entry, nodes } = useLoaderData<PageEntry>();
 
-	console.log(nodes)
-
   return (
 		<Container>
 			<div className="grid">

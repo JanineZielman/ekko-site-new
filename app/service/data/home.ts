@@ -3,8 +3,10 @@ import { fetchFromGraphQL, gql } from '~/service/utils';
 export interface RecentEvents {
   events: {
     id: number;
+    slug: string;
     title: string;
     url: string;
+    type: 'event' | 'festival';
     featuredImage: { url: string }[];
     date: string;
   }[];
@@ -17,6 +19,7 @@ const query = gql`
       slug
       title
       url
+      type: typeHandle
       ... on events_event_Entry {
         featuredImage: eventFeaturedPhoto {
           url
