@@ -25,6 +25,10 @@
   font-weight: 700;
 }
 
+html, body{
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: ReplicaLL;
 }
@@ -94,6 +98,9 @@ a{
   & .header-img{
     height: 28vw;
     width: 45vw;
+    &.artist{
+      height: 35vw;
+    }
   }
 }
 .w4 {
@@ -171,12 +178,45 @@ a{
 .white-bg{
   background-color: var(--white);
   padding: 1vw;
-  margin-top: -1vw;
+  /* margin-top: -1vw; */
+}
+
+.columns{
+  column-count: 2;
+}
+
+.offset{
+  margin-top: auto;
+  height: auto;
+}
+
+.padding-right{
+  padding-right: 10vw;
+}
+
+.no-padding{
+  margin: -1vw;
+}
+
+.festival.ReactModal__Body--open{
+  & .navbar {
+    & .nav-items {
+      & a span{
+      color: var(--primary);
+      }
+    }
+  }
+  & .language a{
+    color: var(--primary);
+  }
 }
 
 /* Festival */
 .festival{
   background-color: var(--primary);
+  & .homebutton {
+    background-color: var(--white);
+  }
   & .open-menu{
     background-color: var(--white);
   }
@@ -189,6 +229,9 @@ a{
   }
   & .language a{
     color: var(--white);
+  }
+  & footer, & footer a{
+     color: var(--white);
   }
 }
 
@@ -272,12 +315,14 @@ body {
 
 .homebutton {
   margin-left: 24px;
-  width: 110px;
-
-  & img {
-    width: 120px;
-    height: auto;
-  }
+  width: 120px;
+  height: 80px;
+  -webkit-mask-image: url('/homebutton.png');
+  mask-image: url('/homebutton.png');
+  background-color: var(--primary);
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat; 
 }
 
 .container {
@@ -363,6 +408,16 @@ body {
     width: 100%;
     height: 100%;
   }
+}
+
+.ticket{
+  display: flex;
+  justify-content: space-between;
+  padding: 14px!important;
+}
+
+.program-day{
+  border-bottom: 1px solid black;
 }
 
 footer{

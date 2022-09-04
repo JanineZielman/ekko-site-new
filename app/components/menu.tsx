@@ -11,8 +11,8 @@ export default function Menu({ navigation }: { navigation: Navigation }) {
 			left: '50%',
 			right: 'auto',
 			bottom: 'auto',
-			width: '100%',
-			height: '100%',
+			width: '100vw',
+			height: '100vh',
 			marginRight: '-50%',
 			transform: 'translate(-50%, -50%)',
 		},
@@ -30,11 +30,7 @@ export default function Menu({ navigation }: { navigation: Navigation }) {
   return (
 		<div className='menu hide-for-desktop'>
 			<div className='navbar'>
-				<div className="homebutton">
-					<a href="/">
-						<img src="/homebutton.png" alt="Home" />
-					</a>
-				</div>
+				<a href="/" className="homebutton"></a>
 				<div className='open-menu' onClick={openModal}></div>
 			</div>
 			<Modal

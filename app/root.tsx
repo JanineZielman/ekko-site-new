@@ -41,13 +41,15 @@ export default function App() {
   const navigation = useLoaderData<Navigation>();
    let location = useLocation();
 
+   var slug = location.pathname.slice(1).split("/");
+
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
       </head>
-      <body className={location.pathname.slice(1)}>
+      <body className={slug[0]}>
         <Nav navigation={navigation} />
         <Menu navigation={navigation}/>
         <main>

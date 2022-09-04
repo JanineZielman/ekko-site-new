@@ -3,11 +3,7 @@ import type { Navigation } from '~/service/data/global';
 export default function Nav({ navigation }: { navigation: Navigation }) {
   return (
     <div className="navbar hide-for-mobile">
-      <div className="homebutton">
-        <a href="/">
-          <img src="/homebutton.png" alt="Home" />
-        </a>
-      </div>
+      <a href="/" className="homebutton"></a>
       <div className="nav-items center">
         {navigation &&
           navigation.nodes.map((item, i) => {
