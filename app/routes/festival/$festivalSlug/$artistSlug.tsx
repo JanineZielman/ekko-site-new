@@ -2,6 +2,7 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
+import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -61,17 +62,26 @@ export default function Index() {
           </div>
         </div>
         <Spacer number={6} border="" />
-        <div className="item w3 white-bg align-bottom offset">
+        <div className="w2 item align-bottom offset white-bg">
 					<div>
-						<h2>Part of event:</h2>
-						<div className="text">
-							<p>{event.date} {event.dateEnd && <>- {event.dateEnd}</>}</p>
-							<h3>{event.title}</h3>
-						</div>
+						<h2>Related artists:</h2>
 					</div>
         </div>
-        <Spacer number={3} border="" />
-        {event.performances?.length > 0 &&
+        <Spacer number={4} border="" />
+				{event.performances.map((performance, i) => {
+					return(
+						<>
+							{event.date == performance.date &&
+								<div className='item w2'>
+									<div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>
+									<p>{performance.location[0].title}</p>
+									<h4>{performance.time} {performance.artist[0].title}</h4>
+								</div>
+							}
+						</>
+					)
+				})}
+        {/* {event.performances?.length > 0 &&
           event.performances.map((performance, i) => (
             <div key={`perf-${i}`} className="item w2 l1">
               <div className="text">
@@ -88,7 +98,7 @@ export default function Index() {
                 </Link>
               </div>
             </div>
-          ))}
+          ))} */}
       </div>
     </Container>
   );

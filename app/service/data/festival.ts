@@ -71,8 +71,8 @@ const eventFragment = gql`
       }
     }
     isMultiDay
-    date @formatDateTime(format: "d/n")
-    dateEnd @formatDateTime(format: "d/n")
+    date
+    dateEnd
     location {
       title
       fullTitle
