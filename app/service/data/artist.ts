@@ -4,18 +4,28 @@ export interface Artist {
   id: number;
   slug: string;
   title: string;
-  url: string;
-  artistMeta: string;
-  featuredImage: { url: string }[];
-  complexContent: (
-    | { blockType: 'text'; text: string }
-    | { blockType: 'video'; videoUrl: string }
-    | { blockType: 'embed'; code: string }
-  )[];
+  date: string;
+  time: string;
+  timeEnd: string;
+  location: {
+    title: string;
+  }[];
+  artist: {
+    url: string;
+    title: string;
+    artistMeta: string;
+    featuredImage: { url: string }[];
+    complexContent: (
+      | { blockType: 'text'; text: string }
+      | { blockType: 'video'; videoUrl: string }
+      | { blockType: 'embed'; code: string }
+    )[];
+  }[];
 }
 
 const artistFragment = gql`
   fragment artistData on artists_artist_Entry {
+    title
     artistMeta
     featuredImage: artistFeaturedPhoto {
       url
@@ -39,12 +49,19 @@ const artistFragment = gql`
 
 const query = gql`
   query Artist($slug: String!) {
-    entry(section: "artists", slug: [$slug]) {
+    entry(slug: [$slug]) {
       id
       slug
       title
-      url
-      ...artistData
+      date
+      time @formatDateTime(format: "G:i")
+      timeEnd @formatDateTime(format: "G:i")
+      location {
+        title
+      }
+      artist{
+        ...artistData
+      }
     }
   }
 

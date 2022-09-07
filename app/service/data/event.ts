@@ -19,6 +19,7 @@ export interface Event {
   ticketLink: string;
   ticketDescription: string;
   performances: {
+    slug: string;
     fullTitle: string;
     date: string;
     time: string;
@@ -31,6 +32,7 @@ export interface Event {
       slug: string;
       title: string;
       artistMeta: string;
+      featuredImage: { url: string }[];
     }[];
   }[];
 }
@@ -56,6 +58,7 @@ const eventFragment = gql`
     ticketDescription
     performances {
       ... on performance_performance_Entry {
+        slug
         fullTitle
         date @formatDateTime(format: "d/n")
         time @formatDateTime(format: "G:i")
@@ -69,6 +72,9 @@ const eventFragment = gql`
           ... on artists_artist_Entry {
             title
             artistMeta
+            featuredImage: artistFeaturedPhoto {
+              url
+            }
           }
         }
       }

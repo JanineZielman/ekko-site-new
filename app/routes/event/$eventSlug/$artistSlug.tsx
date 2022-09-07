@@ -2,6 +2,7 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/event';
 import type { Event } from '~/service/data/event';
+import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -16,7 +17,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 
   // Remove current artist from the performance list of the event
   event.performances = event.performances?.filter(
-    performace => performace.artist?.[0].slug !== artist.slug
+    performance => performance.slug !== artist.slug
   );
 
   return { event, artist };
@@ -25,68 +26,68 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
+  console.log(event)
+
   return (
     <Container>
       <div className="grid">
-        <Spacer number={3} border="" />
-        <div className="item w3 l1">
-          <div className="img">
-            {artist.featuredImage && (
-              <img src={artist.featuredImage[0]?.url} alt={artist.title} />
-            )}
-          </div>
-          <div className="text">
-            <p>{artist.artistMeta}</p>
-            <h3>{artist.title}</h3>
-            {artist.complexContent?.map(block => {
+        <div className="item w3 l3">
+					<div className='padding-right'>
+						<h1 className='big'>{artist.artist[0].title}</h1>
+						<div className='big times'>{Moment(artist.date).format('D/MM')}</div>
+            <br/>
+            {artist.artist[0].complexContent?.map(block => {
               if (block.blockType === 'text') {
                 return (
                   <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
                 );
               }
-              if (block.blockType === 'embed') {
-                return (
-                  <div dangerouslySetInnerHTML={{ __html: block.code }}></div>
-                );
-              }
-              if (block.blockType === 'video') {
-                // TODO: handle video embeds based on their url
-              }
             })}
-          </div>
-        </div>
-        <Spacer number={6} border="" />
-        <div className="item w3 l1">
-          <h2>Part of event:</h2>
-          <div className="img">
-            {event.featuredImage && (
+					</div>
+				</div>
+
+        <div className="item w3 l3 overflow">
+          <div className='img-wrapper'>
+            {artist.artist[0].featuredImage[0] ? 
+              <img src={artist.artist[0].featuredImage[0]?.url}/>
+              :
               <img src={event.featuredImage[0]?.url} alt={event.title} />
-            )}
+            }
           </div>
-          <div className="text">
-            <p>{event.date}</p>
-            <h3>{event.title}</h3>
+          <div className="flex space-between blue-bg">
+            <div className="info">
+              <h4>{artist.artist[0].title}</h4>
+              <p>{artist.time}, {artist.location?.[0]?.title}</p>
+            </div>
+            <div>
+
+            </div>
           </div>
         </div>
-        <Spacer number={3} border="" />
+        
         {event.performances?.length > 0 &&
-          event.performances.map((performance, i) => (
-            <div key={`perf-${i}`} className="item w2 l1">
-              <div className="text">
-                <p>{performance.artist?.[0].title}</p>
-                <p>{performance.artist?.[0].artistMeta}</p>
-                <p>{performance.date}</p>
-                <p>
-                  {performance.time} - {performance.timeEnd}
-                </p>
-                <Link
-                  to={`/event/${event.slug}/${performance.artist?.[0].slug}`}
-                >
-                  link to artist on this event
-                </Link>
+          <>
+            <div className="w2 item align-bottom offset blue-bg">
+              <div>
+                <h2>Related artists:</h2>
               </div>
             </div>
-          ))}
+            <Spacer number={4} border="" />
+            {event.performances.map((performance, i) => (
+              <Link to={`/event/${event.slug}/${performance.slug}`} className='item w2 white-bg'>
+                <div className='img-wrapper artist'>
+                  {performance.artist?.[0].featuredImage[0] ?
+                    <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0].title} />
+                  :
+                    <img src={event.featuredImage[0].url} alt={event.title} />
+                  }
+                  </div>
+                <h4>{performance.artist?.[0].title}</h4>
+                <p>{performance.time}, {performance.location?.[0]?.title}</p>
+              </Link>
+            ))}
+          </>
+        }
       </div>
     </Container>
   );

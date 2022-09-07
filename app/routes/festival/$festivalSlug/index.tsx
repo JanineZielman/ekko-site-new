@@ -19,7 +19,7 @@ export default function Index() {
   return (
     <Container>
 			<div className="grid">
-				<Link to={`${event.performances[0].artist[0].slug}`} className='item w4 l4'>
+				<Link to={`${event.performances[0].slug}`} className='item w4 l4'>
 					<div className='w6 w-smaller'>
 						<div className='img-wrapper'><img src={event.performances[0].artist[0].featuredImage[0].url}/></div>
 						<div className="flex space-between white-bg">
@@ -48,7 +48,7 @@ export default function Index() {
 				<div className='item w4 l4'>
 					{event.performances.slice(1,5).map((item, i) => {
 						return(
-							<Link to={`${item.artist[0].slug}`} className='w3 l2'>
+							<Link to={`${item.slug}`} className='w3 l2'>
 								<div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url}/></div>
 								<div className="flex space-between white-bg">
 									<div className="info">
@@ -70,7 +70,7 @@ export default function Index() {
           <div className='columns w6'>
             {event.performances.map((item, i) => {
               return(
-                <Link to={`${item.artist[0].slug}`}>
+                <Link to={`${item.slug}`}>
                   <p>{item.artist[0].title}</p>
                 </Link>
               )
@@ -93,10 +93,10 @@ export default function Index() {
                 return(
                   <>
                     {item.date == performance.date &&
-                      <div className='program-day'>
+                      <Link to={`${performance.slug}`} className='program-day'>
                         <p>{performance.location[0].title}</p>
                         <h4>{performance.time} {performance.artist[0].title}</h4>
-                      </div>
+                      </Link>
                     }
                   </>
                 )
