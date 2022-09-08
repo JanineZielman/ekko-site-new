@@ -12,29 +12,74 @@ export const loader: LoaderFunction = () => {
 };
 
 export default function Index() {
-  const { events } = useLoaderData<AllEvents>();
+  let { events } = useLoaderData<AllEvents>();
+
+  let filteredEvents = [];
+  var currentTime = new Date();
+
+  filteredEvents = events.filter((item: any) => {
+    var itemDate = new Date(item.date);
+    return itemDate.getTime() >= currentTime.getTime();
+  });
 
   return (
     <Container>
       <div className="kalender">
         <div className="grid">
-          {events.map((item, i) => {
+          {filteredEvents.reverse().map((item, i) => {
             return (
-              <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className="item w3 l1">
-                <div className="img">
-                  {item.featuredImage && (
-                    <img src={item.featuredImage[0]?.url} alt={item.title} />
-                  )}
-                </div>
-                <div className="text">
-                  <p>{item.date}</p>
-                  <br/>
-                  <h3>{item.title}</h3>
-                  {item.openingTime &&
-                    <p>{Moment(item.openingTime).format("HH:mm")}  {item.closingTime && <>- {Moment(item.closingTime).format("HH:mm")} </>}</p>
-                  }
-                </div>
-              </Link>
+              <>
+                <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className="item w3">
+                  <div className="img">
+                    {item.featuredImage && (
+                      <img src={item.featuredImage[0]?.url} alt={item.title} />
+                    )}
+                  </div>
+                  <div className="text">
+                    <p>{Moment(item.date).format("D/M/yy")}</p>
+                    <br/>
+                    <h3>{item.title}</h3>
+                     <p>
+                        {item.location?.[1] && item.location[1].fullTitle}
+                    </p>
+                    {item.openingTime &&
+                      <p>{Moment(item.openingTime).format("HH:mm")}  {item.closingTime && <>- {Moment(item.closingTime).format("HH:mm")} </>}</p>
+                    }
+                  </div>
+                </Link>
+                {item.performances.map((performance, j) => {
+                  return(
+                    <Link to={`/${item.type}/${item.slug}/${performance.slug}`} key={`performance-${j}`} className="item w3">
+                      <div className="img artist">
+                        {performance.artist[0].featuredImage[0] ? 
+                          <img src={performance.artist[0].featuredImage[0]?.url} alt={item.title} />
+                          : <img src={item.featuredImage[0]?.url} alt={item.title} />
+                        }
+                      </div>
+                      <div className="text">
+                        <p>{Moment(performance.date).format("D/M/yy")} </p>
+                        <br/>
+                        <h3>
+                          {performance.artist[0].title ? 
+                            performance.artist[0].title
+                          : performance.title
+                          }
+                        </h3>
+                        {performance.location?.[1] &&
+                          <p>
+                              {performance.location[1].fullTitle}
+                          </p>
+                        }
+                        {performance.time &&
+                          <p>
+                            {performance.time}  {performance.timeEnd && <>- {performance.timeEnd} </>}
+                          </p>
+                        }
+                      </div>
+                    </Link>
+                  )
+                })}
+              </>
             );
           })}
           <Spacer number={6} border="" />

@@ -1,7 +1,8 @@
 .kalender{
 	& .grid{
 		& .item{
-			height: 100px;
+			height: 200px;
+			min-height: 200px;
 			display: flex;
 			flex-wrap: wrap;
 			& .img{

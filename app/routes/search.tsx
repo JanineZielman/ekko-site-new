@@ -60,7 +60,6 @@ export default function Oestre() {
                 </div>
               </Link>
             ))}
-            <Spacer number={6} border="" />
           </>
         )}
         {artists?.length > 0 && (
@@ -83,6 +82,7 @@ export default function Oestre() {
             ))}
           </>
         )}
+        <Spacer number={6} border="" />
       </div>
     </Container>
   );

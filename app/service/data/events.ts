@@ -10,6 +10,25 @@ export interface Event {
   date: string;
   openingTime: string;
   closingTime: string;
+  location: {
+    title: string;
+    fullTitle: string;
+  }[];
+  performances:{
+    title: string;
+    slug: string;
+    date: string;
+    time: string;
+    timeEnd: string;
+    location: {
+      title: string;
+      fullTitle: string;
+    }[];
+    artist: {
+      title: string;
+      featuredImage: { url: string }[];
+    }[];
+  }[];
 }
 
 export interface AllEvents {
@@ -30,13 +49,62 @@ const query = gql`
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n")
+        location {
+          title
+          fullTitle
+        }
+        date @formatDateTime(format: "n/d/yy")
+        performances {
+          title
+          slug
+          date
+          time @formatDateTime(format: "G:i")
+          timeEnd @formatDateTime(format: "G:i")
+          location {
+            title
+            fullTitle
+          }
+          ... on performance_performance_Entry {
+            artist {
+              ... on artists_artist_Entry {
+                featuredImage: artistFeaturedPhoto{
+                  url
+                }
+              }
+            }
+          }
+        }
       }
       ... on events_festival_Entry {
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n")
+        location {
+          title
+          fullTitle
+        }
+        date @formatDateTime(format: "n/d/yy")
+        performances {
+          title
+          slug
+          date
+          time @formatDateTime(format: "G:i")
+          timeEnd @formatDateTime(format: "G:i")
+          location {
+            title
+            fullTitle
+          }
+          ... on performance_performance_Entry {
+            artist {
+              title
+              ... on artists_artist_Entry {
+                featuredImage: artistFeaturedPhoto{
+                  url
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

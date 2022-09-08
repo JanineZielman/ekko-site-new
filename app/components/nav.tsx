@@ -19,9 +19,6 @@ export default function Nav({ navigation }: { navigation: Navigation }) {
               );
             })}
         </div>
-        <div className="language">
-          <a>NB</a>/ <a>EN</a>
-        </div>
         <Link className='search-icon' to="/search"></Link>
       </div>
     </>
