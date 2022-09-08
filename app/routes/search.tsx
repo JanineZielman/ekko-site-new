@@ -3,7 +3,7 @@ import type {
   LoaderFunction,
   MetaFunction,
 } from '@remix-run/node';
-import { Form, useLoaderData, useSearchParams } from '@remix-run/react';
+import { Form, useLoaderData, useSearchParams, Link } from '@remix-run/react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -31,8 +31,8 @@ export default function Oestre() {
   return (
     <Container>
       <div className="grid">
-        <div className="item w3">
-          <Form>
+        <div className="w3 offset">
+          <Form className='search-bar'>
             <input
               type="search"
               name="q"
@@ -41,18 +41,33 @@ export default function Oestre() {
               placeholder="Search"
               autoFocus
             />
+            <img src="/search.svg"/>
           </Form>
         </div>
         <Spacer number={3} border={''} />
+        {events?.length > 0 && (
+          <>
+            {events.map(event => (
+              <Link to={`/${event.type}/${event.slug}`} key={`event-${event.slug}`} className="item w2 l1">
+                <div className="img-wrapper">
+                  {event.featuredImage?.length > 0 && (
+                    <img src={event.featuredImage[0]?.url} alt={event.title} />
+                  )}
+                </div>
+                <div className="text">
+                  <p>{event.date}</p>
+                  <h3>{event.title}</h3>
+                </div>
+              </Link>
+            ))}
+            <Spacer number={6} border="" />
+          </>
+        )}
         {artists?.length > 0 && (
           <>
-            <div className="item w2">
-              <h2>Artists</h2>
-            </div>
-            <Spacer number={4} border="" />
             {artists.map(artist => (
               // TODO: extract component for rendering an artist block
-              <div key={`artist-${artist.slug}`} className="item w3">
+              <div key={`artist-${artist.slug}`} className="item w2">
                 {artist.featuredImage?.length > 0 && (
                   <div className="img-wrapper">
                     <img src={artist.featuredImage[0].url} alt={artist.title} />
@@ -66,29 +81,6 @@ export default function Oestre() {
                 </div>
               </div>
             ))}
-            <Spacer number={6} border="" />
-          </>
-        )}
-        {events?.length > 0 && (
-          <>
-            <div className="item w2">
-              <h2>Events</h2>
-            </div>
-            <Spacer number={4} border="" />
-            {events.map(event => (
-              <div key={`event-${event.slug}`} className="item w3 l1">
-                <div className="img">
-                  {event.featuredImage?.length > 0 && (
-                    <img src={event.featuredImage[0]?.url} alt={event.title} />
-                  )}
-                </div>
-                <div className="text">
-                  <p>{event.date}</p>
-                  <h3>{event.title}</h3>
-                </div>
-              </div>
-            ))}
-            <Spacer number={6} border="" />
           </>
         )}
       </div>

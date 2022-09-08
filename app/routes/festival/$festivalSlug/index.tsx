@@ -14,8 +14,6 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Index() {
   const event = useLoaderData<Event>();
 
-  console.log(event)
-
   return (
     <Container>
 			<div className="grid">
