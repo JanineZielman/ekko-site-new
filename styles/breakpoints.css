@@ -132,6 +132,14 @@
 		margin: 0;
 	}
 
+	.outer{
+		display: none;
+	}
+
+	.video-wrapper{
+		height: 45vh;
+	}
+
 	footer{
 		& .container{
 			flex-direction: column;

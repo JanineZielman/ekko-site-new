@@ -14,6 +14,10 @@ export interface allVideos {
 			title: string;
 			slug: string;
 		}[];
+		performances: {
+			title: string;
+			slug: string;
+		}[];
   }[];
 }
 
@@ -30,6 +34,10 @@ const query = gql`
 				pageContent
 				videoUrl
 				artist {
+					title
+					slug
+				}
+				performances {
 					title
 					slug
 				}
