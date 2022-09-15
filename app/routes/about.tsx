@@ -26,7 +26,7 @@ export default function About() {
               dHeight = $(document).height() || 900, // 100 = image height
               nextX = Math.floor(Math.random() * dWidth),
               nextY = Math.floor(Math.random() * dHeight);
-          $(this).animate({ left: nextX + 'px', top: nextY + 'px' });
+          $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
       });
     });
   }, []);

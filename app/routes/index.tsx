@@ -37,7 +37,7 @@ export default function Index() {
               dHeight = $(document).height() || 900, // 100 = image height
               nextX = Math.floor(Math.random() * dWidth),
               nextY = Math.floor(Math.random() * dHeight);
-          $(this).animate({ left: nextX + 'px', top: nextY + 'px' });
+          $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
       });
     });
   }, []);
@@ -130,7 +130,7 @@ export default function Index() {
 
         <Spacer number={4} border=""/>
 
-        {news?.events?.map((item, i) => {
+        {news?.events?.slice(0,4).map((item, i) => {
           return (
             <Link to={`/news/${item.slug}`} key={`news-${i}`} className="item w3 artist">
               {item.newsPhoto[0] ? 
@@ -143,6 +143,12 @@ export default function Index() {
             </Link>
           );
         })}
+
+        <Spacer number={4} border=""/>
+
+        <Link className='item w2 blue-bg' to="/news">
+            <div className='view-all'>View all</div>
+        </Link>
 
         <Spacer number={6} border=""/>
       </div>

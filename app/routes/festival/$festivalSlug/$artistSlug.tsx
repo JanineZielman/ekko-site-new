@@ -26,6 +26,12 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
+  const related = event.performances.filter((item: any) => {
+    return item.date == artist.date
+  });
+
+  console.log(artist)
+
   return (
     <Container>
       <div className="grid">
@@ -54,28 +60,54 @@ export default function Index() {
               <p>{artist.time}, {artist.location[0].title}</p>
             </div>
             <div>
-
             </div>
           </div>
         </div>
 
-        {/* {artist.artist[0].complexContent?.map(block => {
+        
+        {artist.artist[0].complexContent?.map(block => {
+          if (block.blockType === 'text') {
+            return (
+              <>
+                <Spacer number={6} border="" />
+                <div className='item w3 l3'>
+                  <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                </div>
+                <Spacer number={9} border="" />
+              </>
+            );
+          }
           if (block.blockType === 'embed') {
             return (
-              <div dangerouslySetInnerHTML={{ __html: block.code }}></div>
+               <>
+                <Spacer number={3} border="" />
+                <div className='video item w3 l2'>
+                  <div dangerouslySetInnerHTML={{ __html: block.code }}></div>
+                </div>
+                <Spacer number={3} border="" />
+              </>
             );
           }
           if (block.blockType === 'video') {
-            // TODO: handle video embeds based on their url
+            return (
+              <>
+                <Spacer number={3} border="" />
+                <div className='video item w3 l2'>
+                  <iframe src={block.videoUrl.replace('https://youtu.be/', 'https://youtu.be/embed/')}/>
+                </div>
+                <Spacer number={3} border="" />
+              </>
+            );
           }
-        })} */}
+        })}
 
-
-        <div className="w2 item align-bottom offset white-bg">
-          <div>
-            <h2>Related artists:</h2>
+        {related.length > 0 ?
+          <div className="w2 item align-bottom offset white-bg">
+            <div>
+              <h2>Related artists:</h2>
+            </div>
           </div>
-        </div>
+        :  <Spacer number={2} border="" />}
         <Spacer number={4} border="" />
         {event.performances.map((performance, i) => {
           return(
