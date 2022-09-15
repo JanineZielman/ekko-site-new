@@ -57,6 +57,21 @@ export default function Oestre() {
         </div>
         <Spacer number={1} border={""}/>
         <Spacer number={6} border={""}/>
+        {entry.gallery[0] &&
+          <>
+            <div className='item w2 l1 align-bottom'>
+              <h1>Gallery:</h1>
+            </div>
+            <Spacer number={4} border=""/>
+            {entry.gallery.map((item, i) => {
+              return(
+                <div className='item w1 no-inner-padding'>
+                  <img src={item.url}/>
+                </div>
+              )
+            })}
+          </>
+        }
       </div>
     </Container>
   );

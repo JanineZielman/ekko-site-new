@@ -7,6 +7,7 @@ export interface Artist {
   date: string;
   time: string;
   timeEnd: string;
+  fullTitle: string;
   location: {
     title: string;
   }[];
@@ -53,6 +54,7 @@ const query = gql`
       id
       slug
       title
+      fullTitle
       date
       time @formatDateTime(format: "G:i")
       timeEnd @formatDateTime(format: "G:i")

@@ -301,6 +301,14 @@ input:focus, textarea:focus {
   transform: translateY(-50%);
 }
 
+.month{
+  position: absolute;
+  left: 74vw;
+  top: 40%;
+  transform: rotate(90deg) translateY(-50%);
+  padding: 5px;
+}
+
 .digitalarena{
   background: var(--black);
   color: var(--white);
@@ -411,6 +419,10 @@ input:focus, textarea:focus {
 
 .no-padding{
   margin: -1vw;
+}
+
+.no-inner-padding{
+  padding: 0!important;
 }
 
 .search-icon{

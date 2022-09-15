@@ -19,8 +19,10 @@ export default function Index() {
 
   filteredEvents = events.filter((item: any) => {
     var itemDate = new Date(item.date);
+    itemDate.setDate(itemDate.getDate() + 2);
     return itemDate.getTime() >= currentTime.getTime();
   });
+
 
   return (
     <Container>
@@ -30,6 +32,7 @@ export default function Index() {
             return (
               <>
                 <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className="item w3">
+                  <div className='outer month'>{Moment(item.date).format("MMMM")}</div>
                   <div className="img">
                     {item.featuredImage && (
                       <img src={item.featuredImage[0]?.url} alt={item.title} />
@@ -79,10 +82,13 @@ export default function Index() {
                     </Link>
                   )
                 })}
+                {item.performances.length % 2 == 0 &&
+                  <Spacer number={3} border=""/>
+                }
+                <Spacer number={6} border="" />
               </>
             );
           })}
-          <Spacer number={6} border="" />
         </div>
       </div>
     </Container>

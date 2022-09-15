@@ -37,6 +37,9 @@ export default function Index() {
       <div className="grid">
         <div className="item w3 l3">
 					<div className='padding-right'>
+            {artist.artist[0].artistMeta &&
+              <p>{artist.artist[0].artistMeta}</p>
+            }
 						<h1 className='big'>{artist.artist[0].title}</h1>
 						<div className='big times'>{Moment(artist.date).format('D/MM')}</div>
             <br/>
@@ -53,6 +56,9 @@ export default function Index() {
           <div className="flex space-between white-bg">
             <div className="info">
               <h4>{artist.artist[0].title}</h4>
+              {artist.fullTitle &&
+                <p>{artist.fullTitle}</p>
+              }
               <p>{artist.time}, {artist.location[0].title}</p>
             </div>
             {event.tickets[0]?.ticketLink &&
