@@ -27,6 +27,7 @@
 
 html, body{
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -86,6 +87,64 @@ a{
 
 .tag{
   text-transform: uppercase;
+}
+
+.floating-img{
+  position: absolute;
+  left: 3vw;
+  width: 13vw;
+  z-index: 2;
+  top: 100px;
+  &.oestre{
+    top: 250px;
+    left: 33vw;
+    width: 18vw;
+  }
+  &.about{
+    top: 350px;
+    left: 6vw;
+  }
+  &.festival-icon{
+    width: 25vw;
+    left: 0;
+    top: 200px;
+  }
+}
+
+.announcement{
+  background-color: var(--primary);
+  width: 100vw;
+  position: absolute;
+  left: -13.5vw;
+  color: var(--white);
+  font-size: var(--h1);
+  text-align: center;
+  z-index: 1;
+  top: 50%;
+  height: 65px;
+  transform: translateY(-50%);
+  padding: 1vw 0;
+	position: relative;
+	overflow: hidden;
+	& .marquee__inner {
+		position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: marquee 20s linear infinite;
+    & div{
+      display: inline-block;
+      margin: 0 24px;
+    }
+	}
+  & a, & p{
+    color: var(--white);
+    font-size: var(--h1);
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* Grid Sizes */
@@ -262,6 +321,30 @@ a{
   }
 }
 
+.view-all{
+  font-size: var(--h1);
+  font-weight: 100;
+  padding-left: 12vw;
+  padding-top: 3.5vw;
+  &:before{
+    content: " ";
+    position: absolute;
+    width: 10vw;
+    min-width: 80px;
+    height: 5vw;
+    min-height: 50px;
+    left: 14px;
+    top: 40%;
+    transform: translateY(-50%);
+    mask-image: url('/arrow2.svg');
+    mask-repeat: no-repeat;
+    background-color: var(--white);
+    mask-size: contain;
+    mask-position: center;
+  }
+}
+
+
 .columns{
   column-count: 2;
 }
@@ -425,7 +508,7 @@ body {
   position: fixed;
   width: 100vw;
   background-color: var(--white);
-  z-index: 2;
+  z-index: 3;
   top: 0;
 
   & .nav-items {
@@ -521,6 +604,7 @@ body {
 
   & .item {
     border: 1px solid black;
+    position: relative;
     &.no-border{
       border: none;
     }
@@ -553,6 +637,7 @@ body {
   right: 0;
   top: 0;
   position: absolute;
+  z-index: 1;
   & img{
     object-fit: cover;
     width: 100%;

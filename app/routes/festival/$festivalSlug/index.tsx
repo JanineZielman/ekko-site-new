@@ -4,6 +4,8 @@ import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
 import Moment from 'moment';
 
+import React, { useEffect } from 'react';
+
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 
@@ -14,8 +16,23 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Index() {
   const event = useLoaderData<Event>();
 
+  useEffect(() => {
+    jQuery(function($) {
+      $('#float').mouseover(function() {
+          var dWidth = $(document).width() || 900 - 500, // 100 = image width
+              dHeight = $(document).height() || 900, // 100 = image height
+              nextX = Math.floor(Math.random() * dWidth),
+              nextY = Math.floor(Math.random() * dHeight);
+          $(this).animate({ left: nextX + 'px', top: nextY + 'px' });
+      });
+    });
+  }, []);
+
   return (
     <Container>
+      <div className='outer'>
+        <img className="floating-img festival-icon" id="float" src="/EKKO-XIX-FBBanner.png" alt="" />
+      </div>
 			<div className="grid">
 				<Link to={`${event.performances[0].slug}`} className='item w4 l4'>
 					<div className='w6 w-smaller'>

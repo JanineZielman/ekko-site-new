@@ -1,5 +1,6 @@
 import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
+import React, { useEffect } from 'react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -17,8 +18,23 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Oestre() {
   const { entry } = useLoaderData<PageEntry>();
 
+  useEffect(() => {
+    jQuery(function($) {
+      $('#float').mouseover(function() {
+          var dWidth = $(document).width() || 900 - 500, // 100 = image width
+              dHeight = $(document).height() || 900, // 100 = image height
+              nextX = Math.floor(Math.random() * dWidth),
+              nextY = Math.floor(Math.random() * dHeight);
+          $(this).animate({ left: nextX + 'px', top: nextY + 'px' });
+      });
+    });
+  }, []);
+
   return (
     <Container>
+      <div className='outer'>
+        <img className="floating-img oestre" id="float" src="/oestre.png" alt="" />
+      </div>
       <div className="grid">
         <div className='item w3 l3'>
           <h1>{entry.title}</h1>
@@ -32,10 +48,10 @@ export default function Oestre() {
           </div>
         </div>
         <Spacer number={6} border={""}/>
-        <div className='item w3 l6'>
+        <div className='item w3 l3'>
           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
-        <Spacer number={18} border={""}/>
+        <Spacer number={9} border={""}/>
         <Spacer number={6} border={""}/>
       </div>
     </Container>

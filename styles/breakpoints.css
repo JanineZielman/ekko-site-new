@@ -10,6 +10,12 @@
 		& .navbar .nav-items{
 			flex-direction: column;
 		}
+		& .navbar{
+			background-color: var(--white);
+		}
+		& .search-icon {
+			background-color: var(--primary);
+		}
 	}
 }
 
@@ -138,6 +144,12 @@
 
 	.video-wrapper{
 		height: 45vh;
+	}
+
+	.view-all{
+		padding-left: 100px;
+		font-size: var(--h2);
+		padding-top: 0;
 	}
 
 	footer{

@@ -9,6 +9,21 @@ export interface RecentEvents {
     type: 'event' | 'festival';
     featuredImage: { url: string }[];
     date: string;
+    performances:{
+      title: string;
+      slug: string;
+      date: string;
+      time: string;
+      timeEnd: string;
+      location: {
+        title: string;
+        fullTitle: string;
+      }[];
+      artist: {
+        title: string;
+        featuredImage: { url: string }[];
+      }[];
+    }[];
   }[];
 }
 
@@ -25,18 +40,60 @@ const query = gql`
           url
         }
         date @formatDateTime(format: "d/n")
+        performances {
+          title
+          slug
+          date
+          time @formatDateTime(format: "G:i")
+          timeEnd @formatDateTime(format: "G:i")
+          location {
+            title
+            fullTitle
+          }
+          ... on performance_performance_Entry {
+            artist {
+              title
+              ... on artists_artist_Entry {
+                featuredImage: artistFeaturedPhoto{
+                  url
+                }
+              }
+            }
+          }
+        }
       }
       ... on events_festival_Entry {
         featuredImage: eventFeaturedPhoto {
           url
         }
         date @formatDateTime(format: "d/n")
+        performances {
+          title
+          slug
+          date
+          time @formatDateTime(format: "G:i")
+          timeEnd @formatDateTime(format: "G:i")
+          location {
+            title
+            fullTitle
+          }
+          ... on performance_performance_Entry {
+            artist {
+              title
+              ... on artists_artist_Entry {
+                featuredImage: artistFeaturedPhoto{
+                  url
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 `;
 
-export const fetchRecentEvents = async (limit = 8) => {
+export const fetchRecentEvents = async (limit = 2) => {
   const res = await fetchFromGraphQL(query, { limit });
   const { data } = await res.json();
 

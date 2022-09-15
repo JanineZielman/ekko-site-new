@@ -48,6 +48,7 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
       </head>
       <body className={slug[0]}>
         <Nav navigation={navigation} />

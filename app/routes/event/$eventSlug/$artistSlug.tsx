@@ -26,8 +26,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
-  console.log(event)
-
   return (
     <Container>
       <div className="grid">
