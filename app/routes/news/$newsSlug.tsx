@@ -18,8 +18,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const {  news } = useLoaderData<{ news: NewsEntry }>();
 
-	console.log(news)
-
   return (
     <Container>
       <div className="grid">

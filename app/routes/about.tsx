@@ -36,13 +36,13 @@ export default function About() {
       <div className='outer'>
         <img className="floating-img about" id="float" src="/EKKO-logo-LITEN.png" alt="" />
       </div>
-      <div className="grid">
+      <div className="grid" id="contact">
         <div className="item w6 l2 flex">
           <div className='w2'>
             <h1>{entry.title}</h1>
             <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
           </div>
-          <div className="w4">
+          <div className="w4 inner">
             <div className='header-img'>
               <img src={entry.photo?.[0].url} alt={entry.title} />
             </div>
@@ -53,7 +53,11 @@ export default function About() {
           {/* Need to do this to output rich text content */}
           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
-        <Spacer number={9} border=""/>
+        <Spacer number={6} border=""/>
+        <div className='item w2 align-top blue-bg offset'>
+          <a className='read-more' href={`#contact`}>Contact</a>
+        </div>
+        <Spacer number={1} border=""/>
         <Spacer number={6} border=""/>
       </div>
     </Container>

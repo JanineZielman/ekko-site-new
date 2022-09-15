@@ -30,7 +30,7 @@ export default function Index() {
     return item.date == artist.date
   });
 
-  console.log(artist)
+  console.log(event)
 
   return (
     <Container>
@@ -40,13 +40,9 @@ export default function Index() {
 						<h1 className='big'>{artist.artist[0].title}</h1>
 						<div className='big times'>{Moment(artist.date).format('D/MM')}</div>
             <br/>
-            {artist.artist[0].complexContent?.map(block => {
-              if (block.blockType === 'text') {
-                return (
-                  <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
-                );
-              }
-            })}
+            {artist.artist[0].complexContent?.[0].blockType === 'text' &&
+              <div dangerouslySetInnerHTML={{ __html: artist.artist[0].complexContent?.[0].text }}></div>
+            }
 					</div>
 				</div>
 
@@ -59,17 +55,19 @@ export default function Index() {
               <h4>{artist.artist[0].title}</h4>
               <p>{artist.time}, {artist.location[0].title}</p>
             </div>
-            <div>
-            </div>
+            {event.tickets[0]?.ticketLink &&
+              <div className='tickets white-bg'>
+                <a href={event.tickets[0]?.ticketLink} target="_blank">Tickets</a>
+              </div>
+            }
           </div>
         </div>
 
         
-        {artist.artist[0].complexContent?.map(block => {
+        {artist.artist[0].complexContent?.slice(1).map(block => {
           if (block.blockType === 'text') {
             return (
               <>
-                <Spacer number={6} border="" />
                 <div className='item w3 l3'>
                   <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
                 </div>
@@ -80,22 +78,22 @@ export default function Index() {
           if (block.blockType === 'embed') {
             return (
                <>
-                <Spacer number={3} border="" />
-                <div className='video item w3 l2'>
+                <Spacer number={1} border="" />
+                <div className='video item w5 l3'>
                   <div dangerouslySetInnerHTML={{ __html: block.code }}></div>
                 </div>
-                <Spacer number={3} border="" />
+                <Spacer number={2} border="" />
               </>
             );
           }
           if (block.blockType === 'video') {
             return (
               <>
-                <Spacer number={3} border="" />
-                <div className='video item w3 l2'>
-                  <iframe src={block.videoUrl.replace('https://youtu.be/', 'https://youtu.be/embed/')}/>
+                <Spacer number={1} border="" />
+                <div className='video item w5 l3'>
+                  <iframe src={block.videoUrl.replace('https://youtu.be/', 'https://www.youtube.com/embed/')}/>
                 </div>
-                <Spacer number={3} border="" />
+                <Spacer number={2} border="" />
               </>
             );
           }

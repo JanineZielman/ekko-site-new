@@ -75,7 +75,7 @@ export default function Index() {
               )}
               <div className="flex space-between">
                 <div className="info">
-                  <h4>{item.artist[0].title}</h4>
+                  <h3>{item.artist[0].title}</h3>
                 </div>
                 <div className="times big">{Moment(item.date).format('D/MM')}</div>
               </div>
@@ -108,7 +108,7 @@ export default function Index() {
               )}
               <div className="flex space-between">
                 <div className="info">
-                  <h4>{item.artist[0].title}</h4>
+                  <h3>{item.artist[0].title}</h3>
                 </div>
                 <div className="times big">{Moment(item.date).format('D/MM')}</div>
               </div>

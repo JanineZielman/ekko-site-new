@@ -46,7 +46,7 @@
 			}
 		}
 	}
-	.w4 {
+	.w4, .w4.inner {
 		grid-column-end: span 6;
 		& .header-img{
 			position: relative;
@@ -130,6 +130,12 @@
 			margin-left: 0;
 			width: 98%;
 		}
+	}
+
+	.ticket-overflow{
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	.w-smaller{

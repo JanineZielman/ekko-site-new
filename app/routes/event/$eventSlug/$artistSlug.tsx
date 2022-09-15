@@ -58,7 +58,11 @@ export default function Index() {
               <p>{artist.time}, {artist.location?.[0]?.title}</p>
             </div>
             <div>
-
+              {event.ticketLink &&
+                <div className='tickets blue-bg'>
+                  <a href={event.ticketLink} target="_blank">Tickets</a>
+                </div>
+              }
             </div>
           </div>
         </div>

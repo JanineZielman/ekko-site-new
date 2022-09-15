@@ -51,7 +51,11 @@ export default function Oestre() {
         <div className='item w3 l3'>
           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
-        <Spacer number={9} border={""}/>
+        <Spacer number={6} border={""}/>
+        <div className='item w2 align-top blue-bg offset'>
+          <a className='read-more' href={`#contact`}>Contact</a>
+        </div>
+        <Spacer number={1} border={""}/>
         <Spacer number={6} border={""}/>
       </div>
     </Container>

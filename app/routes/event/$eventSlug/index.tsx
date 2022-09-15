@@ -33,6 +33,11 @@ export default function Index() {
               <img src={event.featuredImage[0]?.url } alt={event.title}/>
             }
           </div>
+          {event.ticketLink &&
+            <div className='tickets blue-bg ticket-overflow'>
+              <a href={event.ticketLink} target="_blank">Tickets</a>
+            </div>
+          }
         </div>
 
         {event.performances?.length > 0 &&
@@ -56,6 +61,35 @@ export default function Index() {
                 <p>{performance.time}, {performance.location?.[0]?.title}</p>
               </Link>
             ))}
+          </>
+        }
+
+        {event.performances.length % 3 != 0 &&
+          <>
+          <Spacer number={2} border=""/>
+          {event.performances.length % 2 != 0 &&
+            <Spacer number={2} border=""/>
+          }
+          </>
+        }
+
+        <Spacer number={2} border="" />
+
+        <Spacer number={6} border="" />
+
+        {event.ticketDescription &&
+          <>
+            <div className='item w4'>
+              <h1 className='times'>Tickets</h1>
+              <p>{event.ticketDescription}</p>
+            </div>
+            <Spacer number={4} border="" />
+            <div className='w2'>
+              <div className='item w2 align-top blue-bg offset'>
+                <a className='read-more' href={event.ticketLink} target="_blank">Buy tickets</a>
+              </div>
+            </div>
+            <Spacer number={6} border="" />
           </>
         }
       </div>

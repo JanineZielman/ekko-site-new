@@ -60,7 +60,7 @@ export default function Index() {
 						<div dangerouslySetInnerHTML={{ __html: event.lineup }}></div>
 					</div>
 				</div>
-				<div className='item w4 l4'>
+				<div className='item w4 l4 inner'>
 					{event.performances.slice(1,5).map((item, i) => {
 						return(
 							<Link to={`${item.slug}`} className='w3 l2'>
