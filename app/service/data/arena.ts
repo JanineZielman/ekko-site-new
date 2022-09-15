@@ -4,25 +4,34 @@ export interface allVideos {
   entries: {
     id: number;
     title: string;
-		complexContent: {
-			[index: number]: { 
-				videoUrl: string;
-			}
-		}
+		projectTitle: string;
+		projectTag: {
+			slug: string;
+		}[];
+		pageContent: string;
+		videoUrl: string;
+		artist: {
+			title: string;
+			slug: string;
+		}[];
   }[];
 }
 
 const query = gql`
   query Arena{
-    entries {
+    entries(type: "arenaVideo") {
+			id
 			title
-			... on artists_artist_Entry {
-				id
-				title
-				complexContent {
-					... on complexContent_video_BlockType {
-						videoUrl
-					}
+			... on arena_arenaVideo_Entry {
+				projectTitle
+				projectTag{
+					slug
+				}
+				pageContent
+				videoUrl
+				artist {
+					title
+					slug
 				}
 			}
 		}

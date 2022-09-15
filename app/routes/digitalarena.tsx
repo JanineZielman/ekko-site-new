@@ -18,43 +18,29 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function DigitalArena() {
   const { entries } = useLoaderData<allVideos>();
 
-	const [videoList, setVideoList] = useState([]);
-	const [titleList, setTitleList] = useState([]);
+	const [videoList, setVideoList] = useState(entries);
 	const [randomNumber, setrandomNumber] = useState(0);
 
 	useEffect(() => {
     setrandomNumber(Math.floor(Math.random()*videoList.length))
   }, []);
 
+	console.log(entries)
+
   return (
     <Container>
-			{entries.map((item, i) => {
-				return(
-					<>
-						{item.complexContent &&
-							item.complexContent.map((video, j) => {
-								if (video.videoUrl) {
-									videoList.push(video.videoUrl);
-									titleList.push(item.title);
-								}
-							})
-						}
-					</>
-				)
-			})}
-      <div className="grid">
+      <div className="grid inverted">
 				<div className='item w3'>
-					{titleList[0] && 
-						<div className='align-bottom'>
-							<h2>{titleList[randomNumber]}</h2>
-						</div>
-					}
+					<div className='align-bottom'>
+						<p className='tag'>#{videoList[randomNumber].projectTag[0].slug}</p>
+						<h2>{videoList[randomNumber].artist[0].title} «{videoList[randomNumber].projectTitle}»</h2>
+					</div>
 				</div>
 				<Spacer number={3} border=""/>
 				<div className='item w5 l3'>
 					{videoList[0] && 
 						<div className='video-wrapper'>
-							<iframe src={videoList[randomNumber]} frameBorder="0"></iframe>
+							<iframe src={videoList[randomNumber].videoUrl} frameBorder="0"></iframe>
 						</div>
 					}
 				</div>
