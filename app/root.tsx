@@ -40,7 +40,6 @@ export const meta: MetaFunction = () => ({
 export default function App() {
   const navigation = useLoaderData<Navigation>();
    let location = useLocation();
-
    var slug = location.pathname.slice(1).split("/");
 
   return (
