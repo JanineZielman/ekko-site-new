@@ -32,7 +32,7 @@ export default function Index() {
             return (
               <>
                 <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className="item w3">
-                  <div className='outer month'>{Moment(item.date).format("MMMM")}</div>
+                  <p className='outer month'>{Moment(item.date).format("MMMM")}</p>
                   <div className="img">
                     {item.featuredImage && (
                       <img src={item.featuredImage[0]?.url} alt={item.title} />

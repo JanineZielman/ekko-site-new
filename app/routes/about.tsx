@@ -31,8 +31,6 @@ export default function About() {
     });
   }, []);
 
-  console.log(entry)
-
   return (
     <Container>
       <div className='outer'>
@@ -63,6 +61,9 @@ export default function About() {
         <Spacer number={6} border=""/>
         {entry.gallery[0] &&
           <>
+            <div className='outer outer-text w6'>
+              <p>Gallery</p>
+            </div>
             <div className='item w2 l1 align-bottom'>
               <h1>Gallery:</h1>
             </div>

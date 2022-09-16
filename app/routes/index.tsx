@@ -48,9 +48,10 @@ export default function Index() {
       <div className='outer'>
         <img className="floating-img" id="float" src="/EKKO-logo-LITEN.png" alt="" />
       </div>
-
       <div className="grid">
-
+        <div className='outer outer-text w6'>
+          <p>Upcoming events</p>
+        </div>
         {recent?.events?.map((item, i) => {
           return (
             <Link to={`/${item.type}/${item.slug}`} key={`news-${i}`} className="item w3">
@@ -60,12 +61,15 @@ export default function Index() {
               <div className="flex space-between">
                 <div className="info">
                   <h3>{item.title}</h3>
+                  <p>{item.dateEnd && `${item.date} - ${item.dateEnd}`}</p>
                 </div>
                 <div className="times big">{item.date}</div>
               </div>
             </Link>
           );
         })}
+
+
 
         {recent?.events[0]?.performances?.slice(0,3)?.map((item, i) => {
           return (
@@ -129,6 +133,10 @@ export default function Index() {
         </Link>
 
         <Spacer number={4} border=""/>
+
+        <div className='outer outer-text w6'>
+          <p>Latest news</p>
+        </div>
 
         {news?.events?.slice(0,4).map((item, i) => {
           return (

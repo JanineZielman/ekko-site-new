@@ -9,6 +9,7 @@ export interface RecentEvents {
     type: 'event' | 'festival';
     featuredImage: { url: string }[];
     date: string;
+    dateEnd: string;
     performances:{
       title: string;
       slug: string;
@@ -40,6 +41,7 @@ const query = gql`
           url
         }
         date @formatDateTime(format: "d/n")
+        dateEnd @formatDateTime(format: "d/n")
         performances {
           title
           slug
@@ -67,6 +69,7 @@ const query = gql`
           url
         }
         date @formatDateTime(format: "d/n")
+        dateEnd @formatDateTime(format: "d/n")
         performances {
           title
           slug

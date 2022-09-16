@@ -28,24 +28,25 @@ export default function Index() {
     });
   }, []);
 
+  const randomNumber = Math.floor(Math.random() * (event.performances.length - 4));
+
   return (
     <Container>
       <div className='outer'>
         <img className="floating-img festival-icon" id="float" src="/EKKO-XIX-FBBanner.png" alt="" />
       </div>
 			<div className="grid">
-				<Link to={`${event.performances[0].slug}`} className='item w4 l4'>
+				<div className='item w4 l4'>
 					<div className='w6 w-smaller'>
-						<div className='img-wrapper'><img src={event.performances[0].artist[0].featuredImage[0].url}/></div>
+						<div className='img-wrapper black-bg'><img src={event.featuredImage[0].url}/></div>
 						<div className="flex space-between white-bg">
 							<div className="info">
-								<h4>{event.performances[0].artist[0].title}</h4>
-								<p>{event.performances[0].time}, {event.performances[0].location[0].title}</p>
+								<h4>{event.title}</h4>
+								<p>{Moment(event.date).format('D MMM')} - {Moment(event.dateEnd).format('D MMM')}</p>
 							</div>
-							<div className="times big">{Moment(event.performances[0].date).format('D/MM')}</div>
 						</div>
 					</div>
-				</Link>
+				</div>
 				<div className='w2 l4 mobile-w6'>
 					<div className='item w2'>
             {event.relatedLinks.map((link, i) => {
@@ -60,8 +61,11 @@ export default function Index() {
 						<div dangerouslySetInnerHTML={{ __html: event.lineup }}></div>
 					</div>
 				</div>
+        <div className='outer outer-text w6'>
+          <p>Performances</p>
+        </div>
 				<div className='item w4 l4 inner'>
-					{event.performances.slice(1,5).map((item, i) => {
+					{event.performances.slice(randomNumber, (randomNumber + 4)).map((item, i) => {
 						return(
 							<Link to={`${item.slug}`} className='w3 l2'>
 								<div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url}/></div>
@@ -77,6 +81,9 @@ export default function Index() {
 					})}
 				</div>
 				<Spacer number={8} border=""/>
+        <div className='outer outer-text w6'>
+          <p>{event.relatedLinks[0].linkTitle}</p>
+        </div>
         <div className='item w2 white-bg align-bottom offset'>
           <div className='times big'>{event.relatedLinks[0].linkTitle}</div>
         </div>
@@ -93,6 +100,11 @@ export default function Index() {
           </div>
         </div>
         <Spacer number={4} border=""/>
+
+        <div className='outer outer-text w6'>
+          <p>{event.relatedLinks[1].linkTitle}</p>
+        </div>
+
         <div className='item w2 white-bg align-bottom offset' id={event.relatedLinks[1].linkUrl.replace('#', '')}>
           <div className='times big'>{event.relatedLinks[1].linkTitle}</div>
         </div>
@@ -109,7 +121,7 @@ export default function Index() {
                   <>
                     {item.date == performance.date &&
                       <Link to={`${performance.slug}`} className='program-day'>
-                        <p>{performance.location[0].title}</p>
+                        <p className='underline'>{performance.location[0].title}</p>
                         <h4>{performance.time} {performance.artist[0].title}</h4>
                       </Link>
                     }
@@ -123,6 +135,9 @@ export default function Index() {
           <Spacer number={3} border=""/>
         }
         <Spacer number={6} border=""/>
+        <div className='outer outer-text w6'>
+          <p>{event.relatedLinks[2].linkTitle}</p>
+        </div>
         <Spacer number={2} border=""/>
         <div className='item w4 offset' id={event.relatedLinks[2].linkUrl.replace('#', '')}>
           <div className='w2'>

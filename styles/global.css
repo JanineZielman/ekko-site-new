@@ -125,6 +125,22 @@ input:focus, textarea:focus {
   }
 }
 
+.underline{
+  border-bottom: 1px solid black;
+  margin-top: 12px;
+}
+
+.outer-text{
+  position: absolute;
+  /* left: 42vw; */
+  right: -75vw;
+  white-space: nowrap;
+  transform: rotate(90deg) translate(50%, -50%);
+  height: 0px;
+  width: 100px;
+  overflow: visible;
+}
+
 .announcement{
   background-color: var(--primary);
   width: 100vw;
@@ -168,12 +184,12 @@ input:focus, textarea:focus {
 .w2 {
   grid-column-end: span 2;
   position: relative;
-  & .big {
+  /* & .big {
     font-size: 48px;
     & a {
       font-size: 48px;
     }
-  }
+  } */
 }
 .w3 {
   grid-column-end: span 3;
@@ -219,6 +235,7 @@ input:focus, textarea:focus {
 }
 .w6 {
   grid-column-end: span 6;
+  position: relative;
 }
 
 .l1{
@@ -274,6 +291,13 @@ input:focus, textarea:focus {
   background-color: var(--white);
   padding: 1vw;
   /* margin-top: -1vw; */
+}
+
+.black-bg{
+  background-color: var(--black);
+  & img{
+    object-fit: contain!important;
+  }
 }
 
 .blue-bg{

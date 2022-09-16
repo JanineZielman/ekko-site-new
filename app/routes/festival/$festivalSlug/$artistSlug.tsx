@@ -30,8 +30,6 @@ export default function Index() {
     return item.date == artist.date
   });
 
-  console.log(event)
-
   return (
     <Container>
       <div className="grid">
