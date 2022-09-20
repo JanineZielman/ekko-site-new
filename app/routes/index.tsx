@@ -42,8 +42,6 @@ export default function Index() {
     });
   }, []);
 
-  console.log(recent)
-
 
   return (
     <Container>
@@ -58,7 +56,7 @@ export default function Index() {
           return (
             <Link to={`/${item.type}/${item.slug}`} key={`news-${i}`} className="item w3">
               {item.featuredImage && (
-                <div className='img-wrapper'><img src={item.featuredImage[0].url} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
               <div className="flex space-between">
                 <div className="info">
@@ -77,7 +75,7 @@ export default function Index() {
           return (
             <Link to={`/${recent.events[0].type}/${item.slug}`} key={`news2-${i}`} className="item w2">
               {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
               <div className="flex space-between">
                 <div className="info">
@@ -110,7 +108,7 @@ export default function Index() {
           return (
             <Link to={`/${recent.events[1].type}/${recent.events[1].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
               {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
               <div className="flex space-between">
                 <div className="info">
@@ -144,8 +142,8 @@ export default function Index() {
           return (
             <Link to={`/news/${item.slug}`} key={`news-${i}`} className="item w3 artist">
               {item.newsPhoto[0] ? 
-                <div className='img-wrapper'><img src={item.newsPhoto[0]?.url} alt={item.title} /></div>
-                : <div className='img-wrapper'><img src={item.pagePhoto[0]?.url} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.newsPhoto[0]?.url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                : <div className='img-wrapper'><img src={item.pagePhoto[0]?.url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               }
               <div className="flex space-between">
                  <h3>{item.title}</h3>
