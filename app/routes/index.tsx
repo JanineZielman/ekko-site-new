@@ -69,25 +69,6 @@ export default function Index() {
           );
         })}
 
-
-
-        {recent?.events[0]?.performances?.slice(0,3)?.map((item, i) => {
-          return (
-            <Link to={`/${recent.events[0].type}/${item.slug}`} key={`news2-${i}`} className="item w2">
-              {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
-              )}
-              <div className="flex space-between">
-                <div className="info">
-                  <h3>{item.artist[0].title}</h3>
-                </div>
-                <div className="times big">{Moment(item.date).format('D/MM')}</div>
-              </div>
-            </Link>
-          );
-        })}
-
-        
         <div className='w1 item'>
           <div className='announcement outer'>
             <div className="marquee__inner" aria-hidden="true">
@@ -102,6 +83,24 @@ export default function Index() {
         </div>
 
         <Spacer number={5} border=""/>
+
+
+        {recent?.events[0]?.performances?.slice(0,3)?.map((item, i) => {
+          return (
+            <Link to={`/${recent.events[0].type}/${recent.events[0].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
+              {item.artist[0].featuredImage && (
+                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+              )}
+              <div className="flex space-between">
+                <div className="info">
+                  <h3>{item.artist[0].title}</h3>
+                </div>
+                <div className="times big">{Moment(item.date).format('D/MM')}</div>
+              </div>
+            </Link>
+          );
+        })}
+
 
 
         {recent?.events[1]?.performances?.slice(0,3)?.map((item, i) => {
