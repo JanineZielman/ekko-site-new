@@ -75,7 +75,7 @@ export default function Index() {
                         }
                         {performance.time &&
                           <p>
-                            {performance.time}  {performance.timeEnd && <>- {performance.timeEnd} </>}
+                            {Moment(performance.time).format('HH:mm')}  {performance.timeEnd && <>- {Moment(performance.timeEnd).format('HH:mm')} </>}
                           </p>
                         }
                       </div>

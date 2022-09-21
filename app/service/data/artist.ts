@@ -56,8 +56,8 @@ const query = gql`
       title
       fullTitle
       date
-      time @formatDateTime(format: "G:i")
-      timeEnd @formatDateTime(format: "G:i")
+      time
+      timeEnd
       location {
         title
       }

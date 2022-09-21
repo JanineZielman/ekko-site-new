@@ -45,7 +45,7 @@ export default function Index() {
           <div className="flex space-between blue-bg">
             <div className="info">
               <h4>{artist.artist[0].title}</h4>
-              <p>{artist.time}, {artist.location?.[0]?.title}</p>
+              <p>{Moment(artist.time).format("HH:mm")}, {artist.location?.[0]?.title}</p>
             </div>
             <div>
             </div>

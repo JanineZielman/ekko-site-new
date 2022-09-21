@@ -44,13 +44,13 @@ const query = gql`
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n/Y")
+        date
       }
       ... on events_festival_Entry {
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n/Y")
+        date
       }
     }
   }

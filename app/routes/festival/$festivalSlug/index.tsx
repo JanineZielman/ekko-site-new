@@ -72,7 +72,7 @@ export default function Index() {
 								<div className="flex space-between white-bg">
 									<div className="info">
 										<h4>{item.artist[0].title}</h4>
-										<p>{item.time}, {item.location[0].title}</p>
+										<p>{Moment(item.time).format("HH:mm")}, {item.location[0].title}</p>
 									</div>
 									<div className="times big">{Moment(item.date).format('D/MM')}</div>
 								</div>
@@ -122,7 +122,7 @@ export default function Index() {
                     {item.date == performance.date &&
                       <Link to={`${performance.slug}`} className='program-day'>
                         <p className='underline'>{performance.location[0].title}</p>
-                        <h4>{performance.time} {performance.artist[0].title}</h4>
+                        <h4>{Moment(performance.time).format("HH:mm")}, {performance.artist[0].title}</h4>
                       </Link>
                     }
                   </>

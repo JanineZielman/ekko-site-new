@@ -53,13 +53,13 @@ const query = gql`
           title
           fullTitle
         }
-        date @formatDateTime(format: "n/d/yy")
+        date
         performances {
           title
           slug
           date
-          time @formatDateTime(format: "G:i")
-          timeEnd @formatDateTime(format: "G:i")
+          time
+          timeEnd
           location {
             title
             fullTitle
@@ -84,13 +84,13 @@ const query = gql`
           title
           fullTitle
         }
-        date @formatDateTime(format: "n/d/yy")
+        date
         performances {
           title
           slug
           date
-          time @formatDateTime(format: "G:i")
-          timeEnd @formatDateTime(format: "G:i")
+          time
+          timeEnd
           location {
             title
             fullTitle

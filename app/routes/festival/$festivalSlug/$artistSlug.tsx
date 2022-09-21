@@ -57,7 +57,7 @@ export default function Index() {
               {artist.fullTitle &&
                 <p>{artist.fullTitle}</p>
               }
-              <p>{artist.time}, {artist.location[0].title}</p>
+              <p>{Moment(artist.time).format("HH:mm")}, {artist.location[0].title}</p>
             </div>
             {event.tickets[0]?.ticketLink &&
               <div className='tickets white-bg'>
@@ -118,7 +118,7 @@ export default function Index() {
                 <Link to={`/festival/${event.slug}/${performance.slug}`} className='item w2 white-bg'>
                   <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>
                   <h4>{performance.artist[0].title}</h4>
-                  <p>{performance.time} {performance.location[0].title}</p>
+                  <p>{Moment(performance.time).format("HH:mm")}, {performance.location[0].title}</p>
                 </Link>
               }
             </>

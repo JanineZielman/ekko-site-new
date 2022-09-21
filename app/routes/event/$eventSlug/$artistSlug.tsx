@@ -55,7 +55,7 @@ export default function Index() {
           <div className="flex space-between blue-bg">
             <div className="info">
               <h4>{artist.artist[0].title}</h4>
-              <p>{artist.time}, {artist.location?.[0]?.title}</p>
+              <p>{Moment(artist.time).format("HH:mm")}, {artist.location?.[0]?.title}</p>
             </div>
             <div>
               {event.ticketLink &&
@@ -85,7 +85,7 @@ export default function Index() {
                   }
                   </div>
                 <h4>{performance.artist?.[0].title}</h4>
-                <p>{performance.time}, {performance.location?.[0]?.title}</p>
+                <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
               </Link>
             ))}
           </>

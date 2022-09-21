@@ -40,14 +40,14 @@ const query = gql`
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n")
-        dateEnd @formatDateTime(format: "d/n")
+        date
+        dateEnd
         performances {
           title
           slug
           date
-          time @formatDateTime(format: "G:i")
-          timeEnd @formatDateTime(format: "G:i")
+          time
+          timeEnd
           location {
             title
             fullTitle
@@ -68,14 +68,14 @@ const query = gql`
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n")
-        dateEnd @formatDateTime(format: "d/n")
+        date
+        dateEnd
         performances {
           title
           slug
           date
-          time @formatDateTime(format: "G:i")
-          timeEnd @formatDateTime(format: "G:i")
+          time
+          timeEnd
           location {
             title
             fullTitle

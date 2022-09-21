@@ -46,8 +46,8 @@ const eventFragment = gql`
       url
     }
     isMultiDay
-    date @formatDateTime(format: "d/n")
-    dateEnd @formatDateTime(format: "d/n")
+    date
+    dateEnd
     location {
       title
       fullTitle
@@ -60,9 +60,9 @@ const eventFragment = gql`
       ... on performance_performance_Entry {
         slug
         fullTitle
-        date @formatDateTime(format: "d/n")
-        time @formatDateTime(format: "G:i")
-        timeEnd @formatDateTime(format: "G:i")
+        date
+        time
+        timeEnd
         location {
           title
           fullTitle
