@@ -20,7 +20,7 @@ export default function Index() {
         <div className="item w3 l3">
 					<div className='padding-right'>
 						<h1 className='big'>{event.title}</h1>
-						<div className='big times'>{event.date}</div>
+						<div className='big times'>{Moment(event.date).format('D/M')}</div>
             <p>{event.location[0]?.fullTitle}</p>
 					</div>
 				</div>
@@ -56,7 +56,7 @@ export default function Index() {
                   }
                   </div>
                 <h4>{performance.artist?.[0].title}</h4>
-                <p>{performance.time}, {performance.location?.[0]?.title}</p>
+                <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
               </Link>
             ))}
           </>
@@ -71,7 +71,7 @@ export default function Index() {
           </>
         }
 
-        <Spacer number={2} border="" />
+        {/* <Spacer number={2} border="" /> */}
 
         <Spacer number={6} border="" />
 
