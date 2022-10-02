@@ -42,17 +42,22 @@ h1 {
   font-size: var(--h1);
   margin: 14px 0;
   font-weight: 500;
+  line-height: 1;
 }
 h2 {
   font-size: var(--h2);
   margin: 0;
   font-weight: 500;
+  line-height: 1;
 }
 h3 {
   font-size: var(--h3);
   margin: 0;
   font-weight: 500;
   line-height: 1.2;
+  & p{
+    margin: 0;
+  }
 }
 h4 {
   font-size: var(--h4);
@@ -63,6 +68,10 @@ h4 {
 p {
   font-size: var(--body);
   line-height: 1.4;
+  /* margin: 0; */
+}
+
+.text p, .info p, .announcement p, .columns p, .ticket p{
   margin: 0;
 }
 
@@ -88,7 +97,7 @@ input:focus, textarea:focus {
   line-height: 1;
   & a {
     font-size: 4vw;
-    line-height: 1.4;
+    line-height: 1;
     margin: 10px;
   }
 }
@@ -120,8 +129,8 @@ input:focus, textarea:focus {
   }
   &.festival-icon{
     width: 25vw;
-    left: 0;
-    top: 200px;
+    left: 10vw;
+    top: 300px;
   }
 }
 
@@ -295,7 +304,7 @@ input:focus, textarea:focus {
 .white-bg{
   background-color: var(--white);
   padding: 1vw;
-  /* margin-top: -1vw; */
+  /* height: 100%; */
 }
 
 .black-bg{
@@ -308,9 +317,9 @@ input:focus, textarea:focus {
 .blue-bg{
   background-color: var(--primary);
   padding: 1vw;
-  color: var(--white);
+  color: var(--black);
   & a {
-    color: var(--white);
+    color: var(--black);
   }
 }
 
@@ -394,17 +403,29 @@ input:focus, textarea:focus {
   font-size: var(--h2);
   font-weight: 100;
   padding-left: 65px;
+  color: var(--black)!important;
   &:before{
     content: " ";
     position: absolute;
     width: 50px;
     height: 40px;
     left: 14px;
-    mask-image: url('/arrow.svg');
+    mask-image: url('/arrow2.svg');
     mask-repeat: no-repeat;
-    background-color: var(--white);
+    background-color: var(--black);
     mask-size: contain;
     mask-position: center;
+  }
+}
+
+.small .view-all{
+  font-size: var(--h2);
+   padding-left: 7vw;
+  &:before{
+    width: 7vw;
+    min-width: 60px;
+    height: 4vw;
+    min-height: 40px;
   }
 }
 
@@ -461,7 +482,7 @@ input:focus, textarea:focus {
   position: relative;
   width: 100px;
   margin-right: 40px;
-  height: 50px;
+  height: 40px;
   -webkit-mask-image: url('/search.svg');
   mask-image: url('/search.svg');
   -webkit-mask-size: contain;
@@ -713,17 +734,16 @@ body {
     &.no-border{
       border: none;
     }
-    overflow: visible;
+    overflow: hidden;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    /* padding: 1vw; */
     object-fit: cover;
 
-    &.w6{
+    /* &.w6{
       padding-top: 0;
       padding-right: 0;
-    }
+    } */
 
     & img {
       width: 100%;
@@ -757,11 +777,13 @@ body {
 .ticket{
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 14px!important;
 }
 
 .program-day{
   border-bottom: 1px solid black;
+  
 }
 
 .prev-button{
@@ -820,4 +842,43 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.g-el{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+}
+
+.item.g-el{
+  width: auto;
+  max-width: 100%;
+  max-height: 300px;
+  border: none;
+  
+}
+
+.padding{
+  padding: 1vw;
+}
+
+.more-padding{
+  padding: 2vw;
+}
+
+.overflow-visible{
+  overflow: visible!important;
+}
+
+.height{
+  height: 100%;
+}
+
+.price-label{
+  background-color: var(--white);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--black);
 }

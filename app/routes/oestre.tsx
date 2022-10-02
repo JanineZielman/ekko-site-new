@@ -36,24 +36,24 @@ export default function Oestre() {
         <img className="floating-img oestre" id="float" src="/oestre.png" alt="" />
       </div>
       <div className="grid">
-        <div className='item w3 l3'>
+        <div className='item w3 l3 padding'>
           <h1>{entry.title}</h1>
-          {/* Need to do this to output rich text content */}
           <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
           <Spacer number={1} border={"no-border"}/>
         </div>
-        <div className="item w3">
+        <div className="item w3 overflow-visible">
           <div className='header-img'>
             <img src={entry.photo?.[0].url} alt={entry.title} />
           </div>
         </div>
         <Spacer number={6} border={""}/>
-        <div className='item w3 l3'>
+        <Spacer number={6} border={""}/>
+        <div className='item w3 l3 padding'>
           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
         <Spacer number={6} border={""}/>
-        <div className='item w2 align-top blue-bg offset'>
-          <a className='read-more' href={`#contact`}>Contact</a>
+        <div className='item w2 button small'>
+          <a className='view-all' href={`#contact`}>Contact</a>
         </div>
         <Spacer number={1} border={""}/>
         <Spacer number={6} border={""}/>
@@ -62,10 +62,6 @@ export default function Oestre() {
             <div className='outer outer-text w6'>
               <p>Gallery</p>
             </div>
-            <div className='item w2 l1 align-bottom'>
-              <h1>Gallery:</h1>
-            </div>
-            <Spacer number={4} border=""/>
             {entry.gallery.map((item, i) => {
               return(
                 <div className='item w1 no-inner-padding'>

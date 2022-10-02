@@ -35,7 +35,7 @@ export default function Index() {
             
             return (
               <>
-                <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className={`item w3`}>
+                <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className={`item w3 overflow-visible`}>
                   <p className={`outer month`} id={`m-${Moment(item.date).format("MM")}`}>{Moment(item.date).format("MMMM")}</p>
                   <div className="img">
                     {item.featuredImage && (

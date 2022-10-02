@@ -56,7 +56,7 @@ export default function DigitalArena() {
     <Container>
 			<div className='prev-button outer' onClick={gotoPrev}></div>
       <div className="grid">
-				<div className='item w3'>
+				<div className='item w3 padding'>
 					<div className='align-bottom flex'>
 						<div className='main'>
 							<p className='tag'>#{videoList[randomNumber].projectTag[0].slug}</p>

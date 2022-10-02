@@ -69,7 +69,7 @@ export default function Index() {
           );
         })}
 
-        <div className='w1 item'>
+        <div className='w1 item overflow-visible'>
           <div className='announcement outer'>
             <div className="marquee__inner" aria-hidden="true">
               <div dangerouslySetInnerHTML={{ __html: home.entry?.content }} />
