@@ -35,7 +35,7 @@ body {
 }
 
 .times {
-  font-family: 'Times New Roman', Times, serif;
+  /* font-family: 'Times New Roman', Times, serif; */
 }
 
 h1 {
@@ -133,12 +133,16 @@ input:focus, textarea:focus {
 .outer-text{
   position: absolute;
   /* left: 42vw; */
-  right: -75vw;
+  left: -10vw;
+  top: 10px;
   white-space: nowrap;
   transform: rotate(90deg) translate(50%, -50%);
   height: 0px;
   width: 100px;
   overflow: visible;
+  &.margin-top{
+    top: calc(80px + 14vw);
+  }
 }
 
 .announcement{
@@ -167,8 +171,9 @@ input:focus, textarea:focus {
     }
 	}
   & a, & p{
-    color: var(--white);
+    color: var(--black);
     font-size: var(--h1);
+    text-decoration: none;
   }
 }
 
@@ -327,7 +332,7 @@ input:focus, textarea:focus {
 
 .month{
   position: absolute;
-  left: 74vw;
+  right: 43vw;
   top: 40%;
   transform: rotate(90deg) translateY(-50%);
   padding: 5px;
@@ -406,8 +411,11 @@ input:focus, textarea:focus {
 .view-all{
   font-size: var(--h1);
   font-weight: 100;
-  padding-left: 12vw;
-  padding-top: 3.5vw;
+  background: var(--primary);
+  border-radius: 100px;
+  padding: 2vw;
+  padding-left: 10vw;
+  position: relative;
   &:before{
     content: " ";
     position: absolute;
@@ -415,12 +423,12 @@ input:focus, textarea:focus {
     min-width: 80px;
     height: 5vw;
     min-height: 50px;
-    left: 14px;
-    top: 40%;
+    left: 0px;
+    top: 50%;
     transform: translateY(-50%);
     mask-image: url('/arrow2.svg');
     mask-repeat: no-repeat;
-    background-color: var(--white);
+    background-color: var(--black);
     mask-size: contain;
     mask-position: center;
   }
@@ -709,7 +717,7 @@ body {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    padding: 1vw;
+    /* padding: 1vw; */
     object-fit: cover;
 
     &.w6{
@@ -729,7 +737,7 @@ body {
 
     & .info {
       word-wrap: break-word;
-      width: 60%;
+      width: 50%;
     }
   }
 }
@@ -802,4 +810,14 @@ footer{
     width: 95%;
     margin-left: 2.5%;
   }
+}
+
+.info-block{
+  padding: 14px 1vw;
+}
+
+.grid .item.button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -49,21 +49,21 @@ export default function Index() {
         <img className="floating-img" id="float" src="/EKKO-logo-LITEN.png" alt="" />
       </div>
       <div className="grid">
-        <div className='outer outer-text w6'>
+        <div className='outer outer-text w6 margin-top'>
           <p>Upcoming events</p>
         </div>
         {recent?.events?.map((item, i) => {
           return (
             <Link to={`/${item.type}/${item.slug}`} key={`news-${i}`} className="item w3">
               {item.featuredImage && (
-                <div className='img-wrapper'><img src={item.featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
-              <div className="flex space-between">
+              <div className="flex space-between info-block">
                 <div className="info">
                   <h3>{item.title}</h3>
-                  <p>{item.dateEnd && `${Moment(item.date).format('D/MM')} - ${Moment(item.dateEnd).format('D/MM')}`}</p>
+                  <p>{item.dateEnd && `${Moment(item.date).format('D.MM.')} - ${Moment(item.dateEnd).format('D/MM')}`}</p>
                 </div>
-                <div className="times big">{Moment(item.date).format('D/MM')}</div>
+                <div className="times big">{Moment(item.date).format('D.MM.')}</div>
               </div>
             </Link>
           );
@@ -85,17 +85,21 @@ export default function Index() {
         <Spacer number={5} border=""/>
 
 
+         <div className='outer outer-text w6'>
+          <p>Performances</p>
+        </div>
+
         {recent?.events[0]?.performances?.slice(0,3)?.map((item, i) => {
           return (
             <Link to={`/${recent.events[0].type}/${recent.events[0].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
               {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
-              <div className="flex space-between">
+              <div className="flex space-between info-block">
                 <div className="info">
                   <h3>{item.artist[0].title}</h3>
                 </div>
-                <div className="times big">{Moment(item.date).format('D/MM')}</div>
+                <div className="times big">{Moment(item.date).format('D.MM.')}</div>
               </div>
             </Link>
           );
@@ -107,13 +111,13 @@ export default function Index() {
           return (
             <Link to={`/${recent.events[1].type}/${recent.events[1].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
               {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
-              <div className="flex space-between">
+              <div className="flex space-between info-block">
                 <div className="info">
                   <h3>{item.artist[0].title}</h3>
                 </div>
-                <div className="times big">{Moment(item.date).format('D/MM')}</div>
+                <div className="times big">{Moment(item.date).format('D.MM.')}</div>
               </div>
             </Link>
           );
@@ -127,35 +131,39 @@ export default function Index() {
            <Spacer number={2} border=""/>
         }
 
-        <Link className='item w2 blue-bg' to="/kalender">
+        <Link className='item w2 button' to="/kalender">
             <div className='view-all'>View all</div>
         </Link>
 
         <Spacer number={4} border=""/>
 
-        <div className='outer outer-text w6'>
-          <p>Latest news</p>
-        </div>
+        {news?.events.length > 0 &&
+          <>
+            <div className='outer outer-text w6'>
+              <p>Latest news</p>
+            </div>
 
-        {news?.events?.slice(0,4).map((item, i) => {
-          return (
-            <Link to={`/news/${item.slug}`} key={`news-${i}`} className="item w3 artist">
-              {item.newsPhoto[0] ? 
-                <div className='img-wrapper'><img src={item.newsPhoto[0]?.url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
-                : <div className='img-wrapper'><img src={item.pagePhoto[0]?.url.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
-              }
-              <div className="flex space-between">
-                 <h3>{item.title}</h3>
-              </div>
+            {news?.events?.slice(0,4).map((item, i) => {
+              return (
+                <Link to={`/news/${item.slug}`} key={`news-${i}`} className="item w3 artist">
+                  {item.newsPhoto[0] ? 
+                    <div className='img-wrapper'><img src={item.newsPhoto[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                    : <div className='img-wrapper'><img src={item.pagePhoto[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                  }
+                  <div className="flex space-between info-block">
+                    <h3>{item.title}</h3>
+                  </div>
+                </Link>
+              );
+            })}
+
+            <Spacer number={4} border=""/>
+
+            <Link className='item w2 button' to="/news">
+                <div className='view-all'>View all</div>
             </Link>
-          );
-        })}
-
-        <Spacer number={4} border=""/>
-
-        <Link className='item w2 blue-bg' to="/news">
-            <div className='view-all'>View all</div>
-        </Link>
+          </>
+        }
 
         <Spacer number={6} border=""/>
       </div>

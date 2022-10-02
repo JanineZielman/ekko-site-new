@@ -3,6 +3,7 @@ import { Link, useLoaderData } from '@remix-run/react';
 import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
 import Moment from 'moment';
+import React, { useEffect } from 'react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -23,31 +24,34 @@ export default function Index() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
-
   return (
     <Container>
       <div className="kalender">
         <div className="grid">
           {filteredEvents.reverse().map((item, i) => {
+            useEffect(() => {
+              document.getElementById(`m-${Moment(item.date).format("MM")}`).style.display = 'block';
+            }, []);
+            
             return (
               <>
-                <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className="item w3">
-                  <p className='outer month'>{Moment(item.date).format("MMMM")}</p>
+                <Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className={`item w3`}>
+                  <p className={`outer month`} id={`m-${Moment(item.date).format("MM")}`}>{Moment(item.date).format("MMMM")}</p>
                   <div className="img">
                     {item.featuredImage && (
                       <img src={item.featuredImage[0]?.url} alt={item.title} />
                     )}
                   </div>
                   <div className="text">
-                    <p>{Moment(item.date).format("D/M/yy")}</p>
-                    <br/>
-                    <h3>{item.title}</h3>
-                     <p>
-                        {item.location?.[1] && item.location[1].fullTitle}
-                    </p>
-                    {item.openingTime &&
-                      <p>{Moment(item.openingTime).format("HH:mm")}  {item.closingTime && <>- {Moment(item.closingTime).format("HH:mm")} </>}</p>
-                    }
+                    <div className='text-wrapper'>
+                      <p>{Moment(item.date).format("D.M.yy")}</p>
+                      <br/>
+                      <h3>{item.title}</h3>
+                      <p>
+                          {item.location?.[1] && <>{item.location[1].fullTitle},</>}
+                          {item.openingTime && <> {Moment(item.openingTime).format("HH:mm")}  {item.closingTime && <>- {Moment(item.closingTime).format("HH:mm")} </>}</>}
+                      </p>
+                    </div>
                   </div>
                 </Link>
                 {item.performances.map((performance, j) => {
@@ -60,24 +64,21 @@ export default function Index() {
                         }
                       </div>
                       <div className="text">
-                        <p>{Moment(performance.date).format("D/M/yy")} </p>
-                        <br/>
-                        <h3>
-                          {performance.artist[0].title ? 
-                            performance.artist[0].title
-                          : performance.title
-                          }
-                        </h3>
-                        {performance.location?.[1] &&
+                        <div className='text-wrapper'>
+                          <p>{Moment(performance.date).format("D.M.yy")} </p>
+                          <br/>
+                          <h3>
+                            {performance.artist[0].title ? 
+                              performance.artist[0].title
+                            : performance.title
+                            }
+                          </h3>
+                          
                           <p>
-                              {performance.location[1].fullTitle}
+                            {performance.location?.[1] && <>{performance.location[1].fullTitle},</>}
+                            {performance.time && <> {Moment(performance.time).format('HH:mm')}  {performance.timeEnd && <>- {Moment(performance.timeEnd).format('HH:mm')} </>}</>}
                           </p>
-                        }
-                        {performance.time &&
-                          <p>
-                            {Moment(performance.time).format('HH:mm')}  {performance.timeEnd && <>- {Moment(performance.timeEnd).format('HH:mm')} </>}
-                          </p>
-                        }
+                        </div>
                       </div>
                     </Link>
                   )
