@@ -33,39 +33,40 @@ export default function Index() {
   return (
     <Container>
       <div className="grid">
-        <div className="item w3 l3">
-					<div className='padding-right'>
+        <div className="item w3 padding">
+					<div className='text'>
             {artist.artist[0].artistMeta &&
               <p>{artist.artist[0].artistMeta}</p>
             }
 						<h1 className='big'>{artist.artist[0].title}</h1>
-						<div className='big times'>{Moment(artist.date).format('D/MM')}</div>
-            <br/>
-            {artist.artist[0].complexContent?.[0].blockType === 'text' &&
-              <div dangerouslySetInnerHTML={{ __html: artist.artist[0].complexContent?.[0].text }}></div>
-            }
+						<div className='big times'>{Moment(artist.date).format('D.MM.')}</div>
+            <br/><br/>
+            <p>{artist.location[0].title}, {Moment(artist.time).format("HH:mm")}</p>
 					</div>
 				</div>
 
-        <div className="item w3 l3 overflow">
+        <div className="item w3 l2">
           <div className='img-wrapper'>
             <img src={artist.artist[0].featuredImage[0]?.url}/>
           </div>
-          <div className="flex space-between white-bg">
-            <div className="info">
-              <h4>{artist.artist[0].title}</h4>
-              {artist.fullTitle &&
-                <p>{artist.fullTitle}</p>
-              }
-              <p>{Moment(artist.time).format("HH:mm")}, {artist.location[0].title}</p>
-            </div>
-            {event.tickets[0]?.ticketLink &&
-              <div className='tickets white-bg'>
-                <a href={event.tickets[0]?.ticketLink} target="_blank">Tickets</a>
-              </div>
-            }
-          </div>
         </div>
+
+        <div className="item w2 button small">
+          {event.tickets[0]?.ticketLink &&
+            <div className='view-all'>
+              <a href={event.tickets[0]?.ticketLink} target="_blank">Tickets</a>
+            </div>
+          }
+        </div>
+        <Spacer number={1} border="" />
+
+       
+        {artist.artist[0].complexContent?.[0].blockType === 'text' &&
+          <>
+            <div className='w5 item more-padding' dangerouslySetInnerHTML={{ __html: artist.artist[0].complexContent?.[0].text }}></div>
+            <Spacer number={1} border="" />
+          </>
+        }
 
         
         {artist.artist[0].complexContent?.slice(1).map(block => {

@@ -437,6 +437,7 @@ input:focus, textarea:focus {
   padding: 2vw;
   padding-left: 10vw;
   position: relative;
+  border: 2px solid var(--black);
   &:before{
     content: " ";
     position: absolute;

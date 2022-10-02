@@ -17,26 +17,30 @@ export default function Index() {
   return (
     <Container>
       <div className="grid">
-        <div className="item w3 l3">
-					<div className='padding-right'>
+        <div className="item w3 padding">
+					<div className=''>
 						<h1 className='big'>{event.title}</h1>
-						<div className='big times'>{Moment(event.date).format('D/M')}</div>
+						<div className='big times'>{Moment(event.date).format('D.MM.')}</div>
             <p>{event.location[0]?.fullTitle}</p>
 					</div>
 				</div>
 
-        <div className="item w3 l3 overflow">
+        <div className="item w3 l2">
           <div className='img-wrapper'>
             {event.featuredImage[0] && 
               <img src={event.featuredImage[0]?.url } alt={event.title}/>
             }
           </div>
+        </div>
+
+         <div className="item w2 button small">
           {event.ticketLink &&
-            <div className='tickets blue-bg ticket-overflow'>
+            <div className='view-all'>
               <a href={event.ticketLink} target="_blank">Tickets</a>
             </div>
           }
         </div>
+        <Spacer number={1} border="" />
 
         {event.performances?.length > 0 &&
           <>
@@ -71,19 +75,17 @@ export default function Index() {
           </>
         }
 
-        {/* <Spacer number={2} border="" /> */}
-
         <Spacer number={6} border="" />
 
         {event.ticketDescription &&
           <>
-            <div className='item w4'>
+            <div className='item w4 padding'>
               <h1 className='times'>Tickets</h1>
               <p>{event.ticketDescription}</p>
             </div>
             <Spacer number={4} border="" />
             <div className='w2'>
-              <div className='item w2 align-top blue-bg offset'>
+              <div className='item w2 align-top blue-bg offset padding'>
                 <a className='read-more' href={event.ticketLink} target="_blank">Buy tickets</a>
               </div>
             </div>

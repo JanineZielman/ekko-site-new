@@ -29,22 +29,16 @@ export default function Index() {
   return (
     <Container>
       <div className="grid">
-        <div className="item w3 l3">
+        <div className="item w3 padding">
 					<div className='padding-right'>
 						<h1 className='big'>{artist.artist[0].title}</h1>
-						<div className='big times'>{Moment(artist.date).format('D/MM')}</div>
-            <br/>
-            {artist.artist[0].complexContent?.map(block => {
-              if (block.blockType === 'text') {
-                return (
-                  <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
-                );
-              }
-            })}
+						<div className='big times'>{Moment(artist.date).format('D.MM.')}</div>
+            <br/><br/>
+            <p>{Moment(artist.time).format("HH:mm")}, {artist.location?.[0]?.title}</p>
 					</div>
 				</div>
 
-        <div className="item w3 l3 overflow">
+        <div className="item w3 l2">
           <div className='img-wrapper'>
             {artist.artist[0].featuredImage[0] ? 
               <img src={artist.artist[0].featuredImage[0]?.url}/>
@@ -52,20 +46,30 @@ export default function Index() {
               <img src={event.featuredImage[0]?.url} alt={event.title} />
             }
           </div>
-          <div className="flex space-between blue-bg">
-            <div className="info">
-              <h4>{artist.artist[0].title}</h4>
-              <p>{Moment(artist.time).format("HH:mm")}, {artist.location?.[0]?.title}</p>
-            </div>
-            <div>
-              {event.ticketLink &&
-                <div className='tickets blue-bg'>
-                  <a href={event.ticketLink} target="_blank">Tickets</a>
-                </div>
-              }
-            </div>
-          </div>
         </div>
+
+        <div className="item w2 button small">
+          {event.ticketLink &&
+            <div className='view-all'>
+              <a href={event.ticketLink} target="_blank">Tickets</a>
+            </div>
+          }
+        </div>
+        <Spacer number={1} border="" />
+
+
+        {artist.artist[0].complexContent?.map(block => {
+          if (block.blockType === 'text') {
+            return (
+              <>
+                <div className='item w5 padding'>
+                  <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                </div>
+                <Spacer number={1} border="" />
+              </>
+            );
+          }
+        })}
         
         {event.performances?.length > 0 &&
           <>
