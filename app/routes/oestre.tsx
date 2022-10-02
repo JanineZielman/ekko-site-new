@@ -36,7 +36,7 @@ export default function Oestre() {
         <img className="floating-img oestre" id="float" src="/oestre.png" alt="" />
       </div>
       <div className="grid">
-        <div className='item w3 l3 padding'>
+        <div className='item w3 l3 padding-right'>
           <h1>{entry.title}</h1>
           <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
           <Spacer number={1} border={"no-border"}/>

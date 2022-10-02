@@ -467,6 +467,7 @@ input:focus, textarea:focus {
 }
 
 .padding-right{
+  padding: 1vw;
   padding-right: 8vw;
   word-break: break-word;
 }
