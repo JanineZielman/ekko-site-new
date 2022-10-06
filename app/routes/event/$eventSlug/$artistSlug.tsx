@@ -20,6 +20,18 @@ export const loader: LoaderFunction = async ({ params }) => {
     performance => performance.slug !== artist.slug
   );
 
+  event.performances.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    if (first < 6){
+      first = first + 24;
+    }
+    if (second < 6){
+      second = second + 24;
+    }
+    return first - second
+  });
+
   return { event, artist };
 };
 
@@ -31,7 +43,7 @@ export default function Index() {
       <div className="grid">
         <div className="item w3 padding">
 					<div>
-						<h1 className='big'>{artist.artist[0].title}</h1>
+						<h1 className='big'>{artist.artist[0]?.title}</h1>
 						{/* <div className='big times'>{Moment(artist.date).format('D.MM.')}</div> */}
             <div className='event-info'>
               {artist.date &&
@@ -41,7 +53,7 @@ export default function Index() {
                 <p><span>Time: </span> <div>{Moment(artist.time).format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</div></p>
               }
               {artist.location[0]?.title &&
-                <p><span>Place: </span> <div>{artist.location[0].title}{artist.location[1].title && `, ${artist.location[1].title}`}</div></p>
+                <p><span>Place: </span> <div>{artist.location[0]?.title}{artist.location[1]?.title && `, ${artist.location[1]?.title}`}</div></p>
               }
               {event.openingTime &&
                 <p><span>Opening hours: </span> <div>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</div></p>
@@ -98,12 +110,12 @@ export default function Index() {
               <Link to={`/event/${event.slug}/${performance.slug}`} className='item w2 white-bg'>
                 <div className='img-wrapper artist'>
                   {performance.artist?.[0].featuredImage[0] ?
-                    <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0].title} />
+                    <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0]?.title} />
                   :
                     <img src={event.featuredImage[0].url} alt={event.title} />
                   }
                   </div>
-                <h4>{performance.artist?.[0].title}</h4>
+                <h4>{performance.artist?.[0]?.title}</h4>
                 <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
               </Link>
             ))}

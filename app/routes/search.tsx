@@ -29,8 +29,6 @@ export default function Oestre() {
   const { artists, events } = useLoaderData<SearchResults>();
   const [searchParams] = useSearchParams();
 
-  console.log(artists)
-
   return (
     <Container>
       <div className="grid">

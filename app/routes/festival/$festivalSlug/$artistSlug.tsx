@@ -34,6 +34,18 @@ export default function Index() {
     return item.date == artist.date
   });
 
+  event.performances.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    if (first < 6){
+      first = first + 24;
+    }
+    if (second < 6){
+      second = second + 24;
+    }
+    return first - second
+  });
+
   return (
     <Container>
       <div className="grid">
@@ -42,7 +54,7 @@ export default function Index() {
             {artist.artist[0].artistMeta &&
               <p>{artist.artist[0].artistMeta}</p>
             }
-						<h1 className='big'>{artist.artist[0].title}</h1>
+						<h1 className='big'>{artist.artist[0]?.title}</h1>
 						{/* <div className='big times'>{Moment(artist.date).format('D.MM.')}</div> */}
             <div className='event-info'>
               {artist.date &&
@@ -52,7 +64,7 @@ export default function Index() {
                 <p><span>Time: </span> <div>{Moment(artist.time).format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</div></p>
               }
               {artist.location[0]?.title &&
-                <p><span>Place: </span> <div>{artist.location[0].title}{artist.location[1].title && `, ${artist.location[1].title}`}</div></p>
+                <p><span>Place: </span> <div>{artist.location[0]?.title}{artist.location[1]?.title && `, ${artist.location[1]?.title}`}</div></p>
               }
               {current[0]?.startTime &&
                 <p><span>Opening hours: </span> <div>{Moment(current[0].startTime).format("HH:mm")} {current[0].endTime && `- ${Moment(current[0].endTime).format("HH:mm")}`}</div></p>
@@ -123,6 +135,30 @@ export default function Index() {
           }
         })}
 
+        <Spacer number={2} border="" />
+         <div className='w2 item align-bottom offset white-bg'>
+          <div>
+            <h2>Full Program</h2>
+          </div>
+        </div>
+        <Spacer number={2} border="" />
+        <Spacer number={2} border="" />
+        <div className='w4 item'>
+          {event.program.map((item, i) =>{
+            return(
+              <div className='program-info'>
+                <Link to={`/festival/${event.slug}#Program`}>
+                  <div className='program-date'><h3>{Moment(item.date).format('ddd DD. MMM')}</h3></div>
+                  <div className='event-info'>
+                    <p><span>Time: </span> <div>{Moment(item.startTime).format('HH:mm')} {item.endTime && `- ${Moment(item.endTime).format('HH:mm')}`}</div></p>
+                    <p><span>Ticket info: </span> <div>{item.ticketInformation}</div></p>
+                  </div>
+                </Link>
+              </div>
+            )
+          })}
+        </div>
+
         {related.length > 0 ?
           <div className="w2 item align-bottom offset white-bg">
             <div>
@@ -149,6 +185,15 @@ export default function Index() {
             </>
           )
         })}
+        {related.length % 3 != 0 && related.length > 0 &&
+          <>
+          <Spacer number={2} border=""/>
+          {related.length % 2 != 0 &&
+            <Spacer number={2} border=""/>
+          }
+          </>
+        }
+        <Spacer number={6} border=""/>
  
       </div>
     </Container>

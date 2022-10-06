@@ -14,6 +14,18 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Index() {
   const event = useLoaderData<Event>();
 
+  event.performances.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    if (first < 6){
+      first = first + 24;
+    }
+    if (second < 6){
+      second = second + 24;
+    }
+    return first - second
+  });
+
   return (
     <Container>
       <div className="grid">
@@ -26,7 +38,7 @@ export default function Index() {
                 <p><span>Date: </span> <div>{Moment(event.date).format('ddd DD. MMMM')} </div></p>
               }
               {event.location[0]?.title &&
-                <p><span>Place: </span> <div>{event.location[0].title}{event.location[1].title && `, ${event.location[1].title}`}</div></p>
+                <p><span>Place: </span> <div>{event.location[0]?.title}{event.location[1]?.title && `, ${event.location[1]?.title}`}</div></p>
               }
               {event.openingTime &&
                 <p><span>Opening hours: </span> <div>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</div></p>
@@ -81,12 +93,12 @@ export default function Index() {
           </>
         }
 
-        {event.performances.length % 3 != 0 &&
+        {event.performances.length % 3 != 0 && event.performances.length > 0 &&
           <>
           <Spacer number={2} border=""/>
-          {event.performances.length % 2 != 0 &&
+          {/* {event.performances.length % 2 != 0 && 
             <Spacer number={2} border=""/>
-          }
+          } */}
           </>
         }
 

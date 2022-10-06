@@ -52,8 +52,6 @@ export default function DigitalArena() {
 		element?.classList.toggle("active");
 	}
 
-	console.log(entries)
-
   return (
     <Container>
 			<div className='prev-button outer' onClick={gotoPrev}></div>
