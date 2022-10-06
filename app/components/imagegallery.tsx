@@ -1,10 +1,6 @@
 export default function ImageGallery({ entry } : {entry: any}){
 	function imageClick(e:any){
-		console.log(e.target.id)
-
-		var img = document.getElementById(e.target.id);
 		var modal = document.getElementById(e.target.id.replace('-modal', '') + '-modal')
-		var modalImg = document.getElementById(e.target.id + '-modalimg')
 
 		if (modal){
 			modal.classList.toggle('visible');

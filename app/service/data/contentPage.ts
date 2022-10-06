@@ -4,6 +4,7 @@ export interface PageEntry {
   entry: {
     id: number;
     title: string;
+    pageTitle: string;
     url: string;
     contact: string;
     photo: { url: string }[];
@@ -31,6 +32,7 @@ const query = gql`
     entry(slug: $slug) {
       id
       title
+      pageTitle
       contact
       gallery {
         url

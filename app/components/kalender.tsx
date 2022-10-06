@@ -26,7 +26,7 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 						</div>
 						<div className="text">
 							<div className='text-wrapper'>
-								<p>{Moment(item.date).format("D.M.yy")}</p>
+								<p>{Moment(item.date).format("D.M.yy")} {item.dateEnd && `- ${Moment(item.dateEnd).format("D.M.yy")}`}</p>
 								<br/>
 								<h3>{item.title}</h3>
 								<p>

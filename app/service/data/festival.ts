@@ -37,7 +37,12 @@ export interface Event {
     program: {
       date: string;
     }[];
-  }[]
+  }[];
+  sections: {
+    sectionTitle: string;
+    sectionBody: string;
+    sectionId: string;
+  }[];
   performances: {
     title: string;
     date: string;
@@ -83,6 +88,13 @@ const eventFragment = gql`
 		relatedLinks {
       linkTitle
       linkUrl
+    }
+    sections{
+      ... on sections_entry_BlockType{
+        sectionTitle
+        sectionBody
+        sectionId
+      }
     }
     intro
     description

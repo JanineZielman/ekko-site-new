@@ -28,7 +28,7 @@ export default function Index() {
     });
   }, []);
 
-  const randomNumber = Math.floor(Math.random() * (event.performances.length - 4));
+  console.log(event)
 
   return (
     <Container>
@@ -56,6 +56,8 @@ export default function Index() {
         <div className='item w2'>
           <img src="/EKKO-webelements4.png" className='g-el'/>
         </div>
+
+         <Spacer number={6} border=""/>
         
         <div className='outer outer-text w6'>
           <p>Performances</p>
@@ -137,11 +139,11 @@ export default function Index() {
           )
         })}
 
+        <Spacer number={6} border=""/>
+
         {event.program.length % 2 != 0 &&
           <Spacer number={3} border=""/>
         }
-
-        <Spacer number={6} border=""/>
 
         <Spacer number={2} border=""/>
           <div className='item w2 white-bg align-bottom offset '>
@@ -158,6 +160,18 @@ export default function Index() {
             )
           })}
         </div>
+
+        <Spacer number={6} border=""/>
+
+        {event.sections.map((section, i) => {
+          return(
+            <div className='item w3 padding' id={section.sectionId}>
+              <h1>{section.sectionTitle}</h1>
+              <div dangerouslySetInnerHTML={{ __html: section.sectionBody }} />
+            </div>
+          )
+        })}
+        
         <Spacer number={6} border=""/>
 			</div>
 		</Container>

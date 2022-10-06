@@ -34,6 +34,7 @@ export default function Archive() {
   return (
     <Container>
       <div className="grid" id="contact">
+				<div className='item w6 padding'><h1>{page.entry.pageTitle}</h1></div>
 				{events.events.map((event, j) => {
 					return(
 						<div className={`item ${event.type == 'festival' ? `w6 blue-bg festival-item` : `w2 white-bg normal-item`}`}>

@@ -95,6 +95,7 @@ const query = gql`
           fullTitle
         }
         date
+        dateEnd
         performances {
           title
           slug

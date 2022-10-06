@@ -58,8 +58,6 @@ export default function Oestre() {
     
   }, []);
 
-  console.log(filteredEvents)
-
   return (
     <Container>
       <div className='outer'>
