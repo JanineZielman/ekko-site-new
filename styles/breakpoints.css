@@ -26,6 +26,9 @@
 		grid-column-end: span 1;
 		display: none;
 	}
+	.gallery.w1{
+		display: block;
+	}
 	.spacer-6.w1{
 		display: block;
 	}
@@ -105,7 +108,7 @@
 		margin: 0;
 	}
 
-	.big{
+	.big, .big a{
 		font-size: 40px;
 	}
 
@@ -113,9 +116,6 @@
 		border: 0;
 		margin: 0;
 		padding: 2vw;
-		& .item{
-			padding: 2vw;
-		}
 	}
 	.img-wrapper{
 		margin-top: 14px;
@@ -152,10 +152,9 @@
 		height: 45vh;
 	}
 
-	.view-all{
-		padding-left: 100px;
+	.view-all, .small .view-all, .archive-button{
 		font-size: var(--h2);
-		padding-top: 0;
+		padding: 10px 20px 10px 75px;
 	}
 
 	footer{

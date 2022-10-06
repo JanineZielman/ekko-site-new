@@ -52,7 +52,7 @@ export default function Archive() {
        	{page.entry.pastEvents.map((item, i) => {
 					const artists = item.artists.split(/\r?\n/)
 					return(
-						<div className={`item  ${item.isFestival ? `w6 blue-bg festival-item` : `w2 white-bg normal-item`}`}>
+						<div className={`item ${item.isFestival ? `w6 blue-bg festival-item` : `w2 white-bg normal-item`}`}>
 							<p className='date'>{Moment(item.date).format("D.M.yy")} {item.dateEnd && `- ${Moment(item.dateEnd).format("D.M.yy")}`}</p>
 							<h2>{item.eventTitle}</h2>
 							<div className='artists'>

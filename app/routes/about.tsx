@@ -47,11 +47,13 @@ export default function About() {
           <div className="w4 inner">
             <div className='header-img'>
               <img src={entry.photo?.[0].url} alt={entry.title} />
-              <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
             </div>
           </div>
         </div>
-        <Spacer number={6} border="" />
+        <Spacer number={4} border="" />
+        <div className='item w2 l1'>
+          <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
+        </div>
         <div className='item w3 l3 padding'>
           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>

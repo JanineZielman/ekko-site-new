@@ -33,7 +33,7 @@ export default function ImageGallery({ entry } : {entry: any}){
 					{entry.gallery.map((item:any) => {
 						return(
 							<>
-								<div className='item w1 no-inner-padding'>
+								<div className='item w1 gallery'>
 									<img className="image-zoom" src={item.url} id={item.url} onClick={imageClick}/>
 								</div>
 								<div id={`${item.url}-modal`} className="modal" onClick={imageClick}>

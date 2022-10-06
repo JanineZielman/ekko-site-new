@@ -1046,8 +1046,31 @@ footer{
   background-color: var(--white);
   padding: 10px 30px;
   border: 2px solid var(--black);
-  left: -75px;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   z-index: 2;
+  font-size: var(--h1);
+  font-weight: 100;
+  background: var(--primary);
+  border-radius: 100px;
+  padding: 2vw;
+  padding-left: 9vw;
+  border: 2px solid var(--black);
+  &:before{
+    content: " ";
+    position: absolute;
+    width: 10vw;
+    min-width: 80px;
+    height: 5vw;
+    min-height: 50px;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    mask-image: url('/arrow2.svg');
+    mask-repeat: no-repeat;
+    background-color: var(--black);
+    mask-size: contain;
+    mask-position: center;
+  }
 }
