@@ -92,7 +92,7 @@ export default function Index() {
         <Spacer number={1} border="" />
 
        
-        {artist.artist[0].complexContent?.[0].blockType === 'text' &&
+        {artist.artist[0].complexContent?.[0]?.blockType === 'text' &&
           <>
             <div className='w5 item more-padding' dangerouslySetInnerHTML={{ __html: artist.artist[0].complexContent?.[0].text }}></div>
             <Spacer number={1} border="" />
