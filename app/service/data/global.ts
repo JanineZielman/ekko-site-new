@@ -6,6 +6,10 @@ export interface Navigation {
       socialFacebook: string;
       socialInstagram: string;
       socialTwitter: string;
+      relatedLinks: {
+        linkTitle: string;
+        linkUrl: string;
+      }[];
     }
   },
   nodes: {
@@ -29,6 +33,10 @@ const query = gql`
         socialFacebook
         socialInstagram
         socialTwitter
+        relatedLinks {
+          linkTitle
+          linkUrl
+        }
       }
     }
   }

@@ -34,6 +34,10 @@ body {
   font-family: ReplicaLL;
 }
 
+main{
+  min-height: calc(100vh - 220px);
+}
+
 .times {
   /* font-family: 'Times New Roman', Times, serif; */
 }
@@ -706,6 +710,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    min-width: 100%!important;
+    width: 100%!important;
+    height: 100%!important;
+    min-height: 100%!important;
+    object-fit: cover!important;
   }
 }
 
@@ -1072,5 +1081,86 @@ footer{
     background-color: var(--black);
     mask-size: contain;
     mask-position: center;
+  }
+}
+
+.festival-stamp{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: var(--primary);
+  width: 100%;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 5;
+  & span{
+    margin-left: 1vw;
+  }
+}
+
+.event-stamp{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: var(--white);
+  width: 100%;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 5;
+  border-bottom: 2px solid var(--black);
+  /* border-top: 2px solid var(--black); */
+  & span{
+    margin-left: 1vw;
+  }
+}
+
+.kalender{
+  & .festival-stamp{
+    top: 0;
+    bottom: 0;
+    width: 60%;
+  }
+
+  & .event-stamp{
+    top: 0;
+    bottom: 0;
+    width: 60%;
+  }
+}
+
+
+.loader {
+  position: absolute;
+  top: calc(50% - 2em);
+  left: calc(50% - 2em);
+  width: 2em;
+  height: 2em;
+  border: 0.2em solid rgba(0, 0, 0, 0.2);
+  border-left: 0.2em solid #000000;
+  border-radius: 50%;
+  animation: load8 1.1s infinite linear;
+  transition: opacity 0.3s;
+  &.false {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
+  }
+}
+
+.loader--hide {
+  opacity: 0;
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

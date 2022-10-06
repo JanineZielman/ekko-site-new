@@ -9,6 +9,7 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 import styles from '~/styles/global.css';
 import breakpoints from '~/styles/breakpoints.css';
@@ -39,8 +40,14 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   const navigation = useLoaderData<Navigation>();
-   let location = useLocation();
-   var slug = location.pathname.slice(1).split("/");
+  let location = useLocation();
+  var slug = location.pathname.slice(1).split("/");
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false)
+  },[]);
 
   return (
     <html lang="en">
@@ -60,7 +67,11 @@ export default function App() {
         <Nav navigation={navigation} />
         <Menu navigation={navigation}/>
         <main>
-          <Outlet />
+          {loading ?
+            <div className="loader"></div>
+          :
+            <Outlet />
+          }
         </main>
         <Footer navigation={navigation} />
         <ScrollRestoration />

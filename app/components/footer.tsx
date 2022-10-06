@@ -6,7 +6,11 @@ export default function Footer({ navigation }: { navigation: Navigation }) {
     <footer>
       <Container>
         <div>
-          Where to find us
+          {navigation.globalSets[1].relatedLinks.map((link, i) => {
+            return(
+              <a href={`${link.linkUrl}`} target="_blank">{link.linkTitle}</a>
+            )
+          })}
         </div>
         <div className='social-links'>
           {navigation.globalSets[1].socialFacebook &&

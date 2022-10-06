@@ -28,8 +28,6 @@ export default function Index() {
     });
   }, []);
 
-  console.log(event)
-
   return (
     <Container>
       <div className='outer'>
