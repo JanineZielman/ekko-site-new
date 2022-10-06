@@ -17,6 +17,7 @@ export interface SearchResults {
     type: 'event' | 'festival';
     featuredImage: { url: string }[];
     date: string;
+    dateEnd: string;
   }[];
 }
 
@@ -51,6 +52,7 @@ const query = gql`
           url
         }
         date
+        dateEnd
       }
     }
   }

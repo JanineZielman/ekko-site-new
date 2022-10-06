@@ -52,6 +52,8 @@ export default function DigitalArena() {
 		element?.classList.toggle("active");
 	}
 
+	console.log(entries)
+
   return (
     <Container>
 			<div className='prev-button outer' onClick={gotoPrev}></div>
@@ -78,7 +80,7 @@ export default function DigitalArena() {
 				<Spacer number={3} border=""/>
 				<div className='w2'>
 					<div className='item w2 align-top blue-bg offset'>
-						<a className='read-more' href={`/artists/${videoList[randomNumber].performances[0].slug}`}>Read more</a>
+						<a className='read-more' href={`/artists/${videoList[randomNumber].artist[0].slug}`}>Read more</a>
 					</div>
 				</div>
 				<Spacer number={1} border=""/>

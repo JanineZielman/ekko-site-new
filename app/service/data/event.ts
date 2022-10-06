@@ -10,6 +10,8 @@ export interface Event {
   isMultiDay: boolean;
   date: string;
   dateEnd: string;
+  openingTime: string;
+  closingTime: string;
   location: {
     title: string;
     fullTitle: string;
@@ -48,6 +50,8 @@ const eventFragment = gql`
     isMultiDay
     date
     dateEnd
+    openingTime
+    closingTime
     location {
       title
       fullTitle

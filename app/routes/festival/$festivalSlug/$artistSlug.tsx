@@ -34,8 +34,6 @@ export default function Index() {
     return item.date == artist.date
   });
 
-  console.log(artist)
-
   return (
     <Container>
       <div className="grid">
@@ -45,8 +43,7 @@ export default function Index() {
               <p>{artist.artist[0].artistMeta}</p>
             }
 						<h1 className='big'>{artist.artist[0].title}</h1>
-						<div className='big times'>{Moment(artist.date).format('D.MM.')}</div>
-            <br/><br/>
+						{/* <div className='big times'>{Moment(artist.date).format('D.MM.')}</div> */}
             <div className='event-info'>
               {artist.date &&
                 <p><span>Date: </span> <div>{Moment(artist.date).format('ddd DD. MMMM')} </div></p>
@@ -55,7 +52,7 @@ export default function Index() {
                 <p><span>Time: </span> <div>{Moment(artist.time).format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</div></p>
               }
               {artist.location[0]?.title &&
-                <p><span>Place: </span> <div>{artist.location[0].title} {artist.location[1].title && `, ${artist.location[1].title}`}</div></p>
+                <p><span>Place: </span> <div>{artist.location[0].title}{artist.location[1].title && `, ${artist.location[1].title}`}</div></p>
               }
               {current[0]?.startTime &&
                 <p><span>Opening hours: </span> <div>{Moment(current[0].startTime).format("HH:mm")} {current[0].endTime && `- ${Moment(current[0].endTime).format("HH:mm")}`}</div></p>

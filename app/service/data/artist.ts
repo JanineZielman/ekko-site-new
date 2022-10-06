@@ -12,6 +12,13 @@ export interface Artist {
     title: string;
     fullTitle: string;
   }[];
+  artistMeta: string;
+  featuredImage: { url: string }[];
+  complexContent: (
+    | { blockType: 'text'; text: string }
+    | { blockType: 'video'; videoUrl: string }
+    | { blockType: 'embed'; code: string }
+  )[];
   artist: {
     url: string;
     title: string;
@@ -63,6 +70,7 @@ const query = gql`
         title
         fullTitle
       }
+      ...artistData
       artist{
         ...artistData
       }

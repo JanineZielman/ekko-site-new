@@ -20,8 +20,21 @@ export default function Index() {
         <div className="item w3 padding">
 					<div className=''>
 						<h1 className='big'>{event.title}</h1>
-						<div className='big times'>{Moment(event.date).format('D.MM.')}</div>
-            <p>{event.location[0]?.fullTitle}</p>
+						{/* <div className='big times'>{Moment(event.date).format('D.MM.')}</div> */}
+            <div className='event-info'>
+              {event.date &&
+                <p><span>Date: </span> <div>{Moment(event.date).format('ddd DD. MMMM')} </div></p>
+              }
+              {event.location[0]?.title &&
+                <p><span>Place: </span> <div>{event.location[0].title}{event.location[1].title && `, ${event.location[1].title}`}</div></p>
+              }
+              {event.openingTime &&
+                <p><span>Opening hours: </span> <div>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</div></p>
+              }
+              {event.ticketDescription &&
+                <p><span>Ticket info: </span> <div>{event.ticketDescription}</div></p>
+              }
+            </div>
 					</div>
 				</div>
 
@@ -51,16 +64,18 @@ export default function Index() {
             </div>
             <Spacer number={4} border="" />
             {event.performances.map((performance, i) => (
-              <Link to={`/event/${event.slug}/${performance.slug}`} className='item w2 white-bg'>
+              <Link to={`/event/${event.slug}/${performance.slug}`} className='item w2'>
                 <div className='img-wrapper artist'>
                   {performance.artist?.[0].featuredImage[0] ?
                     <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0].title} />
                   :
                     <img src={event.featuredImage[0].url} alt={event.title} />
                   }
-                  </div>
-                <h4>{performance.artist?.[0].title}</h4>
-                <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
+                </div>
+                <div className='white-bg'>
+                  <h4>{performance.artist?.[0].title}</h4>
+                  <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
+                </div>
               </Link>
             ))}
           </>
@@ -77,21 +92,6 @@ export default function Index() {
 
         <Spacer number={6} border="" />
 
-        {event.ticketDescription &&
-          <>
-            <div className='item w4 padding'>
-              <h1 className='times'>Tickets</h1>
-              <p>{event.ticketDescription}</p>
-            </div>
-            <Spacer number={4} border="" />
-            <div className='w2'>
-              <div className='item w2 align-top blue-bg offset padding'>
-                <a className='read-more' href={event.ticketLink} target="_blank">Buy tickets</a>
-              </div>
-            </div>
-            <Spacer number={6} border="" />
-          </>
-        }
       </div>
     </Container>
   );

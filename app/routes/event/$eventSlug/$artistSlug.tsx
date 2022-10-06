@@ -30,11 +30,26 @@ export default function Index() {
     <Container>
       <div className="grid">
         <div className="item w3 padding">
-					<div className='padding-right'>
+					<div>
 						<h1 className='big'>{artist.artist[0].title}</h1>
-						<div className='big times'>{Moment(artist.date).format('D.MM.')}</div>
-            <br/><br/>
-            <p>{Moment(artist.time).format("HH:mm")}, {artist.location?.[0]?.title}</p>
+						{/* <div className='big times'>{Moment(artist.date).format('D.MM.')}</div> */}
+            <div className='event-info'>
+              {artist.date &&
+                <p><span>Date: </span> <div>{Moment(artist.date).format('ddd DD. MMMM')} </div></p>
+              }
+              {artist.time &&
+                <p><span>Time: </span> <div>{Moment(artist.time).format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</div></p>
+              }
+              {artist.location[0]?.title &&
+                <p><span>Place: </span> <div>{artist.location[0].title}{artist.location[1].title && `, ${artist.location[1].title}`}</div></p>
+              }
+              {event.openingTime &&
+                <p><span>Opening hours: </span> <div>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</div></p>
+              }
+              {event.ticketDescription &&
+                <p><span>Ticket info: </span> <div>{event.ticketDescription}</div></p>
+              }
+            </div>
 					</div>
 				</div>
 

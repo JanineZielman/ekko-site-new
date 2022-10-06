@@ -84,6 +84,12 @@ a{
   color: var(--black);
 }
 
+a{
+  &:hover{
+    text-decoration: line-through;
+  }
+}
+
 p a{
   text-decoration: underline;
 }
@@ -304,6 +310,10 @@ input:focus, textarea:focus {
 .white-bg{
   background-color: var(--white);
   padding: 1vw;
+  & p, & h3{
+    margin: 0;
+    padding: 0;
+  }
   /* height: 100%; */
 }
 
@@ -459,6 +469,11 @@ input:focus, textarea:focus {
 
 .columns{
   column-count: 2;
+  & a{
+    &:hover{
+      text-decoration: line-through;
+    }
+  }
 }
 
 .offset{
@@ -893,9 +908,11 @@ footer{
 .event-info{
   border-top: 2px solid var(--black);
   padding-top: 14px;
+  margin-top: 24px;
   & p{
     display: flex;
     line-height: 1.5;
+    margin: 5px 0;
     & span{
       width: 40%;
     }

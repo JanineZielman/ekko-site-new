@@ -9,6 +9,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import type { SearchResults } from '~/service/data/search';
 import { fetchSearchResults } from '~/service/data/search';
+import Moment from 'moment';
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -27,6 +28,8 @@ export const meta: MetaFunction = ({ location }) => {
 export default function Oestre() {
   const { artists, events } = useLoaderData<SearchResults>();
   const [searchParams] = useSearchParams();
+
+  console.log(artists)
 
   return (
     <Container>
@@ -54,9 +57,9 @@ export default function Oestre() {
                     <img src={event.featuredImage[0]?.url} alt={event.title} />
                   )}
                 </div>
-                <div className="text">
-                  <p>{event.date}</p>
+                <div className="white-bg">
                   <h3>{event.title}</h3>
+                  <p>{Moment(event.date).format('D.MM.YYYY ')} {event.dateEnd && `- ${Moment(event.dateEnd).format('D.MM.YYYY ')}`}</p>
                 </div>
               </Link>
             ))}
@@ -66,19 +69,19 @@ export default function Oestre() {
           <>
             {artists.map(artist => (
               // TODO: extract component for rendering an artist block
-              <div key={`artist-${artist.slug}`} className="item w2">
+              <Link to={`/artists/${artist.slug}`} key={`artist-${artist.slug}`} className="item w2">
                 {artist.featuredImage?.length > 0 && (
                   <div className="img-wrapper">
                     <img src={artist.featuredImage[0].url} alt={artist.title} />
                   </div>
                 )}
                 <div className="flex space-between">
-                  <div className="info">
+                  <div className="white-bg">
                     <h3>{artist.title}</h3>
                     <p>{artist.meta}</p>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </>
         )}
