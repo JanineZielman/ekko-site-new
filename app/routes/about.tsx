@@ -1,5 +1,6 @@
 import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
+import { Link} from '@remix-run/react';
 
 import React, { useEffect } from 'react';
 
@@ -46,12 +47,12 @@ export default function About() {
           <div className="w4 inner">
             <div className='header-img'>
               <img src={entry.photo?.[0].url} alt={entry.title} />
+              <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
             </div>
           </div>
         </div>
         <Spacer number={6} border="" />
         <div className='item w3 l3 padding'>
-          {/* Need to do this to output rich text content */}
           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
         <Spacer number={6} border=""/>

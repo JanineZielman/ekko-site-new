@@ -150,8 +150,8 @@ export default function Index() {
                 <Link to={`/festival/${event.slug}#Program`}>
                   <div className='program-date'><h3>{Moment(item.date).format('ddd DD. MMM')}</h3></div>
                   <div className='event-info'>
-                    <p><span>Time: </span> <div>{Moment(item.startTime).format('HH:mm')} {item.endTime && `- ${Moment(item.endTime).format('HH:mm')}`}</div></p>
-                    <p><span>Ticket info: </span> <div>{item.ticketInformation}</div></p>
+                    {item.startTime && <p><span>Time: </span> <div>{Moment(item.startTime).format('HH:mm')} {item.endTime && `- ${Moment(item.endTime).format('HH:mm')}`}</div></p>}
+                    {item.ticketInformation && <p><span>Ticket info: </span> <div>{item.ticketInformation}</div></p>}
                   </div>
                 </Link>
               </div>

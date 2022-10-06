@@ -11,6 +11,7 @@ export interface Event {
   type: 'event' | 'festival';
   featuredImage: { url: string }[];
   date: string;
+  dateEnd: string;
   openingTime: string;
   closingTime: string;
   location: {
@@ -29,6 +30,7 @@ export interface Event {
     }[];
     artist: {
       title: string;
+      slug: string;
       featuredImage: { url: string }[];
     }[];
   }[];
@@ -60,6 +62,7 @@ const query = gql`
           fullTitle
         }
         date
+        dateEnd
         performances {
           title
           slug
@@ -73,6 +76,7 @@ const query = gql`
           ... on performance_performance_Entry {
             artist {
               title
+              slug
               ... on artists_artist_Entry {
                 featuredImage: artistFeaturedPhoto{
                   url
@@ -117,7 +121,7 @@ const query = gql`
   }
 `;
 
-export const fetchAllEvents = async (limit = 25) => {
+export const fetchAllEvents = async (limit = 1000) => {
   const res = await fetchFromGraphQL(query, { limit });
   const { data } = await res.json();
 

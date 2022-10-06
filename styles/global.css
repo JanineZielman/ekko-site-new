@@ -1022,3 +1022,32 @@ footer{
   text-decoration: none;
   cursor: pointer;
 }
+
+.festival-item, .normal-item{
+  & p{
+    margin: 0;
+  }
+  & .date{
+    margin-bottom: 24px;
+  }
+  & h2{
+    margin: 5px 0;
+  }
+  & .artist{
+    display: inline-block;
+    border: 1px solid var(--black);
+    margin: 10px 10px 0 0;
+    padding: 10px;
+  }
+}
+
+.archive-button{
+  position: absolute;
+  background-color: var(--white);
+  padding: 10px 30px;
+  border: 2px solid var(--black);
+  left: -75px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}

@@ -13,6 +13,13 @@ export interface PageEntry {
       linkTitle: string;
       linkUrl: string;
     }[];
+    pastEvents:{
+      eventTitle: string;
+      date: string;
+      dateEnd: string;
+      artists: string;
+      isFestival: string;
+    }[];
   };
 }
 
@@ -35,6 +42,17 @@ const query = gql`
       relatedLinks {
         linkTitle
         linkUrl
+      }
+      ... on archive_archive_Entry {
+			  pastEvents{
+          ... on pastEvents_event_BlockType{
+            eventTitle
+            date
+            dateEnd
+            artists
+            isFestival
+          }
+        }
       }
     }
   }
