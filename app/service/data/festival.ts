@@ -13,7 +13,6 @@ export interface Event {
 	lineup: string;
   location: {
     title: string;
-    fullTitle: string;
   }[];
 	relatedLinks: {
 		linkTitle: string;
@@ -32,6 +31,9 @@ export interface Event {
   program: {
     date: string;
     endDate: string;
+    startTime: string;
+    endTime: string;
+    ticketInformation: string;
     program: {
       date: string;
     }[];
@@ -44,7 +46,6 @@ export interface Event {
     slug: string;
     location: {
       title: string;
-      fullTitle: string;
     }[];
     artist: {
       slug: string;
@@ -66,6 +67,9 @@ const eventFragment = gql`
     program {
       date
       endDate
+      startTime
+      endTime
+      ticketInformation
       ... on program_day_BlockType {
         date
       }
@@ -75,7 +79,6 @@ const eventFragment = gql`
     dateEnd
     location {
       title
-      fullTitle
     }
 		relatedLinks {
       linkTitle
@@ -101,7 +104,6 @@ const eventFragment = gql`
         timeEnd
         location {
           title
-          fullTitle
         }
         artist {
           slug

@@ -8,7 +8,7 @@
   --h2: 34px;
   --h3: 24px;
   --h4: 20px;
-  --body: 20px;
+  --body: 18px;
 }
 
 /* Font */
@@ -723,11 +723,14 @@ body {
 .grid {
   width: 75vw;
   border: 2px solid black;
+  /* border-right: none; */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16.6667%, 6fr));
   grid-gap: 0px;
   grid-auto-rows: repeat(auto-fill, minmax(10%, 6fr));
-  margin: -2px;
   position: relative;
 
   & .item {
@@ -854,11 +857,13 @@ footer{
   transform: translate(-50%, -50%);  
 }
 
-.item.g-el{
+.grid .item .g-el{
   width: auto;
   max-width: 100%;
-  max-height: 300px;
-  border: none;
+  max-height: 320px;
+  height: auto;
+  object-fit: contain;
+  /* border: none; */
   
 }
 
@@ -883,4 +888,19 @@ footer{
   padding: 10px;
   border-radius: 10px;
   border: 1px solid var(--black);
+}
+
+.event-info{
+  border-top: 2px solid var(--black);
+  padding-top: 14px;
+  & p{
+    display: flex;
+    line-height: 1.5;
+    & span{
+      width: 40%;
+    }
+    & div{
+      width: 60%;
+    }
+  }
 }

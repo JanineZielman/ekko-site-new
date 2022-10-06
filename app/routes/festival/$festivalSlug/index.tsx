@@ -36,7 +36,10 @@ export default function Index() {
         <img className="floating-img festival-icon" id="float" src="/EKKO-XIX-FBBanner.png" alt="" />
       </div>
 			<div className="grid">
-        <img src="/EKKO-webelements2.png" className='item no-border w3 g-el padding'/>
+        <div className='item no-border w3'>
+          <img src="/EKKO-webelements2.png" className='g-el padding'/>
+        </div>
+       
         <Spacer number={1} border=""/>
         <div className='item w2 padding'>
           {event.relatedLinks.map((link, i) => {
@@ -50,8 +53,10 @@ export default function Index() {
           <h1 className='big'>{event.title}</h1>
           <h1 dangerouslySetInnerHTML={{ __html: event.intro }}></h1>
         </div>
-        <img src="/EKKO-webelements4.png" className='item w2 g-el'/>
-
+        <div className='item w2'>
+          <img src="/EKKO-webelements4.png" className='g-el'/>
+        </div>
+        
         <div className='outer outer-text w6'>
           <p>Performances</p>
         </div>
