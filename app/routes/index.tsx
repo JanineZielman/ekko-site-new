@@ -61,7 +61,7 @@ export default function Index() {
               <div className="flex space-between info-block">
                 <div className="info">
                   <h3>{item.title}</h3>
-                  <p>{item.dateEnd && `${Moment(item.date).format('D.MM.')} - ${Moment(item.dateEnd).format('D/MM')}`}</p>
+                  <p>{item.dateEnd && `${Moment(item.date).format('D.MM.')} - ${Moment(item.dateEnd).format('D.MM.')}`}</p>
                 </div>
                 <div className="times big">{Moment(item.date).format('D.MM.')}</div>
               </div>

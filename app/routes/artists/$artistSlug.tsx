@@ -18,8 +18,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const {  artist } = useLoaderData<{ artist: Artist }>();
 
-  console.log(artist)
-
   return (
     <Container>
       <div className="grid">
@@ -29,7 +27,7 @@ export default function Index() {
               <p>{artist.artistMeta}</p>
             }
 						<h1 className='big'>{artist.title}</h1>
-						{/* <div className='big times'>{Moment(artist.date).format('D/MM')}</div> */}
+						{/* <div className='big times'>{Moment(artist.date).format('D.MM.')}</div> */}
             <br/>
             {artist.complexContent?.map(block => {
               if (block.blockType === 'text') {

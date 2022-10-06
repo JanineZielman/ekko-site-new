@@ -135,10 +135,15 @@ export default function Index() {
           return(
             <>
               {performance.date == artist.date &&
-                <Link to={`/festival/${event.slug}/${performance.slug}`} className='item w2 white-bg'>
+                <Link to={`/festival/${event.slug}/${performance.slug}`} className='item w2'>
                   <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>
-                  <h4>{performance.artist[0].title}</h4>
-                  <p>{Moment(performance.time).format("HH:mm")}, {performance.location[0].title}</p>
+                  <div className='flex space-between white-bg height'>
+                    <div className='info'>
+                      <h4>{performance.artist[0].title}</h4>
+                      <p>{Moment(performance.time).format("HH:mm")}, {performance.location[0].title}</p>
+                    </div>
+                    <div className="times big">{Moment(performance.date).format('D.MM.')}</div>
+                  </div>
                 </Link>
               }
             </>

@@ -70,7 +70,7 @@ export default function Index() {
 										<h4>{item.artist[0].title}</h4>
 										<p>{Moment(item.time).format("HH:mm")}, {item.location[0].title}</p>
 									</div>
-									<div className="times big">{Moment(item.date).format('D/MM')}</div>
+									<div className="times big">{Moment(item.date).format('D.MM.')}</div>
 								</div>
 							</Link>
 						)
@@ -86,7 +86,7 @@ export default function Index() {
 										<h4>{item.artist[0].title}</h4>
 										<p>{Moment(item.time).format("HH:mm")}, {item.location[0].title}</p>
 									</div>
-									<div className="times big">{Moment(item.date).format('D/MM')}</div>
+									<div className="times big">{Moment(item.date).format('D.MM.')}</div>
 								</div>
 							</Link>
 						)
