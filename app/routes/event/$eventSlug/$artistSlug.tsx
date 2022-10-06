@@ -107,16 +107,18 @@ export default function Index() {
             </div>
             <Spacer number={4} border="" />
             {event.performances.map((performance, i) => (
-              <Link to={`/event/${event.slug}/${performance.slug}`} className='item w2 white-bg'>
+              <Link to={`/event/${event.slug}/${performance.slug}`} className='item w2'>
                 <div className='img-wrapper artist'>
                   {performance.artist?.[0].featuredImage[0] ?
                     <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0]?.title} />
                   :
                     <img src={event.featuredImage[0].url} alt={event.title} />
                   }
-                  </div>
-                <h4>{performance.artist?.[0]?.title}</h4>
-                <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
+                </div>
+                <div className='white-bg'>
+                  <h4>{performance.artist?.[0]?.title}</h4>
+                  <p>{Moment(performance.time).format("HH:mm")}, {performance.location?.[0]?.title}</p>
+                </div>
               </Link>
             ))}
           </>
