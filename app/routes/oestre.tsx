@@ -1,14 +1,41 @@
 import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
+import ImageGallery from '~/components/imagegallery'
+import Kalender from '~/components/kalender';
+
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
+import { fetchAllEvents } from '~/service/data/events';
+import type { AllEvents } from '~/service/data/events';
 
-export const loader: LoaderFunction = () => {
-  return fetchContentPage('ostre');
+
+export const loader: LoaderFunction = async() => {
+  let [entry, events] = await Promise.all([
+    fetchContentPage('ostre'),
+    fetchAllEvents(),
+  ]);
+
+  let filteredEvents1 = [];
+  let filteredEvents = [];
+  var currentTime = new Date();
+
+  filteredEvents1 = events.events.filter((item: any) => {
+    var itemDate = new Date(item.date);
+    itemDate.setDate(itemDate.getDate() + 2);
+    return itemDate.getTime() >= currentTime.getTime();
+  });
+
+
+  filteredEvents = filteredEvents1.filter((item: any) => {
+    return item.organizer?.[0]?.title === 'Østre'
+  });
+
+  // return fetchContentPage('ostre');
+  return { entry, filteredEvents };
 };
 
 export const meta: MetaFunction = ({ data }) => ({
@@ -16,7 +43,7 @@ export const meta: MetaFunction = ({ data }) => ({
 });
 
 export default function Oestre() {
-  const { entry } = useLoaderData<PageEntry>();
+  const { entry, filteredEvents } = useLoaderData<{ entry: PageEntry; filteredEvents: AllEvents }>();
 
   useEffect(() => {
     jQuery(function($) {
@@ -28,7 +55,10 @@ export default function Oestre() {
           $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
       });
     });
+    
   }, []);
+
+  console.log(filteredEvents)
 
   return (
     <Container>
@@ -37,19 +67,29 @@ export default function Oestre() {
       </div>
       <div className="grid">
         <div className='item w3 l3 padding-right'>
-          <h1>{entry.title}</h1>
-          <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
+          <h1>{entry.entry.title}</h1>
+          <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
           <Spacer number={1} border={"no-border"}/>
         </div>
         <div className="item w3 overflow-visible">
           <div className='header-img'>
-            <img src={entry.photo?.[0].url} alt={entry.title} />
+            <img src={entry.entry.photo?.[0].url} alt={entry.entry.title} />
           </div>
         </div>
         <Spacer number={6} border={""}/>
-        <Spacer number={6} border={""}/>
-        <div className='item w3 l3 padding'>
-          <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
+        <div className='item w2 padding'>
+          {entry.entry.relatedLinks.map((link, i) => {
+            return(
+              <div className='times big middle'><a href={`${link.linkUrl}`}>{link.linkTitle}</a></div>
+            )
+          })}
+        </div>
+        <Spacer number={4} border={""}/>
+        <div className='outer outer-text w6'>
+          <p>About</p>
+        </div>
+        <div className='item w3 l3 padding' id="About">
+          <div dangerouslySetInnerHTML={{ __html: entry?.entry?.content }} />
         </div>
         <Spacer number={6} border={""}/>
         <div className='item w2 button small'>
@@ -57,20 +97,22 @@ export default function Oestre() {
         </div>
         <Spacer number={1} border={""}/>
         <Spacer number={6} border={""}/>
-        {entry.gallery[0] &&
-          <>
-            <div className='outer outer-text w6'>
-              <p>Gallery</p>
-            </div>
-            {entry.gallery.map((item, i) => {
-              return(
-                <div className='item w1 no-inner-padding'>
-                  <img src={item.url}/>
-                </div>
-              )
-            })}
-          </>
+        <div className='w2 item align-bottom offset blue-bg' id="Kalender">
+          <div>
+            <h2>Kalender</h2>
+          </div>
+        </div>
+        <Spacer number={4} border={""}/>
+        {filteredEvents.length ?
+          <Kalender filteredEvents={filteredEvents}/>
+          :
+          <div className='item w6'>
+            <p className='white-bg'>There are no upcoming events hosted by Østre.</p>
+          </div>
         }
+
+        <Spacer number={6} border={""}/>
+        <ImageGallery entry={entry.entry}/>
       </div>
     </Container>
   );

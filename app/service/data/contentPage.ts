@@ -9,6 +9,10 @@ export interface PageEntry {
     photo: { url: string }[];
     content: string;
     gallery: { url: string }[];
+    relatedLinks: {
+      linkTitle: string;
+      linkUrl: string;
+    }[];
   };
 }
 
@@ -28,6 +32,10 @@ const query = gql`
         url
       }
       content: pageContent
+      relatedLinks {
+        linkTitle
+        linkUrl
+      }
     }
   }
 `;

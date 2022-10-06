@@ -7,6 +7,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
+import ImageGallery from '~/components/imagegallery'
 
 export const loader: LoaderFunction = () => {
   return fetchContentPage('about');
@@ -59,24 +60,7 @@ export default function About() {
         </div>
         <Spacer number={1} border=""/>
         <Spacer number={6} border=""/>
-        {entry.gallery[0] &&
-          <>
-            <div className='outer outer-text w6'>
-              <p>Gallery</p>
-            </div>
-            <div className='item w2 l1 align-bottom'>
-              <h1>Gallery:</h1>
-            </div>
-            <Spacer number={4} border=""/>
-            {entry.gallery.map((item, i) => {
-              return(
-                <div className='item w1 no-inner-padding'>
-                  <img src={item.url}/>
-                </div>
-              )
-            })}
-          </>
-        }
+        <ImageGallery entry={entry}/>
       </div>
     </Container>
   );

@@ -5,6 +5,9 @@ export interface Event {
   slug: string;
   title: string;
   url: string;
+  organizer:{
+    title: string;
+  }[];
   type: 'event' | 'festival';
   featuredImage: { url: string }[];
   date: string;
@@ -42,6 +45,9 @@ const query = gql`
       slug
       title
       url
+      organizer {
+        title
+      }
       type: typeHandle
       ... on events_event_Entry {
         openingTime
