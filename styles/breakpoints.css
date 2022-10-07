@@ -145,7 +145,7 @@
 	}
 
 	.outer{
-		display: none;
+		display: none!important;
 	}
 
 	.video-wrapper{

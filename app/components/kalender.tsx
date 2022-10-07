@@ -46,10 +46,10 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 									}
 								</div>
 								<div className="text">
+									<div className={`${item.type}-stamp`}><span>Part of {item.title}</span></div>
 									<div className='text-wrapper'>
-										<div className={`${item.type}-stamp`}><span>Part of {item.title}</span></div>
 										<p>{Moment(performance.date).format("D.M.yy")} </p>
-										<br/>
+										{/* <br/> */}
 										<h3>
 											{performance.artist[0].title ? 
 												performance.artist[0].title

@@ -57,3 +57,13 @@
 		}
 	}
 }
+
+@media (max-width:600px){
+	.kalender{
+		& .grid{
+			& .item{
+				height: auto;
+			}
+		}
+	}
+}
