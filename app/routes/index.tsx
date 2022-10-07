@@ -93,7 +93,13 @@ export default function Index() {
           return (
             <Link to={`/${recent.events[0].type}/${recent.events[0].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
               {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                <div className='img-wrapper'>
+                  {item.artist[0].featuredImage[0].url ?
+                    <img src={item.artist[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} />
+                    :
+                    <img className="artist" src={recent?.events[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} />
+                  }
+                </div>
               )}
               <div className="flex space-between info-block">
                 <div className="info">
@@ -111,7 +117,13 @@ export default function Index() {
           return (
             <Link to={`/${recent.events[1].type}/${recent.events[1].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
               {item.artist[0].featuredImage && (
-                <div className='img-wrapper'><img src={item.artist[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
+                <div className='img-wrapper'>
+                  {item.artist[0].featuredImage[0]?.url ?
+                    <img src={item.artist[0].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} />
+                  :
+                    <img className="artist" src={recent?.events[1].featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} />
+                  }
+                </div>
               )}
               <div className="flex space-between info-block">
                 <div className="info">
