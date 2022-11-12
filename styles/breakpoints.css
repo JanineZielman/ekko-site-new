@@ -157,6 +157,13 @@
 		padding: 10px 20px 10px 75px;
 	}
 
+	.columns{
+		display: block;
+		& a{
+			width: 100%;
+		}
+	}
+
 	footer{
 		& .container{
 			flex-direction: column;

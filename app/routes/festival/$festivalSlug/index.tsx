@@ -57,7 +57,7 @@ export default function Index() {
 
          <Spacer number={6} border=""/>
         
-        <div className='outer outer-text w6'>
+        {/* <div className='outer outer-text w6'>
           <p>Performances</p>
         </div>
 				
@@ -75,8 +75,8 @@ export default function Index() {
 							</Link>
 						)
 					})}
-          <Spacer number={4} border=""/>
-
+          <Spacer number={4} border=""/> */}
+{/* 
           {event.performances.slice(2, 4).map((item, i) => {
 						return(
 							<Link to={`${item.slug}`} className='item w2 l2'>
@@ -91,7 +91,7 @@ export default function Index() {
 							</Link>
 						)
 					})}
-          <Spacer number={4} border=""/>
+          <Spacer number={4} border=""/> */}
 
         <div className='item w2 white-bg align-bottom offset'>
           <div className='times big'>{event.relatedLinks[0].linkTitle}</div>
@@ -101,7 +101,7 @@ export default function Index() {
           <div className='columns w6'>
             {event.performances.map((item, i) => {
               return(
-                <Link to={`${item.slug}`}>
+                <Link to={`artist/${item.slug}`}>
                   <p>{item.artist[0].title}</p>
                 </Link>
               )
@@ -118,14 +118,14 @@ export default function Index() {
           return(
             <div className='item w3 padding'>
               <div className='white-bg no-padding'>
-                <h4>{Moment(item.date).format('ddd D. MMMM')}</h4>
+                <Link to={Moment(item.date).format('YYYY-MM-DD')}><h4>{Moment(item.date).format('ddd D. MMMM')}</h4></Link>
               </div>
               <br/>
               {event.performances.map((performance, i) => {
                 return(
                   <>
                     {item.date == performance.date &&
-                      <Link to={`${performance.slug}`} className='program-day'>
+                      <Link to={`artist/${performance.slug}`} className='program-day'>
                         <p className='underline'>{performance.location[0].title}</p>
                         <h4>{Moment(performance.time).format("HH:mm")}, {performance.artist[0].title}</h4>
                       </Link>

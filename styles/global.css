@@ -472,8 +472,10 @@ input:focus, textarea:focus {
 
 
 .columns{
-  column-count: 2;
+  display: flex;
+  flex-wrap: wrap;
   & a{
+    width: 50%;
     &:hover{
       text-decoration: line-through;
     }
@@ -705,6 +707,7 @@ body {
   width: 100%;
   padding-top: 75%;
   overflow: hidden;
+  margin-top: -25px;
   & img{
     position: absolute;
     top: 50%;
