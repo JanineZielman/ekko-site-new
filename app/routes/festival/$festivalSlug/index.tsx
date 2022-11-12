@@ -126,8 +126,8 @@ export default function Index() {
                   <>
                     {item.date == performance.date &&
                       <Link to={`artist/${performance.slug}`} className='program-day'>
-                        <p className='underline'>{performance.location[0].title}</p>
-                        <h4>{Moment(performance.time).format("HH:mm")}, {performance.artist[0].title}</h4>
+                        <p>{performance.location[0].title} {performance.location[1] && `, ${performance.location[1]?.title}`}</p>
+                        <h4 className='underline'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}, {performance.artist[0].title}</h4>
                       </Link>
                     }
                   </>

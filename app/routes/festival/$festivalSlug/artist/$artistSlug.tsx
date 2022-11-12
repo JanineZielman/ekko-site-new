@@ -135,34 +135,11 @@ export default function Index() {
           }
         })}
 
-        <Spacer number={2} border="" />
-         <div className='w2 item align-bottom offset white-bg'>
-          <div>
-            <h2>Full Program</h2>
-          </div>
-        </div>
-        <Spacer number={2} border="" />
-        <Spacer number={2} border="" />
-        <div className='w4 item'>
-          {event.program.map((item, i) =>{
-            return(
-              <div className='program-info'>
-                <Link to={`/festival/${event.slug}#Program`}>
-                  <div className='program-date'><h3>{Moment(item.date).format('ddd DD. MMM')}</h3></div>
-                  <div className='event-info'>
-                    {item.startTime && <p><span>Time: </span> <div>{Moment(item.startTime).format('HH:mm')} {item.endTime && `- ${Moment(item.endTime).format('HH:mm')}`}</div></p>}
-                    {item.ticketInformation && <p><span>Ticket info: </span> <div>{item.ticketInformation}</div></p>}
-                  </div>
-                </Link>
-              </div>
-            )
-          })}
-        </div>
 
         {related.length > 0 ?
           <div className="w2 item align-bottom offset white-bg">
             <div>
-              <h2>Related artists:</h2>
+              <h2>Lineup:</h2>
             </div>
           </div>
         :  <Spacer number={2} border="" />}
@@ -174,11 +151,10 @@ export default function Index() {
                 <Link to={`/festival/${event.slug}/${performance.slug}`} className='item w2'>
                   <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>
                   <div className='flex space-between white-bg height'>
-                    <div className='info'>
+                    <div>
                       <h4>{performance.artist[0].title}</h4>
                       <p>{Moment(performance.time).format("HH:mm")}, {performance.location[0].title}</p>
                     </div>
-                    <div className="times big">{Moment(performance.date).format('D.MM.')}</div>
                   </div>
                 </Link>
               }

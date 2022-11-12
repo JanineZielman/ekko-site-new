@@ -8,26 +8,28 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 
 export const loader: LoaderFunction = async ({ params }) => {
-  // return fetchEvent(params.festivalSlug!);
   const [event] = await Promise.all([
     fetchEvent(params.festivalSlug!),
   ]);
 
   const date = params.daySlug
+  const festivalSlug = params.festivalSlug
 
-  return { event, date };
+  return { event, date, festivalSlug};
 };
 
 export default function Index() {
-  const {  event } = useLoaderData<{ event: Event }>();
-  const {  date } = useLoaderData<{ date: any }>();
+  const { event } = useLoaderData<{ event: Event }>();
+  const { date } = useLoaderData<{ date: any }>();
+  const { festivalSlug } = useLoaderData<{ festivalSlug: any }>();
 
   const res=event.performances.slice(0).sort((a,b)=>
   a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
   const filter=res.filter(item => Moment(item.date).format("YYYY-MM-DD") === date);
 
-  console.log('event', event.performances.filter(item => Moment(item.date).format("YYYY-MM-DD") === date))
-  console.log('filter', filter)
+  // console.log('event', event.performances.filter(item => Moment(item.date).format("YYYY-MM-DD") === date))
+  // console.log('filter', filter)
+  console.log(event)
 
   return (
     <Container>
@@ -55,14 +57,8 @@ export default function Index() {
 					</div>
 				</div>
         <div className="item w3 l2">
-          <Link to={`${filter[0].slug}`} className='item w2 l2'>
-            <div className='img-wrapper'><img src={filter[0].artist[0].featuredImage[0].url}/></div>
-            <div className="flex space-between white-bg height">
-              <div className="info">
-                <h4>{filter[0].artist[0].title}</h4>
-                <p>{Moment(filter[0].time).utcOffset('+0100').format("HH:mm")}, {filter[0].location[0].title}</p>
-              </div>
-            </div>
+          <Link to={`/festival/${festivalSlug}/artist/${filter[0].slug}`}>
+            <div className='full-img-wrapper black-bg'><img src={event.featuredImage[0].url}/></div>
           </Link>
         </div>
 
@@ -73,13 +69,20 @@ export default function Index() {
             </div>
           }
         </div>
+
+        <div className="w2 item align-bottom offset white-bg">
+          <div>
+            <h2>Lineup:</h2>
+          </div>
+        </div>
+        <Spacer number={4} border=""/>
       
-        {filter.slice(1).map((item, i) => {
+        {filter.map((item, i) => {
           return(
-            <Link to={`${item.slug}`} className='item w2 l2'>
+            <Link to={`/festival/${festivalSlug}/artist/${item.slug}`} className='item w2 l2'>
               <div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url}/></div>
-              <div className="flex space-between white-bg height">
-                <div className="info">
+              <div className="white-bg height">
+                <div>
                   <h4>{item.artist[0].title}</h4>
                   <p>{Moment(item.time).utcOffset('+0100').format("HH:mm")}, {item.location[0].title}</p>
                 </div>

@@ -159,6 +159,9 @@ input:focus, textarea:focus {
   height: 0px;
   width: 100px;
   overflow: visible;
+  & p {
+    font-size: 20px;
+  }
   &.margin-top{
     top: calc(80px + 14vw);
   }
@@ -446,7 +449,7 @@ input:focus, textarea:focus {
 .view-all{
   font-size: var(--h1);
   font-weight: 100;
-  background: var(--primary);
+  /* background: var(--primary); */
   border-radius: 100px;
   padding: 2vw;
   padding-left: 10vw;
@@ -706,6 +709,7 @@ body {
   position: relative;
   overflow: hidden;
   height: 100%;
+  min-height: 400px;
   & img{
     position: absolute;
     top: 50%;
@@ -832,7 +836,14 @@ body {
 
 .program-day{
   border-bottom: 1px solid black;
-  
+  & p {
+    margin: 0;
+    margin-top: 14px;
+  }
+  & h4 {
+    margin: 0;
+    margin-bottom: 14px;
+  }
 }
 
 .prev-button{

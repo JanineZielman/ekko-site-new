@@ -71,7 +71,7 @@ export default function Index() {
           <>
             <div className="w2 item align-bottom offset blue-bg">
               <div>
-                <h2>Artists:</h2>
+                <h2>Lineup:</h2>
               </div>
             </div>
             <Spacer number={4} border="" />
