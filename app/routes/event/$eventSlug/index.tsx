@@ -50,8 +50,8 @@ export default function Index() {
 					</div>
 				</div>
 
-        <div className="item w3 l2">
-          <div className='img-wrapper'>
+        <div className="item w3">
+          <div className='full-img-wrapper'>
             {event.featuredImage[0] && 
               <img src={event.featuredImage[0]?.url } alt={event.title}/>
             }
@@ -65,7 +65,7 @@ export default function Index() {
             </div>
           }
         </div>
-        <Spacer number={1} border="" />
+        <Spacer number={3} border="" />
 
         {event.performances?.length > 0 &&
           <>

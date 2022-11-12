@@ -702,6 +702,23 @@ body {
   }
 }
 
+.full-img-wrapper{
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  & img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%!important;
+    width: 100%!important;
+    height: 100%!important;
+    min-height: 100%!important;
+    object-fit: cover!important;
+  }
+}
+
 .img-wrapper{
   position: relative;
   width: 100%;

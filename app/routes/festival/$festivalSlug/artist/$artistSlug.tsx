@@ -77,7 +77,7 @@ export default function Index() {
 				</div>
 
         <div className="item w3 l2">
-          <div className='img-wrapper'>
+          <div className='full-img-wrapper'>
             <img src={artist.artist[0].featuredImage[0]?.url}/>
           </div>
         </div>
