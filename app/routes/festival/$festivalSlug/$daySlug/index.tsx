@@ -23,21 +23,17 @@ export default function Index() {
   const { date } = useLoaderData<{ date: any }>();
   const { festivalSlug } = useLoaderData<{ festivalSlug: any }>();
 
-  const res=event.performances.slice(0).sort((a,b)=>
-  a.date.localeCompare(b.date)||a.time.localeCompare(b.time));
-  const filter=res.filter(item => Moment(item.date).format("YYYY-MM-DD") === date);
 
-  // console.log('event', event.performances.filter(item => Moment(item.date).format("YYYY-MM-DD") === date))
-  // console.log('filter', filter)
-  console.log(event)
+  const filter=event.performances.filter(item => Moment(item.date).format("YYYY-MM-DD") === date);
+  filter.sort(({ time: a }, { time: b }) => parseInt(Moment(a).format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).format("HH:mm").replace(/:/g, '')))
 
   return (
     <Container>
-			<div className="grid">
+      <div className="grid">
 
         <div className="item w3 padding">
-					<div className='text'>
-           	<h1 className='big'>{Moment(date).format('ddd D.MM.')}</h1>
+          <div className='text'>
+            <h1 className='big'>{Moment(date).format('ddd D.MM.')}</h1>
              {event.program.map((item, i) => {
               return(
                 <>
@@ -54,15 +50,9 @@ export default function Index() {
                 </>
               )
              })}
-					</div>
-				</div>
-        <div className="item w3 l2">
-          <Link to={`/festival/${festivalSlug}/artist/${filter[0].slug}`}>
-            <div className='full-img-wrapper black-bg'><img src={event.featuredImage[0].url}/></div>
-          </Link>
+          </div>
         </div>
-
-        <div className="item w2 button small">
+        <div className="item w3 button small">
           {event.tickets[0]?.ticketLink &&
             <div className='view-all'>
               <a href={event.tickets[0]?.ticketLink} target="_blank">Tickets</a>
@@ -91,7 +81,7 @@ export default function Index() {
           )
         })}
         <Spacer number={6} border=""/>
-			</div>
-		</Container>
+      </div>
+    </Container>
   );
 }
