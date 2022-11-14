@@ -59,11 +59,11 @@ export default function Index() {
                 <div className='img-wrapper'><img src={item.featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
               <div className="flex space-between info-block">
+                {item.dateEnd && <div className="times big">{Moment(item.date).format('D.MM.')} - {Moment(item.dateEnd).format('D.MM.')}</div>}
                 <div className="info">
                   <h3>{item.title}</h3>
-                  <p>{item.dateEnd && `${Moment(item.date).format('D.MM.')} - ${Moment(item.dateEnd).format('D.MM.')}`}</p>
                 </div>
-                <div className="times big">{Moment(item.date).format('D.MM.')}</div>
+                {item.dateEnd == null && <div className="times big">{Moment(item.date).format('D.MM.')}</div>}
               </div>
             </Link>
           );

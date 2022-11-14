@@ -39,29 +39,21 @@ export default function About() {
         <img className="floating-img about" id="float" src="/EKKO-logo-LITEN.png" alt="" />
       </div>
       <div className="grid" id="contact">
-        <div className="item w6 l2 flex padding">
-          <div className='w2'>
-            <h1>{entry.title}</h1>
-            <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
-          </div>
-          <div className="w4 inner">
-            <div className='header-img'>
-              <img src={entry.photo?.[0].url} alt={entry.title} />
-            </div>
+        <div className="item w2 padding">
+            <h1 className='padding-left'>{entry.title}</h1>
+            <h3 className='padding-left' dangerouslySetInnerHTML={{ __html: entry?.contact }} />
+        </div>
+        <div className="item w4">
+          <div className='full-img-wrapper'>
+            <img src={entry.photo?.[0].url} alt={entry.title} />
           </div>
         </div>
-        <Spacer number={4} border="" />
+        <div className='item w4 l1 padding'>
+           <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
+        </div>
         <div className='item w2 l1'>
           <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
         </div>
-        <div className='item w3 l3 padding'>
-          <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
-        </div>
-        <Spacer number={6} border=""/>
-        <div className='item w2 button small'>
-          <a className='view-all' href={`#contact`}>Contact</a>
-        </div>
-        <Spacer number={1} border=""/>
         <Spacer number={6} border=""/>
         <ImageGallery entry={entry}/>
       </div>

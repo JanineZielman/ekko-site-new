@@ -21,9 +21,9 @@ export default function Index() {
   return (
     <Container>
       <div className="grid">
-        <div className="item w5 l2">
+        <div className="item w5 l2 padding">
 						<h1 className='big'>{news.entry.title}</h1> 
-						<h3 className='padding-right'><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
+						<h3><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
 				</div>
 
 				<Spacer number={2} border=""/>
@@ -37,7 +37,7 @@ export default function Index() {
 
 				<Spacer number={3} border=""/>
 
-				<div className='item w5 l6 text-block'>
+				<div className='item w5 l6 text-block padding'>
 					{news.entry.complexContent?.map(block => {
 						if (block.blockType === 'text') {
 							return (

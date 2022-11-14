@@ -16,6 +16,8 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Index() {
   const event = useLoaderData<Event>();
 
+  event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
+
   useEffect(() => {
     jQuery(function($) {
       $('#float').mouseover(function() {

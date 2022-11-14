@@ -122,6 +122,10 @@ input:focus, textarea:focus {
   }
 }
 
+.padding-left{
+  padding-left: 36px;
+}
+
 .floating-img{
   position: absolute;
   left: 3vw;
@@ -129,13 +133,13 @@ input:focus, textarea:focus {
   z-index: 2;
   top: 100px;
   &.oestre{
-    top: 250px;
+    top: 100px;
     left: 33vw;
-    width: 18vw;
+    width: 24vw;
   }
   &.about{
-    top: 350px;
-    left: 6vw;
+    top: 100px;
+    left: 2vw;
   }
   &.festival-icon{
     width: 25vw;
@@ -537,7 +541,7 @@ input:focus, textarea:focus {
   }
 }
 
-.artist{
+.artist, .grey{
   filter: grayscale(1);
 }
 
@@ -1092,7 +1096,7 @@ footer{
   z-index: 2;
   font-size: var(--h1);
   font-weight: 100;
-  background: var(--primary);
+  /* background: var(--primary); */
   border-radius: 100px;
   padding: 2vw;
   padding-left: 9vw;
@@ -1116,34 +1120,37 @@ footer{
 }
 
 .festival-stamp{
-  position: absolute;
-  right: 0;
+  position: relative;
+  top: 0;
   bottom: 0;
+  width: 100%;
+  margin-bottom: 14px;
   background-color: var(--primary);
   width: 100%;
-  height: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 5;
+  padding: 5px 0;
   & span{
     margin-left: 1vw;
   }
 }
 
 .event-stamp{
-  position: absolute;
-  right: 0;
+  position: relative;
+  top: 0;
   bottom: 0;
-  background-color: var(--white);
   width: 100%;
+  margin-bottom: 14px;
+  height: auto;
+  padding: 5px 0;
+  border: 1px solid var(--black);
   height: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 5;
-  border-bottom: 2px solid var(--black);
-  /* border-top: 2px solid var(--black); */
   & span{
     margin-left: 1vw;
   }

@@ -31,7 +31,7 @@ export const loader: LoaderFunction = async() => {
 
 
   filteredEvents = filteredEvents1.filter((item: any) => {
-    return item.organizer?.[0]?.title === 'Østre'
+    return item.location?.[0]?.title === 'Østre'
   });
 
   // return fetchContentPage('ostre');
@@ -44,6 +44,8 @@ export const meta: MetaFunction = ({ data }) => ({
 
 export default function Oestre() {
   const { entry, filteredEvents } = useLoaderData<{ entry: PageEntry; filteredEvents: AllEvents }>();
+
+  console.log(filteredEvents)
 
   useEffect(() => {
     jQuery(function($) {
@@ -64,37 +66,38 @@ export default function Oestre() {
         <img className="floating-img oestre" id="float" src="/oestre.png" alt="" />
       </div>
       <div className="grid">
-        <div className='item w3 l3 padding-right'>
+        <div className='item w3 padding-right'>
           <h1>{entry.entry.title}</h1>
           <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
-          <Spacer number={1} border={"no-border"}/>
         </div>
-        <div className="item w3 overflow-visible">
-          <div className='header-img'>
-            <img src={entry.entry.photo?.[0].url} alt={entry.entry.title} />
-          </div>
-        </div>
-        <Spacer number={6} border={""}/>
-        <div className='item w2 padding'>
+        <Spacer number={1} border={""}/>
+         <div className='item w2 padding'>
           {entry.entry.relatedLinks.map((link, i) => {
             return(
               <div className='times big middle'><a href={`${link.linkUrl}`}>{link.linkTitle}</a></div>
             )
           })}
         </div>
-        <Spacer number={4} border={""}/>
+                  
         <div className='outer outer-text w6'>
           <p>About</p>
         </div>
+
+        <div className="item w3 l2">
+          <div className='header-img grey'>
+            <img src={entry.entry.photo?.[0].url} alt={entry.entry.title} />
+          </div>
+        </div>
+
         <div className='item w3 l3 padding' id="About">
           <div dangerouslySetInnerHTML={{ __html: entry?.entry?.content }} />
         </div>
-        <Spacer number={6} border={""}/>
+        <Spacer number={1} border={""}/>
+    
         <div className='item w2 button small'>
           <a className='view-all' href={`#contact`}>Contact</a>
         </div>
-        <Spacer number={1} border={""}/>
-        <Spacer number={6} border={""}/>
+        
         <div className='w2 item align-bottom offset blue-bg' id="Kalender">
           <div>
             <h2>Kalender</h2>
@@ -109,7 +112,6 @@ export default function Oestre() {
           </div>
         }
 
-        <Spacer number={6} border={""}/>
         <ImageGallery entry={entry.entry}/>
       </div>
     </Container>

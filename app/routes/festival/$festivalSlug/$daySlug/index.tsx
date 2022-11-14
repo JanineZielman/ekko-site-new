@@ -25,7 +25,7 @@ export default function Index() {
 
 
   const filter=event.performances.filter(item => Moment(item.date).format("YYYY-MM-DD") === date);
-  filter.sort(({ time: a }, { time: b }) => parseInt(Moment(a).format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).format("HH:mm").replace(/:/g, '')))
+  filter.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
 
   return (
     <Container>
