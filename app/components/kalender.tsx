@@ -17,7 +17,7 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 			
 			return (
 				<>
-					<Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className={`item w3 overflow-visible kalender-item`}>
+					<Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className={`item w6 overflow-visible kalender-item`}>
 						<p className={`outer month`} id={`m-${Moment(item.date).format("MM")}`}>{Moment(item.date).format("MMMM")}</p>
 						<div className="img">
 							{item.featuredImage && (
@@ -26,7 +26,7 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 						</div>
 						<div className="text">
 							<div className='text-wrapper'>
-								<p>{Moment(item.date).format("D.M.yy")} {item.dateEnd && `- ${Moment(item.dateEnd).format("D.M.yy")}`}</p>
+								<p className='big'>{Moment(item.date).format("D.M.")} {item.dateEnd && `- ${Moment(item.dateEnd).format("D.M.")}`}</p>
 								<br/>
 								<h3>{item.title}</h3>
 								<p>
@@ -46,9 +46,9 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 									}
 								</div>
 								<div className="text">
-									<div className={`${item.type}-stamp`}><span>Part of {item.title}</span></div>
+									{/* <div className={`${item.type}-stamp`}><span>Part of {item.title}</span></div> */}
 									<div className='text-wrapper'>
-										<p>{Moment(performance.date).format("D.M.yy")} </p>
+										<p className='big'>{Moment(performance.date).format("D.M.")} </p>
 										{/* <br/> */}
 										<h3>
 											{performance.artist[0].title ? 
@@ -66,9 +66,9 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 							</Link>
 						)
 					})}
-					{item.performances.length % 2 == 0 &&
+					{/* {item.performances.length % 2 == 0 &&
 						<Spacer number={3} border=""/>
-					}
+					} */}
 					<Spacer number={6} border="" />
 				</>
 			);

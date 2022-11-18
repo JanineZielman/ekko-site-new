@@ -1,7 +1,12 @@
 import type { Navigation } from '~/service/data/global';
 import { Link } from '@remix-run/react';
+import { useLocation } from '@remix-run/react'
+
 
 export default function Nav({ navigation }: { navigation: Navigation }) {
+  const location = useLocation()
+  var slug = location.pathname.slice(1).split("/")?.[0];
+  console.log(slug)
   return (
     <>
       <div className='nav-space'></div>
@@ -10,9 +15,10 @@ export default function Nav({ navigation }: { navigation: Navigation }) {
         <div className="nav-items center">
           {navigation &&
             navigation.nodes.map((item, i) => {
+              console.log(item)
               return (
                 item.title && (
-                  <a key={`navlink-${i}`} href={item.url}>
+                  <a key={`navlink-${i}`} href={item.url} className={slug == item.url.replace('/', '') ? 'active' : ''}>
                     <span>{item.title}</span>
                   </a>
                 )

@@ -100,7 +100,7 @@ export default function Oestre() {
         
         <div className='w2 item align-bottom offset blue-bg' id="Kalender">
           <div>
-            <h2>Kalender</h2>
+            <h2>Currently at Østre</h2>
           </div>
         </div>
         <Spacer number={4} border={""}/>

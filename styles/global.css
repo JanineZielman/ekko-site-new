@@ -122,6 +122,13 @@ input:focus, textarea:focus {
   }
 }
 
+.active{
+  & span{
+    text-decoration: line-through;
+    text-decoration-color: var(--black);
+  }
+}
+
 .padding-left{
   padding-left: 36px;
 }
@@ -362,7 +369,7 @@ input:focus, textarea:focus {
 
 .month{
   position: absolute;
-  right: 43vw;
+  right: 77vw;
   top: 40%;
   transform: rotate(90deg) translateY(-50%);
   padding: 5px;
@@ -1155,30 +1162,6 @@ footer{
     margin-left: 1vw;
   }
 }
-
-.kalender{
-  & .festival-stamp{
-    position: relative;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    margin-bottom: 14px;
-    height: auto;
-    min-height: 30px;
-  }
-
-  & .event-stamp{
-    position: relative;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    margin-bottom: 14px;
-    height: auto;
-    min-height: 30px;
-    border: 1px solid var(--black);
-  }
-}
-
 
 .loader {
   position: absolute;

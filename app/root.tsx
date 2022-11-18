@@ -8,7 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from '@remix-run/react'
 import React, { useState, useEffect } from 'react';
 
 import styles from '~/styles/global.css';
@@ -40,6 +40,7 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   const navigation = useLoaderData<Navigation>();
+
   let location = useLocation();
   var slug = location.pathname.slice(1).split("/");
 
@@ -63,7 +64,7 @@ export default function App() {
         <Links />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
       </head>
-      <body className={slug[0]}>
+      <body className={`${slug[0]}`}>
         <Nav navigation={navigation} />
         <Menu navigation={navigation}/>
         <main>
