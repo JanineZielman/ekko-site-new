@@ -66,18 +66,25 @@ export default function Oestre() {
         </div>
       </div>
       <div className="grid">
-        <div className='item w3 padding-right'>
+        <Spacer number={6} border={""}/>
+        <div className='w6'><h1 className='extra-big'>{entry.entry.title}</h1></div>
+        <Spacer number={6} border={""}/>
+        {/* <div className='item w3 padding-right'>
           <h1>{entry.entry.title}</h1>
           <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
-        </div>
-        <Spacer number={1} border={""}/>
-         <div className='item w2 padding'>
-          {entry.entry.relatedLinks.map((link, i) => {
-            return(
+        </div> */}
+        {/* <Spacer number={1} border={""}/> */}
+         <Spacer number={6} border={""}/>
+        {entry.entry.relatedLinks.map((link, i) => {
+          return(
+            <div className='item w2 padding'>
               <div className='times big middle'><a href={`${link.linkUrl}`}>{link.linkTitle}</a></div>
-            )
-          })}
-        </div>
+            </div>
+          )
+        })}
+        {/* <Spacer number={6} border={""}/> */}
+
+        
                   
         <div className='outer outer-text w6'>
           <p>About</p>

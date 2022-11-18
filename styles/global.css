@@ -112,6 +112,15 @@ input:focus, textarea:focus {
   }
 }
 
+.extra-big{
+  font-size: 12vw;
+  text-transform: uppercase;
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .tag{
   text-transform: uppercase;
 }
@@ -160,8 +169,8 @@ input:focus, textarea:focus {
     }
   }
   &.oestre{
-    top: 100px;
-    left: 33vw;
+    top: 60px;
+    left: 0vw;
     width: 24vw;
     & .img{
       width: 24vw;
@@ -169,7 +178,7 @@ input:focus, textarea:focus {
       mask-image: url(/oestre.png);
       mask-size: contain;
       mask-repeat: no-repeat;
-      transition: all 10s ease;
+      transition: transform 10s ease;
     }
     &:hover{
       & .img{
@@ -181,7 +190,7 @@ input:focus, textarea:focus {
   }
   &.about{
     top: 100px;
-    left: 2vw;
+    left: 1vw;
     & .img{
       width: 200px;
       height: 200px;

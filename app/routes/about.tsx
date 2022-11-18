@@ -41,20 +41,33 @@ export default function About() {
         </div>
       </div>
       <div className="grid" id="contact">
-        <div className="item w2 padding">
-            <h1 className='padding-left'>{entry.title}</h1>
-            <h3 className='padding-left' dangerouslySetInnerHTML={{ __html: entry?.contact }} />
+        <Spacer number={4} border=""/>
+        <div className='item w2 l1'>
+          <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
         </div>
-        <div className="item w4">
+         <div className="w6">
+            <h1 className='extra-big'>{entry.title}</h1>
+        </div>
+        <Spacer number={6} border=""/>
+        <Spacer number={6} border=""/>
+        
+        <div className="item w6 l2">
           <div className='full-img-wrapper'>
             <img src={entry.photo?.[0].url} alt={entry.title} />
           </div>
         </div>
-        <div className='item w4 l1 padding'>
+       
+        <div className='item w4 l2 padding'>
            <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
-        <div className='item w2 l1'>
-          <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
+         <div className='w1 item align-bottom offset blue-bg' id="Kalender">
+          <div>
+            <h2>Contact:</h2>
+          </div>
+        </div>
+        <Spacer number={1} border=""/>
+        <div className="item w2 padding">
+          <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
         </div>
         <Spacer number={6} border=""/>
         <ImageGallery entry={entry}/>
