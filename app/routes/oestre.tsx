@@ -73,7 +73,6 @@ export default function Oestre() {
           <h1>{entry.entry.title}</h1>
           <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
         </div> */}
-        {/* <Spacer number={1} border={""}/> */}
          <Spacer number={6} border={""}/>
         {entry.entry.relatedLinks.map((link, i) => {
           return(
@@ -82,16 +81,13 @@ export default function Oestre() {
             </div>
           )
         })}
-        {/* <Spacer number={6} border={""}/> */}
-
-        
                   
         <div className='outer outer-text w6'>
           <p>About</p>
         </div>
 
         <div className="item w3 l2">
-          <div className='header-img grey'>
+          <div className='full-img-wrapper grey'>
             <img src={entry.entry.photo?.[0].url} alt={entry.entry.title} />
           </div>
         </div>

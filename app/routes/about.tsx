@@ -60,12 +60,11 @@ export default function About() {
         <div className='item w4 l2 padding'>
            <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
-         <div className='w1 item align-bottom offset blue-bg' id="Kalender">
+         <div className='w2 item align-bottom offset blue-bg' id="Kalender">
           <div>
             <h2>Contact:</h2>
           </div>
         </div>
-        <Spacer number={1} border=""/>
         <div className="item w2 padding">
           <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
         </div>
