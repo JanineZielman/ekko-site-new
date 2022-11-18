@@ -139,14 +139,53 @@ input:focus, textarea:focus {
   width: 13vw;
   z-index: 2;
   top: 100px;
+  & .img{
+    width: 16vw;
+    height: 16vw;
+    background: url(/noise.gif);
+    /* background: var(--black); */
+    filter: brightness(10%);
+    background-size: 10px;
+    background-repeat: repeat;
+    mask-image: url(/EKKO-logo-LITEN.png);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-blend-mode: screen;
+    mix-blend-mode: color;
+  }
+  &:hover{
+    & .img{
+      background-size: 900px;
+      filter: brightness(100%);
+    }
+  }
   &.oestre{
     top: 100px;
     left: 33vw;
     width: 24vw;
+    & .img{
+      width: 24vw;
+      height: 24vw;
+      mask-image: url(/oestre.png);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      transition: all 10s ease;
+    }
+    &:hover{
+      & .img{
+        transform: rotate(360deg);
+        background-size: 10px;
+        filter: brightness(10%);
+      }
+    }
   }
   &.about{
     top: 100px;
     left: 2vw;
+    & .img{
+      width: 200px;
+      height: 200px;
+    }
   }
   &.festival-icon{
     width: 25vw;

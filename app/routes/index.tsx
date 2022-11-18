@@ -30,23 +30,25 @@ export const loader: LoaderFunction = async () => {
 export default function Index() {
   const { recent, home, news } = useLoaderData<{ recent: RecentEvents; home: PageEntry; news: RecentNews }>();
 
-  useEffect(() => {
-    jQuery(function($) {
-      $('#float').mouseover(function() {
-          var dWidth = $(document).width() || 900 - 500, // 100 = image width
-              dHeight = $(document).height() || 900, // 100 = image height
-              nextX = Math.floor(Math.random() * dWidth),
-              nextY = Math.floor(Math.random() * dHeight);
-          $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   jQuery(function($) {
+  //     $('#float').mouseover(function() {
+  //         var dWidth = $(document).width() || 900 - 500, // 100 = image width
+  //             dHeight = $(document).height() || 900, // 100 = image height
+  //             nextX = Math.floor(Math.random() * dWidth),
+  //             nextY = Math.floor(Math.random() * dHeight);
+  //         $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
+  //     });
+  //   });
+  // }, []);
 
 
   return (
     <Container>
       <div className='outer'>
-        <img className="floating-img" id="float" src="/EKKO-logo-LITEN.png" alt="" />
+        <div className="floating-img" id="float">
+          <div className='img'></div>
+        </div>
       </div>
       <div className="grid">
         <div className='outer outer-text w6 margin-top'>

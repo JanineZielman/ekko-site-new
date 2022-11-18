@@ -21,22 +21,24 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function About() {
   const { entry } = useLoaderData<PageEntry>();
 
-  useEffect(() => {
-    jQuery(function($) {
-      $('#float').mouseover(function() {
-          var dWidth = $(document).width() || 900 - 500, // 100 = image width
-              dHeight = $(document).height() || 900, // 100 = image height
-              nextX = Math.floor(Math.random() * dWidth),
-              nextY = Math.floor(Math.random() * dHeight);
-          $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
-      });
-    });
-  }, []);
+  // useEffect(() => {
+  //   jQuery(function($) {
+  //     $('#float').mouseover(function() {
+  //         var dWidth = $(document).width() || 900 - 500, // 100 = image width
+  //             dHeight = 900, // 100 = image height
+  //             nextX = Math.floor(Math.random() * dWidth),
+  //             nextY = Math.floor(Math.random() * dHeight);
+  //         $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
+  //     });
+  //   });
+  // }, []);
 
   return (
     <Container>
       <div className='outer'>
-        <img className="floating-img about" id="float" src="/EKKO-logo-LITEN.png" alt="" />
+        <div className="floating-img about" id="float">
+          <div className='img'></div>
+        </div>
       </div>
       <div className="grid" id="contact">
         <div className="item w2 padding">

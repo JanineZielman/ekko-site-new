@@ -45,25 +45,25 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Oestre() {
   const { entry, filteredEvents } = useLoaderData<{ entry: PageEntry; filteredEvents: AllEvents }>();
 
-  console.log(filteredEvents)
-
-  useEffect(() => {
-    jQuery(function($) {
-      $('#float').mouseover(function() {
-          var dWidth = $(document).width() || 900 - 500, // 100 = image width
-              dHeight = $(document).height() || 900, // 100 = image height
-              nextX = Math.floor(Math.random() * dWidth),
-              nextY = Math.floor(Math.random() * dHeight);
-          $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
-      });
-    });
+  // useEffect(() => {
+  //   jQuery(function($) {
+  //     $('#float').mouseover(function() {
+  //         var dWidth = $(document).width() || 900 - 500, // 100 = image width
+  //             dHeight = $(document).height() || 900, // 100 = image height
+  //             nextX = Math.floor(Math.random() * dWidth),
+  //             nextY = Math.floor(Math.random() * dHeight);
+  //         $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
+  //     });
+  //   });
     
-  }, []);
+  // }, []);
 
   return (
     <Container>
       <div className='outer'>
-        <img className="floating-img oestre" id="float" src="/oestre.png" alt="" />
+        <div className="floating-img oestre" id="float">
+          <div className='img'></div>
+        </div>
       </div>
       <div className="grid">
         <div className='item w3 padding-right'>
