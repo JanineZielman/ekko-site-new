@@ -1,8 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 
-import React, { useEffect } from 'react';
-
 import Moment from 'moment';
 
 import { fetchRecentEvents } from '~/service/data/home';
@@ -29,19 +27,6 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const { recent, home, news } = useLoaderData<{ recent: RecentEvents; home: PageEntry; news: RecentNews }>();
-
-  // useEffect(() => {
-  //   jQuery(function($) {
-  //     $('#float').mouseover(function() {
-  //         var dWidth = $(document).width() || 900 - 500, // 100 = image width
-  //             dHeight = $(document).height() || 900, // 100 = image height
-  //             nextX = Math.floor(Math.random() * dWidth),
-  //             nextY = Math.floor(Math.random() * dHeight);
-  //         $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
-  //     });
-  //   });
-  // }, []);
-
 
   return (
     <Container>
@@ -103,11 +88,11 @@ export default function Index() {
                   }
                 </div>
               )}
-              <div className="flex space-between info-block">
+              <div className="info-block">
                 <div className="info">
-                  <h3>{item.artist[0].title}</h3>
+                  <h3>{Moment(item.date).format('D.MM.')}</h3>
                 </div>
-                <div className="times big">{Moment(item.date).format('D.MM.')}</div>
+                <h1>{item.artist[0].title}</h1>
               </div>
             </Link>
           );

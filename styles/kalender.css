@@ -21,7 +21,9 @@
 				flex-direction: column;
 				justify-content: center;
 				& .text-wrapper{
-
+					& h1{
+						margin: 5px 0;
+					}
 				}
 			}
 		}

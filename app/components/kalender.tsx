@@ -17,6 +17,7 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 			
 			return (
 				<>
+					{/* event block */}
 					<Link to={`/${item.type}/${item.slug}`} key={`event-${i}`} className={`item w6 overflow-visible kalender-item`}>
 						<p className={`outer month`} id={`m-${Moment(item.date).format("MM")}`}>{Moment(item.date).format("MMMM")}</p>
 						<div className="img">
@@ -36,6 +37,7 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 							</div>
 						</div>
 					</Link>
+					{/* perfomance blocks */}
 					{item.performances.map((performance:any, j:any) => {
 						return(
 							<Link to={`/${item.type}/${item.slug}/${performance.slug}`} key={`performance-${j}`} className="item w3 kalender-item">
@@ -46,16 +48,14 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 									}
 								</div>
 								<div className="text">
-									{/* <div className={`${item.type}-stamp`}><span>Part of {item.title}</span></div> */}
 									<div className='text-wrapper'>
-										<p className='big'>{Moment(performance.date).format("D.M.")} </p>
-										{/* <br/> */}
-										<h3>
+										{/* <p className='big'>{Moment(performance.date).format("D.M.")} </p> */}
+										<h1>
 											{performance.artist[0].title ? 
 												performance.artist[0].title
 											: performance.title
 											}
-										</h3>
+										</h1>
 										
 										<p>
 											{performance.location?.[1] && <>{performance.location[1].fullTitle},</>}

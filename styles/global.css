@@ -90,7 +90,7 @@ a{
 
 a{
   &:hover{
-    text-decoration: line-through;
+    text-decoration: underline;
   }
 }
 
@@ -841,7 +841,7 @@ body {
   position: relative;
 
   & .item {
-    border: 1px solid black;
+    border: 1.5px solid black;
     position: relative;
     &.no-border{
       border: none;
@@ -955,6 +955,9 @@ footer{
 
 .info-block{
   padding: 14px 1vw;
+  & h1{
+    margin: 0;
+  }
 }
 
 .grid .item.button{
