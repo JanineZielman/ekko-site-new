@@ -44,7 +44,6 @@ export default function Index() {
         <div className="item w3 padding">
 					<div>
 						<h1 className='big'>{artist.artist[0]?.title}</h1>
-						{/* <div className='big times'>{Moment(artist.date).format('D.MM.')}</div> */}
             <div className='event-info'>
               {artist.date &&
                 <p><span>Date: </span> <div>{Moment(artist.date).format('ddd DD. MMMM')} </div></p>

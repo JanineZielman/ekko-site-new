@@ -14,6 +14,8 @@ export interface Event {
   dateEnd: string;
   openingTime: string;
   closingTime: string;
+  isMultiDay: boolean;
+  ticketLink: string;
   location: {
     title: string;
     fullTitle: string;
@@ -61,8 +63,10 @@ const query = gql`
           title
           fullTitle
         }
+        ticketLink
         date
         dateEnd
+        isMultiDay
         performances {
           title
           slug
@@ -96,6 +100,7 @@ const query = gql`
         }
         date
         dateEnd
+        isMultiDay
         performances {
           title
           slug

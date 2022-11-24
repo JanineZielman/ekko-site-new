@@ -46,12 +46,17 @@ export default function Index() {
                 <div className='img-wrapper'><img src={item.featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
               <div className="flex space-between info-block">
-                {item.dateEnd && <div className="times big">{Moment(item.date).format('D.MM.')} - {Moment(item.dateEnd).format('D.MM.')}</div>}
+                {item.dateEnd && item.isMultiDay && <div className="times big">{Moment(item.date).format('D.MM.')} - {Moment(item.dateEnd).format('D.MM.')}</div>}
                 <div className="info">
                   <h3>{item.title}</h3>
                 </div>
-                {item.dateEnd == null && <div className="times big">{Moment(item.date).format('D.MM.')}</div>}
+                { ((item.dateEnd == null && item.isMultiDay == false) || (item.isMultiDay == false) ) && <div className="times big">{Moment(item.date).format('D.MM.')}</div>}
               </div>
+              {/* {item.ticketLink &&
+                <div className='tickets-small'>
+                  <a href={item.ticketLink} target="_blank">Tickets</a>
+                </div>
+              } */}
             </Link>
           );
         })}
@@ -94,6 +99,11 @@ export default function Index() {
                 </div>
                 <h1>{item.artist[0].title}</h1>
               </div>
+              {/* {recent?.events[0].ticketLink &&
+                <div className='tickets-small'>
+                  <a href={recent?.events[0].ticketLink} target="_blank">Tickets</a>
+                </div>
+              } */}
             </Link>
           );
         })}
@@ -112,12 +122,17 @@ export default function Index() {
                   }
                 </div>
               )}
-              <div className="flex space-between info-block">
+              <div className="info-block">
                 <div className="info">
-                  <h3>{item.artist[0].title}</h3>
+                  <h3>{Moment(item.date).format('D.MM.')}</h3>
                 </div>
-                <div className="times big">{Moment(item.date).format('D.MM.')}</div>
+                <h1>{item.artist[0].title}</h1>
               </div>
+              {/* {recent?.events[1].ticketLink &&
+                <div className='tickets-small'>
+                  <a href={recent?.events[1].ticketLink} target="_blank">Tickets</a>
+                </div>
+              } */}
             </Link>
           );
         })}
@@ -130,9 +145,9 @@ export default function Index() {
            <Spacer number={2} border=""/>
         }
 
-        <Link className='item w2 button' to="/kalender">
-            <div className='view-all'>View all</div>
-        </Link>
+        <div className='item w2 button'>
+            <Link className='view-all' to="/kalender">View all</Link>
+        </div>
 
         <Spacer number={4} border=""/>
 

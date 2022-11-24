@@ -1,6 +1,6 @@
 import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import React, { useEffect, useState } from 'react';
+import { Link } from '@remix-run/react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -69,16 +69,12 @@ export default function Oestre() {
         <Spacer number={6} border={""}/>
         <div className='w6'><h1 className='extra-big'>{entry.entry.title}</h1></div>
         <Spacer number={6} border={""}/>
-        {/* <div className='item w3 padding-right'>
-          <h1>{entry.entry.title}</h1>
-          <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
-        </div> */}
          <Spacer number={6} border={""}/>
         {entry.entry.relatedLinks.map((link, i) => {
           return(
-            <div className='item w2 padding'>
-              <div className='times big middle'><a href={`${link.linkUrl}`}>{link.linkTitle}</a></div>
-            </div>
+            <Link className='item w2 padding' to={`${link.linkUrl}`}>
+              <div className='times big middle'>{link.linkTitle}</div>
+            </Link>
           )
         })}
                   
@@ -97,8 +93,8 @@ export default function Oestre() {
         </div>
         <Spacer number={1} border={""}/>
     
-        <div className='item w2 button small'>
-          <a className='view-all' href={`#contact`}>Contact</a>
+        <div className='item w2 padding'>
+          <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
         </div>
         
         <div className='w2 item align-bottom offset blue-bg' id="Kalender">

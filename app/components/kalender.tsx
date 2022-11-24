@@ -27,13 +27,25 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 						</div>
 						<div className="text">
 							<div className='text-wrapper'>
-								<p className='big'>{Moment(item.date).format("D.M.")} {item.dateEnd && `- ${Moment(item.dateEnd).format("D.M.")}`}</p>
-								<br/>
-								<h3>{item.title}</h3>
-								<p>
-										{item.location?.[1] && <>{item.location[1].fullTitle},</>}
-										{item.openingTime && <> {Moment(item.openingTime).format("HH:mm")}  {item.closingTime && <>- {Moment(item.closingTime).format("HH:mm")} </>}</>}
-								</p>
+								<h2>{Moment(item.date).format("D.M.")} {item.dateEnd && item.isMultiDay && `- ${Moment(item.dateEnd).format("D.M.")}`}</h2>
+								<h1 className='underline'>{item.title}</h1>
+								<div className='flex space-between'>
+									<div className='event-details'>
+									{item.openingTime && 
+										<p><span>Time:</span> {Moment(item.openingTime).format("HH:mm")}  {item.closingTime && <>- {Moment(item.closingTime).format("HH:mm")} </>}</p>
+									}
+									{item.location?.[0] &&
+										<p><span>Place: </span> {item.location[0]?.title}{item.location[1]?.title && `, ${item.location[1]?.title}`}</p>
+									}
+								</div>
+									{item.ticketLink &&
+										<div className='tickets-small'>
+											<a href={item.ticketLink} target="_blank">Tickets</a>
+										</div>
+									}
+								</div>
+								
+
 							</div>
 						</div>
 					</Link>
@@ -49,18 +61,21 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 								</div>
 								<div className="text">
 									<div className='text-wrapper'>
-										{/* <p className='big'>{Moment(performance.date).format("D.M.")} </p> */}
-										<h1>
+										<h1 className='underline'>
 											{performance.artist[0].title ? 
 												performance.artist[0].title
 											: performance.title
 											}
 										</h1>
-										
-										<p>
-											{performance.location?.[1] && <>{performance.location[1].fullTitle},</>}
-											{performance.time && <> {Moment(performance.time).format('HH:mm')}  {performance.timeEnd && <>- {Moment(performance.timeEnd).format('HH:mm')} </>}</>}
-										</p>
+										{performance.date &&
+											<p><span>Date: {Moment(performance.date).format("ddd DD. MMMM")}</span></p>
+										}
+										{performance.time && 
+											<p> <span>Time:</span> {Moment(performance.time).format('HH:mm')}  {performance.timeEnd && <>- {Moment(performance.timeEnd).format('HH:mm')} </>}</p>
+										}
+										{performance.location?.[0] && 
+											<p><span>Place: </span> {performance.location[0]?.title}{performance.location[1]?.title && `, ${performance.location[1]?.title}`}</p>
+										}
 									</div>
 								</div>
 							</Link>

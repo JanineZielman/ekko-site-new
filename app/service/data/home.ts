@@ -10,6 +10,8 @@ export interface RecentEvents {
     featuredImage: { url: string }[];
     date: string;
     dateEnd: string;
+    isMultiDay: boolean;
+    ticketLink: string;
     performances:{
       title: string;
       slug: string;
@@ -42,6 +44,8 @@ const query = gql`
         }
         date
         dateEnd
+        isMultiDay
+        ticketLink
         performances {
           title
           slug
