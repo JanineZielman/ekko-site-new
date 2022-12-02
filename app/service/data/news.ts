@@ -12,7 +12,7 @@ export interface RecentNews {
 
 const query = gql`
   query News($limit: Int!) {
-    events: entries(section: "news", orderBy: "date DESC", limit: $limit) {
+    events: entries(section: "news", orderBy: "postDate DESC", limit: $limit) {
       id
       slug
       title

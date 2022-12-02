@@ -36,7 +36,7 @@ export default function Index() {
         <img className="floating-img festival-icon" id="float" src="/EKKO-XIX-FBBanner.png" alt="" />
       </div>
 			<div className="grid">
-        <div className='item no-border w3'>
+        <div className='item w3'>
           <img src="/EKKO-webelements2.png" className='g-el padding'/>
         </div>
        
@@ -57,46 +57,10 @@ export default function Index() {
           <img src="/EKKO-webelements4.png" className='g-el'/>
         </div>
 
-         <Spacer number={6} border=""/>
-        
-        {/* <div className='outer outer-text w6'>
-          <p>Performances</p>
-        </div>
-				
-					{event.performances.slice(0, 2).map((item, i) => {
-						return(
-							<Link to={`${item.slug}`} className='item w2 l2'>
-								<div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url}/></div>
-								<div className="flex space-between white-bg height">
-									<div className="info">
-										<h4>{item.artist[0].title}</h4>
-										<p>{Moment(item.time).format("HH:mm")}, {item.location[0].title}</p>
-									</div>
-									<div className="times big">{Moment(item.date).format('D.MM.')}</div>
-								</div>
-							</Link>
-						)
-					})}
-          <Spacer number={4} border=""/> */}
-{/* 
-          {event.performances.slice(2, 4).map((item, i) => {
-						return(
-							<Link to={`${item.slug}`} className='item w2 l2'>
-								<div className='img-wrapper'><img src={item.artist[0].featuredImage[0].url}/></div>
-								<div className="flex space-between white-bg height">
-									<div className="info">
-										<h4>{item.artist[0].title}</h4>
-										<p>{Moment(item.time).format("HH:mm")}, {item.location[0].title}</p>
-									</div>
-									<div className="times big">{Moment(item.date).format('D.MM.')}</div>
-								</div>
-							</Link>
-						)
-					})}
-          <Spacer number={4} border=""/> */}
+        <Spacer number={6} border=""/>
 
-        <div className='item w2 white-bg align-bottom offset'>
-          <div className='times big'>{event.relatedLinks[0].linkTitle}</div>
+        <div className='item w2 align-bottom'>
+          <div className='times big white-bg border-top'>{event.relatedLinks[0].linkTitle}</div>
         </div>
         <Spacer number={4} border=""/>
         <div className='item w6 l2 more-padding' id={event.relatedLinks[0].linkUrl.replace('#', '')}>
@@ -112,8 +76,8 @@ export default function Index() {
         </div>
         <Spacer number={6} border=""/>
 
-        <div className='item w2 white-bg align-bottom offset' id={event.relatedLinks[1].linkUrl.replace('#', '')}>
-          <div className='times big'>{event.relatedLinks[1].linkTitle}</div>
+        <div className='item w2 align-bottom' id={event.relatedLinks[1].linkUrl.replace('#', '')}>
+          <div className='times big white-bg border-top'>{event.relatedLinks[1].linkTitle}</div>
         </div>
         <Spacer number={4} border=""/>
         {event.program.map((item, i) => {
@@ -146,14 +110,14 @@ export default function Index() {
         }
 
         <Spacer number={2} border=""/>
-          <div className='item w2 white-bg align-bottom offset '>
-            <div className='times big'>{event.relatedLinks[2].linkTitle}</div>
+          <div className='item w2 align-bottom'>
+            <div className='times big white-bg border-top'>{event.relatedLinks[2].linkTitle}</div>
           </div>
            <Spacer number={4} border=""/>
-        <div className='item w4 offset' id={event.relatedLinks[2].linkUrl.replace('#', '')}>         
+        <div className='item w4' id={event.relatedLinks[2].linkUrl.replace('#', '')}>         
           {event.tickets.map((ticket, i) => {
             return(
-              <a className='item w6 ticket' href={`${ticket.ticketLink}`} target="_blank">
+              <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
                 <h3>{ticket.description}</h3>
                 <p className='price-label'>{ticket.price} Kr</p>
               </a>

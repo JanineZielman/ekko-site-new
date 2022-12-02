@@ -108,8 +108,6 @@ export default function Index() {
           );
         })}
 
-
-
         {recent?.events[1]?.performances?.slice(0,3)?.map((item, i) => {
           return (
             <Link to={`/${recent.events[1].type}/${recent.events[1].slug}/${item.slug}`} key={`news2-${i}`} className="item w2">
@@ -137,17 +135,24 @@ export default function Index() {
           );
         })}
 
-        {recent?.events[1]?.performances.length < 3 && 
-           <Spacer number={2} border=""/>
-        }
-
-        {recent?.events[1]?.performances.length < 2 && 
-           <Spacer number={2} border=""/>
-        }
-
         <div className='item w2 button'>
-            <Link className='view-all' to="/kalender">View all</Link>
+          <Link className='view-all' to="/kalender">View all</Link>
         </div>
+
+
+        { (Number(recent?.events[1]?.performances.slice(0,3).length + recent?.events[0]?.performances.slice(0,3).length) / 3) % 1 != 0 &&
+          <>
+            { (Number(recent?.events[1]?.performances.slice(0,3).length + recent?.events[0]?.performances.slice(0,3).length)) % 2 == 0 ? 
+              <Spacer number={4} border=""/> //even
+              :
+              <Spacer number={2} border=""/> //odd
+            }
+          </>
+        }
+
+        { (recent?.events[1]?.performances.length + recent?.events[0]?.performances.length < 2) && 
+           <Spacer number={4} border=""/>
+        }
 
         <Spacer number={4} border=""/>
 
@@ -173,9 +178,9 @@ export default function Index() {
 
             <Spacer number={4} border=""/>
 
-            <Link className='item w2 button' to="/news">
-                <div className='view-all'>View all</div>
-            </Link>
+            <div className='item w2 button'>
+                <Link className='view-all' to="/news">View all</Link>
+            </div>
           </>
         }
 

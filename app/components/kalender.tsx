@@ -81,10 +81,13 @@ export default function Kalender({filteredEvents}: {filteredEvents: any}) {
 							</Link>
 						)
 					})}
-					{/* {item.performances.length % 2 == 0 &&
-						<Spacer number={3} border=""/>
-					} */}
-					<Spacer number={6} border="" />
+
+					{ item.performances.length % 2 == 0 ? 
+						<Spacer number={6} border=""/> //even
+						:
+						<Spacer number={3} border=""/> //odd
+					}
+
 				</>
 			);
 		})}

@@ -139,12 +139,14 @@ input:focus, textarea:focus {
 }
 
 .extra-big{
-  font-size: 12vw;
+  font-size: 15vw;
   text-transform: uppercase;
   position: absolute;
+  font-weight: 500;
   /* top: 50%; */
   left: 50%;
   transform: translateX(-50%);
+  line-height: 0.75;
 }
 
 .tag{
@@ -611,8 +613,12 @@ input:focus, textarea:focus {
 }
 
 .offset{
-  margin-top: auto;
-  height: auto;
+  /* margin-top: auto;
+  height: auto; */
+}
+
+.border-top{
+  border-top: 3px solid var(--black);
 }
 
 .padding-right{
@@ -958,6 +964,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 14px!important;
+  border-top: 2px solid var(--black);
+  &:nth-child(1){
+    border-top: none;
+  }
 }
 
 .program-day{
@@ -1031,6 +1041,7 @@ footer{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1vw;
 }
 
 .g-el{

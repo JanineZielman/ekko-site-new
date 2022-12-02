@@ -21,18 +21,6 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function About() {
   const { entry } = useLoaderData<PageEntry>();
 
-  // useEffect(() => {
-  //   jQuery(function($) {
-  //     $('#float').mouseover(function() {
-  //         var dWidth = $(document).width() || 900 - 500, // 100 = image width
-  //             dHeight = 900, // 100 = image height
-  //             nextX = Math.floor(Math.random() * dWidth),
-  //             nextY = Math.floor(Math.random() * dHeight);
-  //         $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
-  //     });
-  //   });
-  // }, []);
-
   return (
     <Container>
       <div className='outer'>
@@ -46,7 +34,7 @@ export default function About() {
           <Link to="/archive" className='archive-button'><h2>Archive</h2></Link>
         </div>
          <div className="w6">
-            <h1 className='extra-big'>{entry.title}</h1>
+            <h1 className='extra-big'>{entry.pageTitle}</h1>
         </div>
         <Spacer number={6} border=""/>
         <Spacer number={6} border=""/>
@@ -60,8 +48,8 @@ export default function About() {
         <div className='item w4 l2 padding'>
            <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
         </div>
-         <div className='w2 item align-bottom offset blue-bg' id="Kalender">
-          <div>
+         <div className='w2 item align-bottom' id="Kalender">
+          <div className='blue-bg border-top'>
             <h2>Contact:</h2>
           </div>
         </div>

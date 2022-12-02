@@ -17,6 +17,10 @@
 			background-color: var(--primary);
 		}
 	}
+	.view-all, .small .view-all, .archive-button{
+		font-size: var(--h2);
+		padding: 10px 20px 10px 75px;
+	}
 }
 
 @media (max-width:600px){

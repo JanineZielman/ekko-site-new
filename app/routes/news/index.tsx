@@ -1,8 +1,6 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 
-import Moment from 'moment';
-
 import { fetchRecentNews } from '~/service/data/news';
 import type { RecentNews } from '~/service/data/news';
 

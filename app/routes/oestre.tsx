@@ -45,19 +45,6 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Oestre() {
   const { entry, filteredEvents } = useLoaderData<{ entry: PageEntry; filteredEvents: AllEvents }>();
 
-  // useEffect(() => {
-  //   jQuery(function($) {
-  //     $('#float').mouseover(function() {
-  //         var dWidth = $(document).width() || 900 - 500, // 100 = image width
-  //             dHeight = $(document).height() || 900, // 100 = image height
-  //             nextX = Math.floor(Math.random() * dWidth),
-  //             nextY = Math.floor(Math.random() * dHeight);
-  //         $(this).animate({ left: nextX + 'px', top: nextY + 'px' }, 10000);
-  //     });
-  //   });
-    
-  // }, []);
-
   return (
     <Container>
       <div className='outer'>
@@ -67,7 +54,7 @@ export default function Oestre() {
       </div>
       <div className="grid">
         <Spacer number={6} border={""}/>
-        <div className='w6'><h1 className='extra-big'>{entry.entry.title}</h1></div>
+        <div className='w6'><h1 className='extra-big'>{entry.entry.pageTitle}</h1></div>
         <Spacer number={6} border={""}/>
          <Spacer number={6} border={""}/>
         {entry.entry.relatedLinks.map((link, i) => {
@@ -97,8 +84,8 @@ export default function Oestre() {
           <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
         </div>
         
-        <div className='w2 item align-bottom offset blue-bg' id="Kalender">
-          <div>
+        <div className='w2 item align-bottom' id="Kalender">
+          <div className='blue-bg border-top'>
             <h2>Currently at Østre</h2>
           </div>
         </div>

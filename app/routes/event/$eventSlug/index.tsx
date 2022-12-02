@@ -69,8 +69,8 @@ export default function Index() {
 
         {event.performances?.length > 0 &&
           <>
-            <div className="w2 item align-bottom offset blue-bg">
-              <div>
+            <div className="w2 item align-bottom">
+              <div className='blue-bg border-top'>
                 <h2>Lineup:</h2>
               </div>
             </div>

@@ -2,8 +2,6 @@ import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { Link} from '@remix-run/react';
 
-import React, { useEffect } from 'react';
-
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Moment from 'moment';
@@ -43,7 +41,7 @@ export default function Archive() {
 							<div className='artists'>
 								{event.performances.map((performance, j) => {
 									return(
-										<Link to={`/${event.type}/${event.slug}/${performance.slug}`} key={`artist-${j}`} className="artist">{performance.artist[0].title}</Link>
+										<Link to={`/${event.type}/${event.slug}/${event.type == 'festival' ? 'artist/' : ''}${performance.slug}`} key={`artist-${j}`} className="artist">{performance.artist[0].title}</Link>
 									)
 								})}
 							</div>

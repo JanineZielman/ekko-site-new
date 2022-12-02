@@ -137,8 +137,8 @@ export default function Index() {
 
 
         {related.length > 0 ?
-          <div className="w2 item align-bottom offset white-bg">
-            <div>
+          <div className="w2 item align-bottom">
+            <div className='white-bg border-top'>
               <h2>Lineup:</h2>
             </div>
           </div>
