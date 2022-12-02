@@ -18,6 +18,12 @@ export default function Index() {
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
 
+  var locations: any[] = [];
+
+  $.each(event.performances, function(i, el){
+    if($.inArray(`${el.location[1]?.title ? el.location[1]?.title : el.location[0]?.title}`, locations) === -1) locations.push(`${el.location[1]?.title ? el.location[1]?.title : el.location[0]?.title}`);
+  });
+
   useEffect(() => {
     jQuery(function($) {
       $('#float').mouseover(function() {
@@ -87,16 +93,26 @@ export default function Index() {
                 <Link to={Moment(item.date).format('YYYY-MM-DD')}><h4>{Moment(item.date).format('ddd D. MMMM')}</h4></Link>
               </div>
               <br/>
-              {event.performances.map((performance, i) => {
+              {locations.map((location, i) => {
+                const filteredEvents = event.performances.filter(performance => performance.location[1]?.title == location || performance.location[0]?.title == location);
+                const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
                 return(
-                  <>
-                    {item.date == performance.date &&
-                      <Link to={`artist/${performance.slug}`} className='program-day'>
-                        <p>{performance.location[0].title} {performance.location[1] && `, ${performance.location[1]?.title}`}</p>
-                        <h4 className='underline'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}, {performance.artist[0].title}</h4>
-                      </Link>
+                  <div className='program-location-item'>
+                    {filteredPerformance.length > 0 &&
+                      <p>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</p>
                     }
-                  </>
+                    {filteredEvents.map((performance, i) => {
+                      return(
+                        <>
+                          {item.date == performance.date && 
+                            <Link to={`artist/${performance.slug}`} className='program-day'>
+                              <h4 className='underline'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}, {performance.artist[0].title}</h4>
+                            </Link>
+                          }
+                        </>
+                      )
+                    })}
+                  </div>
                 )
               })}
             </div>

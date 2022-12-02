@@ -1131,6 +1131,13 @@ footer{
   }
 }
 
+.program-location-item{
+  margin-bottom: 24px;
+  & p{
+    margin: 14px 0;
+  }
+}
+
 
 
 /* The Modal (background) */
