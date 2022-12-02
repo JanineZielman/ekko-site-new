@@ -5,6 +5,7 @@ import type { AllEvents } from '~/service/data/events';
 
 import Container from '~/components/container';
 import Kalender from '~/components/kalender';
+import Spacer from '~/components/spacer';
 
 export const loader: LoaderFunction = () => {
   return fetchAllEvents();
@@ -27,6 +28,7 @@ export default function Index() {
       <div className="kalender">
 			  <div className="grid">
           <Kalender filteredEvents={filteredEvents}/>
+          <Spacer number={6} border={""}/>
         </div>
       </div>
     </Container>

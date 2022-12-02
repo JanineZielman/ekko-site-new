@@ -45,12 +45,12 @@ export default function Index() {
               {item.featuredImage && (
                 <div className='img-wrapper'><img src={item.featuredImage[0]?.url?.replace('https://ekko.no', 'https://api.ekko.no')} alt={item.title} /></div>
               )}
-              <div className="flex space-between info-block">
-                {item.dateEnd && item.isMultiDay && <div className="times big">{Moment(item.date).format('D.MM.')} - {Moment(item.dateEnd).format('D.MM.')}</div>}
+              <div className="info-block">
                 <div className="info">
-                  <h3>{item.title}</h3>
+                  {item.dateEnd && item.isMultiDay && <h3>{Moment(item.date).format('D.MM.')} - {Moment(item.dateEnd).format('D.MM.')}</h3>}
+                  { ((item.dateEnd == null && item.isMultiDay == false) || (item.isMultiDay == false) ) && <h3>{Moment(item.date).format('D.MM.')}</h3>}
                 </div>
-                { ((item.dateEnd == null && item.isMultiDay == false) || (item.isMultiDay == false) ) && <div className="times big">{Moment(item.date).format('D.MM.')}</div>}
+                 <h1>{item.title}</h1>
               </div>
               {/* {item.ticketLink &&
                 <div className='tickets-small'>
@@ -150,8 +150,12 @@ export default function Index() {
           </>
         }
 
-        { (recent?.events[1]?.performances.length + recent?.events[0]?.performances.length < 2) && 
+        { (recent?.events[1]?.performances.length + recent?.events[0]?.performances.length == 1) && 
            <Spacer number={4} border=""/>
+        }
+
+        { (recent?.events[1]?.performances.length + recent?.events[0]?.performances.length == 2) && 
+           <Spacer number={2} border=""/>
         }
 
         <Spacer number={4} border=""/>

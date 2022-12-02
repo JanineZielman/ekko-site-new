@@ -42,7 +42,7 @@ export default function Index() {
         <img className="floating-img festival-icon" id="float" src="/EKKO-XIX-FBBanner.png" alt="" />
       </div>
 			<div className="grid">
-        <div className='item w3'>
+        <div className='item w3 g-el-wrapper'>
           <img src="/EKKO-webelements2.png" className='g-el padding'/>
         </div>
        
@@ -59,7 +59,7 @@ export default function Index() {
           <h1 className='big'>{event.title}</h1>
           <h1 dangerouslySetInnerHTML={{ __html: event.intro }}></h1>
         </div>
-        <div className='item w2'>
+        <div className='item w2 g-el-wrapper'>
           <img src="/EKKO-webelements4.png" className='g-el'/>
         </div>
 

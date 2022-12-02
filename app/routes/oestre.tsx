@@ -83,6 +83,8 @@ export default function Oestre() {
         <div className='item w2 padding'>
           <h3 dangerouslySetInnerHTML={{ __html: entry?.entry?.contact }} />
         </div>
+
+        <Spacer number={6} border={""}/>
         
         <div className='w2 item align-bottom' id="Kalender">
           <div className='blue-bg border-top'>
@@ -97,6 +99,8 @@ export default function Oestre() {
             <p className='white-bg'>There are no upcoming events hosted by Østre.</p>
           </div>
         }
+
+        <Spacer number={6} border={""}/>
 
         <ImageGallery entry={entry.entry}/>
       </div>
